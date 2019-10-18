@@ -1,5 +1,333 @@
-.rex-radio-button {
-  h1 {
-    text-decoration: underline;
+@import 'scss/mixin.scss';
+
+@mixin radio-style {
+
+  .rex-radio {
+    margin: 0.5rem;
+    display: inline-flex;
+
+    &+.rex-form-block {
+      display: flex;
+    }
+
+    input[type="radio"] {
+      position: absolute;
+      opacity: 1;
+
+      &:checked {
+        +.rex-radio-label {
+          &:before {
+            background-color: #bf0000;
+            box-shadow: inset 0 0 0 4px #ffffff;
+            border-color: #bf0000;
+          }
+        }
+      }
+    }
+
+    .rex-radio-label {
+      &:before {
+        content: '';
+        background: #ffffff;
+        border-radius: 100%;
+        border: 2px solid #9c9c9c;
+        display: inline-block;
+        width: 1.5rem;
+        height: 1.5rem;
+        position: relative;
+        top: -0.2rem;
+        margin-right: .5rem;
+        vertical-align: top;
+        cursor: pointer;
+        text-align: center;
+        transition: all 250ms ease;
+      }
+
+      &:hover {
+        &:before {
+          border-color: #bf0000;
+        }
+      }
+    }
+
+
+
+    // &:focus {
+    //   +.rex-radio-label {
+    //     &:before {
+    //       outline: none;
+    //       border-color: #bf0000;
+    //     }
+    //   }
+    // }
+
+    // &:disabled {
+    //   +.rex-radio-label {
+    //     &:before {
+    //       box-shadow: inset 0 0 0 4px #f4f4f4;
+    //       border-color: darken(#f4f4f4, 25%);
+    //       background: darken(#f4f4f4, 25%);
+    //     }
+    //   }
+    // }
+
+    +.rex-radio-label {
+      &:empty {
+        &:before {
+          margin-right: 0;
+        }
+      }
+    }
+  }
+
+  // &.rex-form-block {
+  //   display: flex;
+  // }
+
+  // &:checked+label.radio-label {
+  //   &:hover {
+  //     &:before {
+  //       border-color: #bf0000;
+  //     }
+  //   }
+
+  //   &:before {
+  //     background-color: #bf0000;
+  //     border: solid 0.125rem #bf0000;
+  //   }
+
+  //   &:after {
+  //     content: '';
+  //     width: 1.5rem;
+  //     height: 1.5rem;
+  //     border: solid 6px #bf0000;
+  //     border-radius: 100%;
+  //     box-sizing: border-box;
+  //     top: -4px;
+  //     left: 4px;
+  //     position: absolute;
+  //     z-index: 2;
+  //     background-color: #ffffff;
+  //   }
+  // }
+
+  // &:hover {
+  //   label.radio-label:before {
+  //     border: solid 0.2rem #bf0000;
+  //     transition: border-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  //   }
+  // }
+
+  // &.disabled {
+  //   @include disabled;
+
+  //   .radio-label {
+  //     &:before {
+  //       background-color: transparent;
+  //     }
+
+  //     &:after {
+  //       background-color: transparent;
+  //     }
+  //   }
+
+  //   &:checked+label.radio-label {
+  //     &:before {
+  //       background-color: transparent;
+  //     }
+
+  //     &:after {
+  //       background-color: transparent;
+  //     }
+  //   }
+  // }
+}
+
+
+// @mixin radio-and-checkbox {
+
+//   .rex-form-check-inline {
+//     display: inline-block;
+//   }
+
+//   .rex-form-check-block {
+//     display: block;
+//   }
+
+//   .rex-checkbox,
+//   .rex-radio-inline {
+//     position: relative;
+
+//     input {
+//       top: 0;
+//       left: 0;
+//       width: 100%;
+//       cursor: pointer;
+//       height: 100%;
+//       margin: 0;
+//       opacity: 0;
+//       padding: 0;
+//       position: absolute;
+//       z-index: 9;
+//     }
+//   }
+
+//   .rex-checkbox {
+//     .rex-checkbox-label {
+//       position: relative;
+//       padding: 0 4rem 0 5rem;
+//       cursor: pointer;
+
+//       &:before {
+//         @include radio-checkbox-base;
+//         position: absolute;
+//         top: 50%;
+//         left: 1rem;
+//         transform: translate(-50%, -50%);
+//         border-radius: 0.4rem;
+//       }
+//     }
+
+//     :checked+.checkbox-label {
+//       &:hover {
+//         &:before {
+//           border-color: #ff3939;
+//         }
+//       }
+
+//       &:before {
+//         background-color: #bf0000;
+//         border: solid 2px #bf0000;
+//       }
+//     }
+
+//     &:hover {
+//       .checkbox-label:before {
+//         border: solid 0.125rem #bf0000;
+//       }
+//     }
+
+//     &.disabled {
+//       @include disabled;
+
+//       :checked+.checkbox-label {
+//         &:before {
+//           background: transparent;
+//           border-color: #d1d1d1;
+//         }
+//       }
+
+//       input[type='checkbox'] {
+//         cursor: initial;
+//       }
+//     }
+//   }
+
+//   .rex-radio {
+//     .rex-radio-label {
+//       position: relative;
+//       // padding: 0 2.5rem 0 3.125rem;
+
+//       &:before {
+//         @include radio-checkbox-base;
+//         border-radius: 100%;
+//         // position: absolute;
+//         top: 0;
+//         left: 0.25rem;
+//       }
+//     }
+
+//     &:checked+label.radio-label {
+//       &:hover {
+//         &:before {
+//           border-color: #bf0000;
+//         }
+//       }
+
+//       &:before {
+//         background-color: #bf0000;
+//         border: solid 0.125rem #bf0000;
+//       }
+
+//       &:after {
+//         content: '';
+//         width: 1.5rem;
+//         height: 1.5rem;
+//         border: solid 6px #bf0000;
+//         border-radius: 100%;
+//         box-sizing: border-box;
+//         top: -4px;
+//         left: 4px;
+//         position: absolute;
+//         z-index: 2;
+//         background-color: #ffffff;
+//       }
+//     }
+
+//     &:hover {
+//       label.radio-label:before {
+//         border: solid 0.2rem #bf0000;
+//         transition: border-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+//       }
+//     }
+
+//     &.disabled {
+//       @include disabled;
+
+//       .radio-label {
+//         &:before {
+//           background-color: transparent;
+//         }
+
+//         &:after {
+//           background-color: transparent;
+//         }
+//       }
+
+//       &:checked+label.radio-label {
+//         &:before {
+//           background-color: transparent;
+//         }
+
+//         &:after {
+//           background-color: transparent;
+//         }
+//       }
+//     }
+//   }
+// }
+
+// @include radio-and-checkbox();
+@include radio-style ();
+
+
+.rex-form {
+  fieldset {
+
+    &:disabled,
+    &[disabled] {
+      @include disabled;
+    }
+  }
+
+  fieldset {
+    border: none;
+  }
+
+  .rex-form-group {
+    margin-bottom: 0.625rem;
+
+    // .rex-form-label {
+    //   font-size: 0.750rem;
+    //   display: block;
+    // }
+
+    .rex-form-helper {
+      display: block;
+      position: relative;
+      font-size: 0.750rem;
+      color: #9c9c9c;
+      margin: 0.313rem 0;
+    }
   }
 }

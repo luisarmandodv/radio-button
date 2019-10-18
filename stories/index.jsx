@@ -1,36 +1,90 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import React from 'react';
-import { action } from '@storybook/addon-actions';
-import { text } from '@storybook/addon-knobs';
-import ReXText from '@rakuten-rex/core/text';
 import ReXStories from './rex/stories';
 import RadioButton from '../src/index';
 
 const stories = ReXStories('RadioButton');
 
+const Petdata = {
+  petSelections: [
+    'dog',
+    'cat',
+    'rabbit',
+    'iguana',
+    'pony',
+    'ferret',
+    'fish',
+    'bird',
+  ],
+  selectedPets: ['dog', 'cat', 'ferret'],
+  ageOptions: ['18 - 25', '26 - 59', '60 or older'],
+  ownerAgeRangeSelection: '',
+};
+
 // Stories
-stories.add('default', () => <RadioButton />);
-stories.add('with text', () => <RadioButton text="Welcome to React example" />);
-stories.add('with className', () => (
-  <React.Fragment>
-    <RadioButton className="color-black active" />
-  </React.Fragment>
+stories.add('default', () => (
+  <form className="rex-form">
+    <fieldset>
+      <div className="rex-form-group">
+        <RadioButton type="radio" options={Petdata.petSelections} />
+      </div>
+    </fieldset>
+  </form>
 ));
 
-stories.add('with onClick', () => {
-  const onClickSample = action('clicked');
-
-  return <RadioButton onClick={onClickSample} />;
-});
-
-stories.add('with children', () => (
-  <RadioButton>
-    <ReXText>Hello World</ReXText>
-  </RadioButton>
+stories.add('block layout', () => (
+  <form className="rex-form">
+    <fieldset>
+      <div className="rex-form-group">
+        <RadioButton type="radio" block options={Petdata.petSelections} />
+      </div>
+    </fieldset>
+  </form>
 ));
 
-stories.add('with dynamic props', () => {
-  const textWelcome = text('text', 'Welcome to Dynamic React');
+stories.add('with Title label', () => (
+  <form className="rex-form">
+    <fieldset>
+      <div className="rex-form-group">
+        <RadioButton
+          hasTitleLabel
+          titleLabel="Which kinds of pets would you like to adopt?"
+          type="radio"
+          options={Petdata.petSelections}
+        />
+      </div>
+    </fieldset>
+  </form>
+));
 
-  return <RadioButton text={textWelcome} />;
-});
+stories.add('with Helper text', () => (
+  <form className="rex-form">
+    <fieldset>
+      <div className="rex-form-group">
+        <RadioButton
+          type="radio"
+          options={Petdata.petSelections}
+          hasHelper
+          helper="Helper Text"
+        />
+      </div>
+    </fieldset>
+  </form>
+));
+
+stories.add('with Title text and helper text', () => (
+  <form className="rex-form">
+    <fieldset>
+      <div className="rex-form-group">
+        <RadioButton
+          hasTitleLabel
+          titleLabel="Which kinds of pets would you like to adopt?"
+          type="radio"
+          options={Petdata.petSelections}
+          hasHelper
+          helper="Helper Text"
+        />
+      </div>
+    </fieldset>
+  </form>
+));
