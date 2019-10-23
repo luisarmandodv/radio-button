@@ -1,3 +1,3 @@
 import '@rakuten-rex/core/css';
 
-export { default } from './components/RadioButton';
+export { default } from './ui/RadioButton';
