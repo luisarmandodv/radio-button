@@ -1,90 +1,85 @@
 /* eslint-disable import/no-extraneous-dependencies */
-import React from 'react';
+import React, { Fragment } from 'react';
+import { boolean } from '@storybook/addon-knobs';
 import ReXStories from './rex/stories';
-import RadioButton from '../src/index';
+import RadioButton from '../src/ui/RadioButton';
+import Radio from '../src/Radio/index';
 
-const stories = ReXStories('RadioButton');
-
-const Petdata = {
-  petSelections: [
-    'dog',
-    'cat',
-    'rabbit',
-    'iguana',
-    'pony',
-    'ferret',
-    'fish',
-    'bird',
-  ],
-  selectedPets: ['dog', 'cat', 'ferret'],
-  ageOptions: ['18 - 25', '26 - 59', '60 or older'],
-  ownerAgeRangeSelection: '',
-};
+const stories = ReXStories('Radio Button/UI/Radio Button');
 
 // Stories
-stories.add('default', () => (
-  <form className="rex-form">
-    <fieldset>
-      <div className="rex-form-group">
-        <RadioButton type="radio" options={Petdata.petSelections} />
-      </div>
-    </fieldset>
-  </form>
+stories.add('default', () => <RadioButton option="dog" name="a dog" />);
+
+stories.add('checked', () => (
+  <RadioButton
+    option="dog"
+    name="a dog"
+    isChecked={boolean('checked', false)}
+  />
 ));
 
-stories.add('block layout', () => (
-  <form className="rex-form">
-    <fieldset>
-      <div className="rex-form-group">
-        <RadioButton type="radio" block options={Petdata.petSelections} />
-      </div>
-    </fieldset>
-  </form>
+stories.add('disabled', () => (
+  <RadioButton
+    option="dog"
+    name="a dog"
+    isDisabled={boolean('disabled', false)}
+  />
 ));
 
-stories.add('with Title label', () => (
-  <form className="rex-form">
-    <fieldset>
-      <div className="rex-form-group">
-        <RadioButton
-          hasTitleLabel
-          titleLabel="Which kinds of pets would you like to adopt?"
-          type="radio"
-          options={Petdata.petSelections}
-        />
-      </div>
-    </fieldset>
-  </form>
+stories.add('required', () => (
+  <RadioButton
+    option="dog"
+    name="a dog"
+    required={boolean('required', false)}
+  />
 ));
 
-stories.add('with Helper text', () => (
-  <form className="rex-form">
-    <fieldset>
-      <div className="rex-form-group">
-        <RadioButton
-          type="radio"
-          options={Petdata.petSelections}
-          hasHelper
-          helper="Helper Text"
-        />
-      </div>
-    </fieldset>
-  </form>
+stories.add('dynamic', () => (
+  <RadioButton
+    option="dog"
+    name="a dog"
+    isChecked={boolean('checked', false)}
+    isDisabled={boolean('disabled', false)}
+    required={boolean('required', false)}
+  />
 ));
 
-stories.add('with Title text and helper text', () => (
-  <form className="rex-form">
-    <fieldset>
-      <div className="rex-form-group">
-        <RadioButton
-          hasTitleLabel
-          titleLabel="Which kinds of pets would you like to adopt?"
-          type="radio"
-          options={Petdata.petSelections}
-          hasHelper
-          helper="Helper Text"
-        />
-      </div>
-    </fieldset>
-  </form>
+const storiesLayout = ReXStories('Radio Button/UI/Layout');
+
+// storiesLayout
+storiesLayout.add('default inline layout', () => (
+  <Fragment>
+    <RadioButton option="dog" name="a dog" isChecked />
+    <RadioButton option="cat" name="a cat" />
+    <RadioButton option="rabbit" name="a rabbit" />
+    <RadioButton option="pig" name="a pig" isDisabled />
+  </Fragment>
+));
+
+storiesLayout.add('block layout', () => (
+  <Fragment>
+    <RadioButton block option="dog" name="a dog" isChecked />
+    <RadioButton block option="cat" name="a cat" />
+    <RadioButton block option="rabbit" name="a rabbit" />
+    <RadioButton block option="pig" name="a pig" isDisabled />
+  </Fragment>
+));
+
+// StoriesHOC
+const storiesHOC = ReXStories('Radio Button/Radio Button');
+
+const Petdata = [
+  'dog',
+  'cat',
+  'rabbit',
+  'iguana',
+  'pony',
+  'ferret',
+  'fish',
+  'bird',
+];
+storiesHOC.add('Radio Buttons', () => (
+  <Fragment>
+    <Radio options={Petdata} />
+  </Fragment>
 ));
