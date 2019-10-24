@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
 import { bool, string, oneOf, func } from 'prop-types';
 import { SIZES, DEFAULT_SIZE } from './props';
-// import './RadioButtonUI.scss';
+import './RadioButtonUI.scss';
 
 export default function RadioButtonUI({
   className,
@@ -32,7 +32,6 @@ export default function RadioButtonUI({
           disabled={disabled}
           checked={checked}
           required={required}
-          // onChange={handleChange}
           onChange={() => handleChange(option)}
           {...attributes}
         />
