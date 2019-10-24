@@ -5,7 +5,6 @@ import RadioButtonUI from '../ui/RadioButtonUI';
 export default class RadioButton extends Component {
   constructor(props) {
     super(props);
-    // this.state = { checked: false }; // eslint-disable-line
     this.state = {
       selectedValue: '',
     };
@@ -19,12 +18,10 @@ export default class RadioButton extends Component {
     this.setState({
       selectedValue: event.target.value,
     });
-    console.log(this.selectedValue);
   }
 
   render() {
     const { options, disabled, required, block } = this.props;
-    // const value = this.props.value || this.state.value;// eslint-disable-line
     return (
       <Fragment>
         {options.map(option => (
@@ -50,7 +47,6 @@ export default class RadioButton extends Component {
 RadioButton.defaultProps = {
   disabled: false,
   required: false,
-  checked: false,
   block: false,
   options: [],
 };
@@ -58,7 +54,6 @@ RadioButton.defaultProps = {
 RadioButton.propTypes = {
   disabled: bool,
   required: bool,
-  checked: bool,
   block: bool,
   options: object,
 };
