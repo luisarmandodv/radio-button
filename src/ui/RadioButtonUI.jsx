@@ -1,37 +1,39 @@
 import React, { Fragment } from 'react';
-import { bool, string, oneOf, array } from 'prop-types';
+import { bool, string, oneOf, func } from 'prop-types';
 import { SIZES, DEFAULT_SIZE } from './props';
-import './RadioButton.scss';
+// import './RadioButtonUI.scss';
 
-export default function RadioButton({
+export default function RadioButtonUI({
   className,
   name,
   size,
   block,
   option,
-  isDisabled,
-  isChecked,
+  disabled,
+  checked,
+  required,
+  handleChange,
   ...attributes
 }) {
   const labelClass = 'rex-radio-label';
   const layoutClass = block ? 'rex-form-block' : null;
-  const classes = ['rex-radio', className, layoutClass].join(' ').trim();
+  const classes = ['rex-radio', layoutClass, className].join(' ').trim();
   const sizeClass = SIZES[size];
   const labelClasses = [labelClass, sizeClass].join(' ').trim();
-  const disabled = isDisabled ? { disabled: 'disabled' } : {};
-  const checked = isChecked ? true : null;
 
   return (
     <Fragment>
       <div className={classes}>
         <input
-          name={name}
-          block={block}
+          block={block.toString()}
           id={option}
           value={option}
           type="radio"
-          {...disabled}
+          disabled={disabled}
           checked={checked}
+          required={required}
+          // onChange={handleChange}
+          onChange={() => handleChange(option)}
           {...attributes}
         />
         <label className={labelClasses} htmlFor={option}>
@@ -42,22 +44,26 @@ export default function RadioButton({
   );
 }
 
-RadioButton.defaultProps = {
+RadioButtonUI.defaultProps = {
   className: '',
-  isDisabled: false,
-  isChecked: false,
+  disabled: false,
+  checked: false,
+  required: false,
   block: false,
   name: '',
   size: DEFAULT_SIZE,
-  option: [],
+  option: {},
+  handleChange: () => {},
 };
 
-RadioButton.propTypes = {
+RadioButtonUI.propTypes = {
   className: string,
-  isDisabled: bool,
-  isChecked: bool,
+  disabled: bool,
+  checked: bool,
+  required: bool,
   block: bool,
   name: string,
   size: oneOf(Object.keys(SIZES)),
-  option: array,
+  option: string,
+  handleChange: func,
 };
