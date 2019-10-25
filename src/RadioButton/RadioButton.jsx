@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react';
-import { bool, object } from 'prop-types';
+import { bool, shape, string, func } from 'prop-types';
 import RadioButtonUI from '../ui/RadioButtonUI';
 
 export default class RadioButton extends Component {
@@ -12,31 +12,33 @@ export default class RadioButton extends Component {
     this.handleChange = this.handleChange.bind(this);
   }
 
-  handleChange(event) {
-    event.preventDefault();
-
+  handleChange(e) {
+    console.log(e.target.value);
     this.setState({
-      selectedValue: event.target.value,
+      selectedValue: e.target.value,
     });
   }
 
   render() {
-    const { options, disabled, required, block } = this.props;
+    const { options, disabled, required, isBlock } = this.props;
+    const { selectedValue } = this.state;
     return (
       <Fragment>
-        {options.map(option => (
+        {options.map((option, index) => (
           <RadioButtonUI
-            data-value={this.option}
-            key={option.toString()}
-            id={option.id}
-            value={option}
-            onChange={this.handleChange}
+            isBlock={isBlock}
+            key={option.id}
+            id={index}
+            name={option.name}
+            value={option.value}
+            // onChangeValue={this.handleChange}
+            onChangeValue={e => this.handleChange(e)}
             type="radio"
-            block={block}
+            label={option.label}
             disabled={disabled}
             required={required}
-            option={option}
-            checked={this.selectedValue === option}
+            checked={selectedValue === option.value}
+            // checked={option.checked}
           />
         ))}
       </Fragment>
@@ -47,13 +49,20 @@ export default class RadioButton extends Component {
 RadioButton.defaultProps = {
   disabled: false,
   required: false,
-  block: false,
-  options: [],
+  isBlock: false,
+  options: {},
+  onChangeValue: () => {},
 };
 
 RadioButton.propTypes = {
   disabled: bool,
   required: bool,
-  block: bool,
-  options: object,
+  isBlock: bool,
+  options: shape({
+    id: string,
+    name: string,
+    value: string,
+    checked: bool,
+  }),
+  onChangeValue: func,
 };

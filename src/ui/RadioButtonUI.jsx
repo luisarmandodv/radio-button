@@ -1,45 +1,41 @@
-import React, { Fragment } from 'react';
-import { bool, string, oneOf, func } from 'prop-types';
-import { SIZES, DEFAULT_SIZE } from './props';
+import React from 'react';
+import { bool, string, func } from 'prop-types';
 import './RadioButtonUI.scss';
 
 export default function RadioButtonUI({
   className,
   name,
-  size,
-  block,
-  option,
+  isBlock,
+  id,
+  value,
+  label,
   disabled,
   checked,
   required,
-  handleChange,
+  onChangeValue,
   ...attributes
 }) {
   const labelClass = 'rex-radio-label';
-  const layoutClass = block ? 'rex-form-block' : null;
+  const layoutClass = isBlock ? 'rex-form-block' : null;
   const classes = ['rex-radio', layoutClass, className].join(' ').trim();
-  const sizeClass = SIZES[size];
-  const labelClasses = [labelClass, sizeClass].join(' ').trim();
 
   return (
-    <Fragment>
-      <div className={classes}>
-        <input
-          block={block.toString()}
-          id={option}
-          value={option}
-          type="radio"
-          disabled={disabled}
-          checked={checked}
-          required={required}
-          onChange={() => handleChange(option)}
-          {...attributes}
-        />
-        <label className={labelClasses} htmlFor={option}>
-          {option}
-        </label>
-      </div>
-    </Fragment>
+    <div className={classes}>
+      <input
+        id={id}
+        value={value}
+        name={name}
+        type="radio"
+        disabled={disabled}
+        checked={checked}
+        required={required}
+        onChange={onChangeValue}
+        {...attributes}
+      />
+      <label className={labelClass} htmlFor={value}>
+        {label}
+      </label>
+    </div>
   );
 }
 
@@ -48,11 +44,12 @@ RadioButtonUI.defaultProps = {
   disabled: false,
   checked: false,
   required: false,
-  block: false,
+  isBlock: false,
   name: '',
-  size: DEFAULT_SIZE,
-  option: {},
-  handleChange: () => {},
+  label: '',
+  id: '',
+  value: '',
+  onChangeValue: () => {},
 };
 
 RadioButtonUI.propTypes = {
@@ -60,9 +57,10 @@ RadioButtonUI.propTypes = {
   disabled: bool,
   checked: bool,
   required: bool,
-  block: bool,
+  isBlock: bool,
   name: string,
-  size: oneOf(Object.keys(SIZES)),
-  option: string,
-  handleChange: func,
+  label: string,
+  id: string,
+  value: string,
+  onChangeValue: func,
 };
