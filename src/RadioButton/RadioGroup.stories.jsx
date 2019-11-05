@@ -1,10 +1,10 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import React, { Fragment } from 'react';
 import ReXStories from '../../stories/rex/stories';
-import RadioButton from './RadioButton';
+import RadioGroup from './RadioGroup';
 
 // StoriesHOC
-const storiesHOC = ReXStories('Radio Button');
+const storiesHOC = ReXStories('RadioGroup / Controlled');
 
 const Petdata = [
   {
@@ -13,6 +13,8 @@ const Petdata = [
     value: 'dog',
     label: 'Dog',
     checked: false,
+    disabled: false,
+    areaLabel: 'dog',
   },
   {
     id: 'choice2',
@@ -20,6 +22,8 @@ const Petdata = [
     value: 'fish',
     label: 'Fish',
     checked: false,
+    disabled: false,
+    areaLabel: 'fish',
   },
   {
     id: 'choice3',
@@ -27,6 +31,8 @@ const Petdata = [
     value: 'cat',
     label: 'Cat',
     checked: true,
+    disabled: false,
+    areaLabel: 'cat',
   },
   {
     id: 'choice4',
@@ -34,6 +40,8 @@ const Petdata = [
     value: 'rabbit',
     label: 'Rabbit',
     checked: false,
+    disabled: false,
+    areaLabel: 'rabbit',
   },
   {
     id: 'choice5',
@@ -41,15 +49,19 @@ const Petdata = [
     value: 'iguana',
     label: 'Iguana',
     checked: false,
+    disabled: true,
+    areaLabel: 'iguana',
   },
 ];
-storiesHOC.add('Radio Button inline', () => (
+
+storiesHOC.add('RadioGroup inline', () => (
   <Fragment>
-    <RadioButton options={Petdata} />
+    <RadioGroup options={Petdata} />
   </Fragment>
 ));
-storiesHOC.add('Radio Button block', () => (
+
+storiesHOC.add('RadioGroup block', () => (
   <Fragment>
-    <RadioButton options={Petdata} isBlock />
+    <RadioGroup options={Petdata} isBlock />
   </Fragment>
 ));

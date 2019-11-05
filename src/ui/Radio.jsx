@@ -1,18 +1,18 @@
 import React from 'react';
-import { bool, string, func } from 'prop-types';
-import './RadioButtonUI.scss';
+import { bool, string } from 'prop-types';
+import './Radio.scss';
 
-export default function RadioButtonUI({
+export default function Radio({
   className,
+  id,
   name,
   isBlock,
-  id,
   value,
   label,
   disabled,
   checked,
   required,
-  onChangeValue,
+  areaLabel,
   ...attributes
 }) {
   const labelClass = 'rex-radio-label';
@@ -22,45 +22,46 @@ export default function RadioButtonUI({
   return (
     <div className={classes}>
       <input
-        id={id}
         value={value}
+        id={id}
         name={name}
         type="radio"
         disabled={disabled}
-        checked={checked}
         required={required}
-        onChange={onChangeValue}
+        area-label={areaLabel}
+        checked={checked}
+        readOnly
         {...attributes}
       />
-      <label className={labelClass} htmlFor={value}>
+      <label className={labelClass} htmlFor={id}>
         {label}
       </label>
     </div>
   );
 }
 
-RadioButtonUI.defaultProps = {
+Radio.defaultProps = {
   className: '',
   disabled: false,
   checked: false,
   required: false,
   isBlock: false,
+  areaLabel: '',
+  id: '',
   name: '',
   label: '',
-  id: '',
   value: '',
-  onChangeValue: () => {},
 };
 
-RadioButtonUI.propTypes = {
+Radio.propTypes = {
   className: string,
   disabled: bool,
   checked: bool,
   required: bool,
   isBlock: bool,
+  areaLabel: string,
+  id: string,
   name: string,
   label: string,
-  id: string,
   value: string,
-  onChangeValue: func,
 };
