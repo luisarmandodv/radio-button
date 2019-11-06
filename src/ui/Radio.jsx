@@ -1,5 +1,8 @@
 import React from 'react';
 import { bool, string } from 'prop-types';
+import UnSelected from './img/rex-icon-radio-unselected.svg';
+import Selected from './img/rex-icon-radio-selected.svg';
+import Disabled from './img/rex-icon-radio-disabled.svg';
 import './Radio.scss';
 
 export default function Radio({
@@ -18,7 +21,15 @@ export default function Radio({
   const labelClass = 'rex-radio-label';
   const layoutClass = isBlock ? 'rex-form-block' : null;
   const classes = ['rex-radio', layoutClass, className].join(' ').trim();
+  let radioIcon;
 
+  if (disabled) {
+    radioIcon = <Disabled />;
+  } else if (checked) {
+    radioIcon = <Selected />;
+  } else {
+    radioIcon = <UnSelected />;
+  }
   return (
     <div className={classes}>
       <input
@@ -34,6 +45,7 @@ export default function Radio({
         {...attributes}
       />
       <label className={labelClass} htmlFor={id}>
+        {radioIcon}
         {label}
       </label>
     </div>

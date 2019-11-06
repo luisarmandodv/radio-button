@@ -90,6 +90,11 @@ const fileLoader = {
   use: ['file-loader'],
 };
 
+const svgLoader = {
+  test: /\.(svg)$/,
+  use: ['@svgr/webpack', 'url-loader'],
+};
+
 // Resolve extenstions for JS and JSX
 const resolve = {
   extensions: ['*', '.js', '.jsx'],
@@ -259,7 +264,7 @@ const webpackConfig = {
   entry,
   output,
   module: {
-    rules: [babelLoader, eslintLoader, stylesLoader, fileLoader],
+    rules: [babelLoader, eslintLoader, stylesLoader, svgLoader, fileLoader],
   },
   resolve,
   externals,

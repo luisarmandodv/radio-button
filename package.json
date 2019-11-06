@@ -32,6 +32,7 @@
   "homepage": "https://rakuten-rex.github.io/radio-button/",
   "dependencies": {
     "@rakuten-rex/core": "^2.3.1",
+    "@svgr/webpack": "^4.3.3",
     "prop-types": "^15.7.2",
     "react": "^16.8.3",
     "react-dom": "^16.8.3"
