@@ -70,9 +70,55 @@ Example:
 
 ```js
 import RexComponent from '@rakuten-rex/__COMPONENT_NAME__';
-
+const Petdata = [
+  {
+    id: 'choice1',
+    name: 'pet',
+    value: 'dog',
+    label: 'Dog',
+    checked: false,
+    disabled: false,
+    areaLabel: 'dog',
+  },
+  {
+    id: 'choice2',
+    name: 'pet',
+    value: 'fish',
+    label: 'Fish',
+    checked: false,
+    disabled: false,
+    areaLabel: 'fish',
+  },
+  {
+    id: 'choice3',
+    name: 'pet',
+    value: 'cat',
+    label: 'Cat',
+    checked: true,
+    disabled: false,
+    areaLabel: 'cat',
+  },
+  {
+    id: 'choice4',
+    name: 'pet',
+    value: 'rabbit',
+    label: 'Rabbit',
+    checked: false,
+    disabled: false,
+    areaLabel: 'rabbit',
+  },
+  {
+    id: 'choice5',
+    name: 'pet',
+    value: 'iguana',
+    label: 'Iguana',
+    checked: false,
+    disabled: true,
+    areaLabel: 'iguana',
+  },
+];
 function MyComponent() {
-  return <RexComponent>Hello World</RexComponent>;
+  return  <RadioGroup options={Petdata} />;
 }
 ```
 
@@ -86,7 +132,12 @@ Example:
 import '@rakuten-rex/__COMPONENT_NAME__/css';
 
 function MyComponent() {
-  return <h1 className="rex-core-h1 rex-h1">Hello World</h1>;
+  return (
+    <div class="rex-radio">
+      <input type="radio" value="dog" id="choice1" name="pet" area-label="dog" readonly="" />
+        <label class="rex-radio-label" for="choice1">dog</label>
+      </div>;
+  )
 }
 ```
 
