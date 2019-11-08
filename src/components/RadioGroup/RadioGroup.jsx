@@ -12,11 +12,11 @@ export default class RadioGroup extends Component {
     this.handleChange = this.handleChange.bind(this);
   }
 
-  handleChange = e => {
+  handleChange(e) {
     this.setState({
       selectedValue: e.target.value,
     });
-  };
+  }
 
   render() {
     const { options, isBlock } = this.props;
