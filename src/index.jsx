@@ -1,3 +1,4 @@
 import '@rakuten-rex/core/css';
 
-export { default } from './ui/Radio';
+export { default as Radio } from './components/Radio/Radio';
+export { default as RadioGroup } from './components/RadioGroup/RadioGroup';

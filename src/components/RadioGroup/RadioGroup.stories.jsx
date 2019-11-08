@@ -1,6 +1,6 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import React, { Fragment } from 'react';
-import ReXStories from '../../stories/rex/stories';
+import ReXStories from '../../../stories/rex/stories';
 import RadioGroup from './RadioGroup';
 
 // StoriesHOC

@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import { bool, shape, string } from 'prop-types';
-import Radio from '../ui/Radio';
+import Radio from '../Radio/Radio';
 
 export default class RadioGroup extends Component {
   constructor(props) {

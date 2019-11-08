@@ -1,8 +1,7 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import React, { Fragment } from 'react';
 import { boolean } from '@storybook/addon-knobs';
-import { action } from '@storybook/addon-actions';
-import ReXStories from '../../stories/rex/stories';
+import ReXStories from '../../../stories/rex/stories';
 import Radio from './Radio';
 
 const stories = ReXStories('Radio/Uncontrolled');
