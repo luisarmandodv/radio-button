@@ -1,0 +1,88 @@
+@import './core.mixin';
+
+@mixin rex-radio {
+  @include rex-core();
+  @include rex-radio-content();
+  @include rex-radio-theme();
+}
+
+@mixin rex-radio-theme() {
+  // ReX Colors
+  --rex-gray-900: #333333;
+  // Theme
+  --rex-radio-theme-color: #0085C7;
+  --rex-radio-border-color: #9c9c9c;
+  --rex-radio-disabled-text: #d1d1d1;
+  --rex-radio-disabled-border: #ebebeb;
+}
+
+@mixin rex-radio-content {
+  margin: 0.5rem;
+  display: inline-flex;
+
+  input[type="radio"] {
+    position: absolute;
+    opacity: 1;
+
+    &:checked {
+      +.rex-radio-label {
+        &:before {
+          background-color: var(--rex-radio-theme-color);
+          box-shadow: inset 0 0 0 4px #ffffff;
+          border-color: var(--rex-radio-theme-color);
+        }
+      }
+    }
+
+    &:disabled {
+      +.rex-radio-label {
+        color: var(--rex-radio-disabled-text);
+
+        &:before {
+          border-color: var(--rex-radio-disabled-border);
+          background: #ffffff;
+        }
+      }
+    }
+  }
+
+  &.rex-form-block {
+    display: flex !important;
+  }
+
+  .rex-radio-label {
+    line-height: 1.5;
+
+    &:before {
+      content: '';
+      background: #ffffff;
+      border-radius: 100%;
+      border: 2px solid var(--rex-radio-border-color);
+      box-sizing: border-box;
+      display: inline-block;
+      width: 1.5rem;
+      height: 1.5rem;
+      position: relative;
+      top: 0;
+      margin-right: .5rem;
+      vertical-align: top;
+      cursor: pointer;
+      text-align: center;
+      transition: all 250ms ease;
+    }
+
+    &:hover {
+      &:before {
+        border-color: var(--rex-radio-theme-color);
+      }
+    }
+  }
+
+  +.rex-radio-label {
+    &:empty {
+      &:before {
+        margin-right: 0;
+      }
+    }
+  }
+}
