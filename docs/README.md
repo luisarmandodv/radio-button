@@ -49,7 +49,7 @@ Example:
 `my-component.jsx`
 
 ```jsx
-import MyComponent from '@rakuten-rex/radio-button';
+import Radio from '@rakuten-rex/radio-button';
 
 function MyCustomComponent() {
   return (
