@@ -1,4 +1,4 @@
-# ReX React UI Component: react-component-starter-kit
+# ReX React UI Component: radio-button
 
 This project is part of ReX Design System and it can be used to create UI Components compatible with:
 
@@ -9,13 +9,13 @@ React, HTML/CSS and Vue.js
 <img src="project-scripts/webpack/markdown/logos/npm.svg?sanitize=true" height="16" />
 
 ```
-npm install @rakuten-rex/react-component-starter-kit@3.2.4 --save
+npm install @rakuten-rex/radio-button@0.0.1 --save
 ```
 
 <img src="project-scripts/webpack/markdown/logos/yarn.svg?sanitize=true" height="16" />
 
 ```
-yarn add @rakuten-rex/react-component-starter-kit@3.2.4
+yarn add @rakuten-rex/radio-button@0.0.1
 ```
 
 # Getting started
@@ -24,9 +24,9 @@ yarn add @rakuten-rex/react-component-starter-kit@3.2.4
 
 For a complete guide of properties for React and HTML classes please visit our Storybook page:  
 
-[<img src="project-scripts/webpack/markdown/logos/storybook.svg?sanitize=true" height="16" />](https://rakuten-rex.github.io/react-component-starter-kit/)   
+[<img src="project-scripts/webpack/markdown/logos/storybook.svg?sanitize=true" height="16" />](https://rakuten-rex.github.io/radio-button/)   
 
-https://rakuten-rex.github.io/react-component-starter-kit/   
+https://rakuten-rex.github.io/radio-button/   
 
 
 **Storybook features**
@@ -49,17 +49,20 @@ Example:
 `my-component.jsx`
 
 ```jsx
-import MyComponent from '@rakuten-rex/react-component-starter-kit';
+import MyComponent from '@rakuten-rex/radio-button';
 
 function MyCustomComponent() {
   return (
-    <MyComponent />
+    <Radio name='pet' label='dog' value='dog' id='choice1' area-label='dog' />
+    <Radio name='pet' label='cat' value='cat' area-label='cat' id='choice2' checked={true} />
+    <Radio name='pet' label='rabbit' value='rabbit' area-label='rabbit' id='choice3' />
+    <Radio name='pet' label='pig' value='pig' id='choice4' area-label='pig' disabled={true} />
   );
 }
 ```
 
 
-[Click here](https://rakuten-rex.github.io/react-component-starter-kit/) to see all working examples in Storybook.
+[Click here](https://rakuten-rex.github.io/radio-button/) to see all working examples in Storybook.
 
 
 ### <img src="project-scripts/webpack/markdown/logos/css-3.svg?sanitize=true" height="16" /> CSS Styles only
@@ -73,15 +76,22 @@ Example:
 `my-component.jsx`
 
 ```jsx
-import '@rakuten-rex/react-component-starter-kit/MyComponent/css';
+import '@rakuten-rex/radio-button/Radio/css';
 
 function MyCustomComponent() {
   return (
-    <div class="rex-my-component" role="presentation">
-      <img src="static/media/Image.jpg" alt="Basic example" style="width:100%" />
-      <h3>Hello World</h3>
-      <p>This is a basic example for ReX React Components Starter Kit</p>
-    </div>
+    <div class="rex-radio">
+        <input type="radio" value="dog" id="choice1" name="pet" area-label="dog" readonly="" /><label class="rex-radio-label" for="choice1">dog</label>
+      </div>
+      <div class="rex-radio">
+        <input type="radio" value="cat" id="choice2" name="pet" area-label="cat" checked="" readonly="" /><label class="rex-radio-label" for="choice2">cat</label>
+      </div>
+      <div class="rex-radio">
+        <input type="radio" value="rabbit" id="choice3" name="pet" area-label="rabbit" readonly="" /><label class="rex-radio-label" for="choice3">rabbit</label>
+      </div>
+      <div class="rex-radio">
+        <input type="radio" value="pig" id="choice4" name="pet" disabled="" area-label="pig" readonly="" /><label class="rex-radio-label" for="choice4">pig</label>
+      </div>
   );
 }
 ```
@@ -93,20 +103,27 @@ Example:
 `my-component.jsx`
 
 ```jsx
-import '@rakuten-rex/react-component-starter-kit/MyComponent/css/static';
+import '@rakuten-rex/radio-button/Radio/css/static';
 
 function MyCustomComponent() {
   return (
-    <div class="rex-my-component" role="presentation">
-      <img src="static/media/Image.jpg" alt="Basic example" style="width:100%" />
-      <h3>Hello World</h3>
-      <p>This is a basic example for ReX React Components Starter Kit</p>
-    </div>
+    <div class="rex-radio">
+        <input type="radio" value="dog" id="choice1" name="pet" area-label="dog" readonly="" /><label class="rex-radio-label" for="choice1">dog</label>
+      </div>
+      <div class="rex-radio">
+        <input type="radio" value="cat" id="choice2" name="pet" area-label="cat" checked="" readonly="" /><label class="rex-radio-label" for="choice2">cat</label>
+      </div>
+      <div class="rex-radio">
+        <input type="radio" value="rabbit" id="choice3" name="pet" area-label="rabbit" readonly="" /><label class="rex-radio-label" for="choice3">rabbit</label>
+      </div>
+      <div class="rex-radio">
+        <input type="radio" value="pig" id="choice4" name="pet" disabled="" area-label="pig" readonly="" /><label class="rex-radio-label" for="choice4">pig</label>
+      </div>
   );
 }
 ```
 
-[Click here](https://rakuten-rex.github.io/react-component-starter-kit/) to see all working examples in Storybook.
+[Click here](https://rakuten-rex.github.io/radio-button/) to see all working examples in Storybook.
 
 
 ### <img src="project-scripts/webpack/markdown/logos/sass.svg?sanitize=true" height="16" /> Sass mixins
@@ -118,10 +135,10 @@ Example:
 `my-styles.scss`
 
 ```scss
-@import '@rakuten-rex/react-component-starter-kit/MyComponent/sass/styles.mixin';
+@import '@rakuten-rex/radio-button/Radio/sass/styles.mixin';
 
-.my-component-with-rex-styles {
-  @include rex-my-component();
+.rex-radio {
+  @include rex-radio();
 }
 ```
 
@@ -135,19 +152,26 @@ Example:
 
 ```vue
 <template>
-    <div class="rex-my-component" role="presentation">
-      <img src="static/media/Image.jpg" alt="Basic example" style="width:100%" />
-      <h3>Hello World</h3>
-      <p>This is a basic example for ReX React Components Starter Kit</p>
-    </div>
+    <div class="rex-radio">
+        <input type="radio" value="dog" id="choice1" name="pet" area-label="dog" readonly="" /><label class="rex-radio-label" for="choice1">dog</label>
+      </div>
+      <div class="rex-radio">
+        <input type="radio" value="cat" id="choice2" name="pet" area-label="cat" checked="" readonly="" /><label class="rex-radio-label" for="choice2">cat</label>
+      </div>
+      <div class="rex-radio">
+        <input type="radio" value="rabbit" id="choice3" name="pet" area-label="rabbit" readonly="" /><label class="rex-radio-label" for="choice3">rabbit</label>
+      </div>
+      <div class="rex-radio">
+        <input type="radio" value="pig" id="choice4" name="pet" disabled="" area-label="pig" readonly="" /><label class="rex-radio-label" for="choice4">pig</label>
+      </div>
 </template>
 <script>
 export default {
-  name: 'MyComponent',
+  name: 'Radio',
 }
 </script>
 <style scoped>
-@import "~@rakuten-rex/react-component-starter-kit/css";
+@import "~@rakuten-rex/radio-button/css";
 </style>
 ```
 
@@ -159,21 +183,21 @@ Copy-paste the stylesheet `<link>` into your `<head>` tag to load our CSS styles
 ### Using CSS Variables (Modern Websites and WebApps)
 **Production mode URL** (recommended for Static HTML projects):  
 ```
-https://unpkg.com/@rakuten-rex/react-component-starter-kit@3.2.4/MyComponent/MyComponent.production.min.css
+https://unpkg.com/@rakuten-rex/radio-button@0.0.1/Radio/Radio.production.min.css
 ```
 
 
 Development mode URL (for local testing):  
 
 ```
-https://unpkg.com/@rakuten-rex/react-component-starter-kit@3.2.4/MyComponent/MyComponent.development.css
+https://unpkg.com/@rakuten-rex/radio-button@0.0.1/Radio/Radio.development.css
 ```
 
 
 ### Using Static CSS (Legacy Websites)
 
 ```
-https://unpkg.com/@rakuten-rex/react-component-starter-kit@3.2.4/MyComponent/MyComponent.static.css
+https://unpkg.com/@rakuten-rex/radio-button@0.0.1/Radio/Radio.static.css
 ```
 
 ### <img src="project-scripts/webpack/markdown/logos/html-5.svg?sanitize=true" height="16" /> Single component integration
@@ -189,15 +213,22 @@ Example:
   <head>
     <meta charset="utf-8">
     <title>My Page</title>
-    <!-- ReX react-component-starter-kit -->
-    <link href="https://unpkg.com/@rakuten-rex/react-component-starter-kit@3.2.4/MyComponent/MyComponent.production.min.css" rel="stylesheet">
+    <!-- ReX radio-button -->
+    <link href="https://unpkg.com/@rakuten-rex/radio-button@0.0.1/Radio/Radio.production.min.css" rel="stylesheet">
   </head>
   <body>
-    <div class="rex-my-component" role="presentation">
-      <img src="static/media/Image.jpg" alt="Basic example" style="width:100%" />
-      <h3>Hello World</h3>
-      <p>This is a basic example for ReX React Components Starter Kit</p>
-    </div>
+    <div class="rex-radio">
+        <input type="radio" value="dog" id="choice1" name="pet" area-label="dog" readonly="" /><label class="rex-radio-label" for="choice1">dog</label>
+      </div>
+      <div class="rex-radio">
+        <input type="radio" value="cat" id="choice2" name="pet" area-label="cat" checked="" readonly="" /><label class="rex-radio-label" for="choice2">cat</label>
+      </div>
+      <div class="rex-radio">
+        <input type="radio" value="rabbit" id="choice3" name="pet" area-label="rabbit" readonly="" /><label class="rex-radio-label" for="choice3">rabbit</label>
+      </div>
+      <div class="rex-radio">
+        <input type="radio" value="pig" id="choice4" name="pet" disabled="" area-label="pig" readonly="" /><label class="rex-radio-label" for="choice4">pig</label>
+      </div>
   </body>
 </html>
 ```
@@ -266,7 +297,7 @@ npm start
 
 ## How to build
 
-The build task will generate a NPM package ready to be published and also a static version of Storybook, one folder for NPM `./npm/@rakuten-rex/react-component-starter-kit` and other one for Github pages `./docs`.   
+The build task will generate a NPM package ready to be published and also a static version of Storybook, one folder for NPM `./npm/@rakuten-rex/radio-button` and other one for Github pages `./docs`.   
 
 ```
 npm run build
@@ -297,7 +328,7 @@ npm run publish:component
 
 Once the process finish, take a look to the NPM site:   
 
-https://www.npmjs.com/package/@rakuten-rex/react-component-starter-kit
+https://www.npmjs.com/package/@rakuten-rex/radio-button
 
 
 # Javascript and React related documents

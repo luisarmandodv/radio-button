@@ -1,0 +1,66 @@
+/*!
+* @license @rakuten-rex/radio-button v0.0.1 2019-12-23
+* _styles.mixin.scss
+*
+* Copyright (c) 2018-present, Rakuten, Inc.
+*
+* This source code is licensed under the MIT license found in the LICENSE file in the root directory of this source tree.
+*/
+@mixin rex-core {
+  -webkit-text-size-adjust: 100%;
+
+  // html
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  // body
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji",
+    "Segoe UI Emoji", "Segoe UI Symbol";
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #333333;
+  text-align: left;
+  background-color: inherit;
+
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -o-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
+
+  &:before,
+  &:after {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -o-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+}
+
+@mixin rex-radio-group {
+  @include rex-core();
+  @include rex-radio-group-theme();
+  @include rex-radio-group-title();
+}
+
+@mixin rex-radio-group-theme() {
+  // ReX Colors
+  --rex-gray-900: #333333;
+  // Theme
+  --rex-radio-group-theme-text: var(--rex-gray-900);
+  // Props
+  --rex-radio-group-title-weight: 600;
+}
+
+@mixin rex-radio-group-title {
+  h3 {
+    line-height: 1.5rem;
+    font-weight: var(--rex-radio-group-title-weight);
+    color: var(--rex-radio-group-theme-text);
+    margin: 1rem 0 0 0;
+    display: block;
+  }
+}

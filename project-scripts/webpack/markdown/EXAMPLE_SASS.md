@@ -1,7 +1,7 @@
 ```scss
-@import '@rakuten-rex/__COMPONENT_NAME__/MyComponent/sass/styles.mixin';
+@import '@rakuten-rex/__COMPONENT_NAME__/Radio/sass/styles.mixin';
 
-.my-component-with-rex-styles {
-  @include rex-my-component();
+.rex-radio {
+  @include rex-radio();
 }
 ```

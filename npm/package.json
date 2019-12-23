@@ -1,17 +1,17 @@
 {
-  "name": "@rakuten-rex/react-component-starter-kit",
-  "version": "3.2.4",
-  "description": "ReX React UI Component",
+  "name": "@rakuten-rex/radio-button",
+  "version": "0.0.1",
+  "description": "A radio button allows a user to choose only one of a predefined set of mutually exclusive options",
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/rakuten-rex/react-component-starter-kit.git"
+    "url": "https://github.com/rakuten-rex/radio-button.git"
   },
   "bugs": {
-    "url": "https://github.com/rakuten-rex/react-component-starter-kit/issues"
+    "url": "https://github.com/rakuten-rex/radio-button/issues"
   },
-  "homepage": "https://rakuten-rex.github.io/react-component-starter-kit/",
-  "author": "ReX React UI Components Library Authors (https://github.com/rakuten-rex/react-component-starter-kit/graphs/contributors)",
+  "homepage": "https://rakuten-rex.github.io/radio-button/",
+  "author": "ReX React UI Components Library Authors (https://github.com/rakuten-rex/radio-button/graphs/contributors)",
   "contributors": [
     "Rakuten, Inc."
   ],
