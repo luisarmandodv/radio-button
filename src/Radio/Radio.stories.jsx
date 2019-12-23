@@ -52,7 +52,7 @@ export const WithDynamicProps = () => (
     value="cat"
     area-label="cat"
     checked={boolean('checked', true)}
-    disabled={boolean('disabled', true)}
+    disabled={boolean('disabled', false)}
     required={boolean('required', false)}
   />
 );
@@ -114,11 +114,7 @@ export const LayoutBlock = () => (
  * */
 
 function Theme() {
-  const themeColor = color(
-    'Checkbox theme color',
-    '#bf0000',
-    'Checkbox theme color'
-  );
+  const themeColor = color('Checkbox theme color', '#bf0000', 'Theme color');
   const borderColor = color(
     'Default Border color',
     '#9c9c9c',
