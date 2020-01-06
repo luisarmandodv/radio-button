@@ -4,7 +4,7 @@
 import React from 'react';
 import { text, number } from '@storybook/addon-knobs';
 import RadioGroup from 'src/RadioGroup';
-import { cssVarsToLegacy, withKnobs } from '../../.storybook/helper';
+import { withKnobs } from '../../.storybook/helper';
 
 /**
  * Main story
@@ -125,21 +125,10 @@ export const WithDynamicPropsGroup = () => {
   const value = text('value', 'value');
   const label = text('label', 'label');
   const ariaLabel = text('ariaLabel', 'ariaLabel');
-  let options = [];
-  // for (let i = 0; i < quantity; i += 1) {
-  //   test = id + i;
-  // options = {
-  //   id: `${id}-${i}`,
-  //   name: `${name}-${i}`,
-  //   value: `${value}-${i}`,
-  //   label: `${label}-${i}`,
-  //   checked: false,
-  //   disabled: false,
-  //   ariaLabel: `${ariaLabel}-${i}`,
-  // };
-  // }
-  for (let i = 0; i < quantity; i += 1) {
-    options = {
+  let option;
+  const listData = [];
+  for (let i = 1; i <= quantity; i += 1) {
+    option = {
       id: `${id}-${i}`,
       name: `${name}-${i}`,
       value: `${value}-${i}`,
@@ -148,8 +137,8 @@ export const WithDynamicPropsGroup = () => {
       disabled: false,
       ariaLabel: `${ariaLabel}-${i}`,
     };
-    // console.log(options);
+    listData.push(option);
   }
-  // console.log(test);
-  <RadioGroup options={options} isBlock />;
+  // eslint-disable-next-line react/jsx-indent
+  return <RadioGroup options={listData} isBlock />;
 };

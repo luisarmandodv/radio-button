@@ -1,6 +1,6 @@
 /*!
  * 
- * @license @rakuten-rex/radio-button v0.0.1 2019-12-23
+ * @license @rakuten-rex/radio-button v0.0.1 2020-01-06
  * Radio/Radio.development.js
  * 
  * Copyright (c) 2018-present, Rakuten, Inc.
@@ -191,9 +191,9 @@ function Radio(_ref) {
       disabled = _ref.disabled,
       checked = _ref.checked,
       required = _ref.required,
-      areaLabel = _ref.areaLabel,
+      ariaLabel = _ref.ariaLabel,
       style = _ref.style,
-      props = _babel_runtime_helpers_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_1___default()(_ref, ["className", "id", "name", "isBlock", "value", "label", "disabled", "checked", "required", "areaLabel", "style"]);
+      props = _babel_runtime_helpers_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_1___default()(_ref, ["className", "id", "name", "isBlock", "value", "label", "disabled", "checked", "required", "ariaLabel", "style"]);
 
   var labelClass = 'rex-radio-label';
   var layoutClass = isBlock ? 'rex-form-block' : null;
@@ -208,7 +208,7 @@ function Radio(_ref) {
     type: "radio",
     disabled: disabled,
     required: required,
-    "area-label": areaLabel,
+    "aria-label": ariaLabel,
     checked: checked,
     readOnly: true
   }, props)), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("label", {
@@ -223,7 +223,7 @@ Radio.defaultProps = {
   checked: false,
   required: false,
   isBlock: false,
-  areaLabel: '',
+  ariaLabel: '',
   id: '',
   name: '',
   label: '',

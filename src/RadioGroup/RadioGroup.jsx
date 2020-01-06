@@ -27,8 +27,8 @@ export default class RadioGroup extends Component {
       <>
         {options.map(option => (
           <Radio
-            key={option.id.toString()}
-            id={option.id.toString()}
+            key={option.key}
+            id={option.id}
             name={option.name}
             value={option.value}
             onChange={!option.disabled ? this.handleChange : null}
