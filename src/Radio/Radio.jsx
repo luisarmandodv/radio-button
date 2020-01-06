@@ -13,7 +13,7 @@ export default function Radio({
   disabled,
   checked,
   required,
-  areaLabel,
+  ariaLabel,
   // eslint-disable-next-line react/prop-types
   style,
   ...props
@@ -31,7 +31,7 @@ export default function Radio({
         type="radio"
         disabled={disabled}
         required={required}
-        area-label={areaLabel}
+        aria-label={ariaLabel}
         checked={checked}
         readOnly
         {...props}
@@ -49,7 +49,7 @@ Radio.defaultProps = {
   checked: false,
   required: false,
   isBlock: false,
-  areaLabel: '',
+  ariaLabel: '',
   id: '',
   name: '',
   label: '',
@@ -62,7 +62,7 @@ Radio.propTypes = {
   checked: bool,
   required: bool,
   isBlock: bool,
-  areaLabel: string,
+  ariaLabel: string,
   id: string,
   name: string,
   label: string,

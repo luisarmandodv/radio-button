@@ -2,8 +2,7 @@
 /* eslint-disable import/no-extraneous-dependencies */
 /* eslint-disable import/extensions */
 import React from 'react';
-import { action } from '@storybook/addon-actions';
-import { color, select, boolean } from '@storybook/addon-knobs';
+import { color, text, boolean } from '@storybook/addon-knobs';
 import Radio from 'src/Radio';
 import { cssVarsToLegacy, withKnobs } from '../../.storybook/helper';
 
@@ -19,7 +18,7 @@ export default {
  * Stories
  * */
 export const DefaultView = () => (
-  <Radio id="pet-dog" label="dog" name="pet" value="dog" area-label="dog" />
+  <Radio id="pet-dog" label="dog" name="pet" value="dog" ariaLabel="dog" />
 );
 
 export const CheckedView = () => (
@@ -28,7 +27,7 @@ export const CheckedView = () => (
     label="cat"
     name="pet"
     value="cat"
-    area-label="cat"
+    ariaLabel="cat"
     checked
   />
 );
@@ -39,32 +38,40 @@ export const DisabledView = () => (
     label="dog"
     name="pet"
     value="dog"
-    area-label="dog"
+    ariaLabel="dog"
     disabled
   />
 );
 
-export const WithDynamicProps = () => (
-  <Radio
-    id="choice-cat"
-    label="cat"
-    name="pet"
-    value="cat"
-    area-label="cat"
-    checked={boolean('checked', true)}
-    disabled={boolean('disabled', false)}
-    required={boolean('required', false)}
-  />
-);
+export const WithDynamicProps = () => {
+  const knobId = text('id', 'bird');
+  const knobLabel = text('label', 'bird');
+  const knobName = text('name', 'pet');
+  const knobValue = text('value', 'bird');
+  const knobAriaLabel = text('aria-label', 'bird');
+
+  return (
+    <Radio
+      id={knobId}
+      label={knobLabel}
+      name={knobName}
+      value={knobValue}
+      ariaLabel={knobAriaLabel}
+      checked={boolean('checked', true)}
+      disabled={boolean('disabled', false)}
+      required={boolean('required', false)}
+    />
+  );
+};
 
 export const LayoutInline = () => (
   <>
-    <Radio name="pet" label="dog" value="dog" id="choice1-1" area-label="dog" />
+    <Radio name="pet" label="dog" value="dog" id="choice1-1" ariaLabel="dog" />
     <Radio
       name="pet"
       label="cat"
       value="cat"
-      area-label="cat"
+      ariaLabel="cat"
       id="choice1-2"
       checked
     />
@@ -72,7 +79,7 @@ export const LayoutInline = () => (
       name="pet"
       label="rabbit"
       value="rabbit"
-      area-label="rabbit"
+      ariaLabel="rabbit"
       id="choice1-3"
     />
     <Radio
@@ -80,7 +87,7 @@ export const LayoutInline = () => (
       label="pig"
       value="pig"
       id="choice1-4"
-      area-label="pig"
+      ariaLabel="pig"
       disabled
     />
   </>
@@ -93,7 +100,7 @@ export const LayoutBlock = () => (
       label="dog"
       value="dog"
       id="choice1"
-      area-label="dog"
+      ariaLabel="dog"
       checked
     />
     <Radio isBlock name="pet" label="cat" value="cat" id="choice2" />
@@ -102,7 +109,7 @@ export const LayoutBlock = () => (
       name="pet"
       label="rabbit"
       value="rabbit"
-      area-label="rabbit"
+      ariaLabel="rabbit"
       id="choice3"
     />
     <Radio isBlock name="pet" label="pig" value="pig" id="choice4" disabled />
@@ -154,7 +161,7 @@ export const WithThemeReactAndCSSVars = () => {
         label="rabbit"
         name="pet"
         value="rabbit"
-        area-label="rabbit"
+        ariaLabel="rabbit"
         style={customStyle}
       />
       <Radio
@@ -162,7 +169,7 @@ export const WithThemeReactAndCSSVars = () => {
         label="rabbit"
         name="pet"
         value="rabbit"
-        area-label="rabbit"
+        ariaLabel="rabbit"
         checked
         style={customStyle}
       />
@@ -171,7 +178,7 @@ export const WithThemeReactAndCSSVars = () => {
         label="rabbit"
         name="pet"
         value="rabbit"
-        area-label="rabbit"
+        ariaLabel="rabbit"
         disabled
         style={customStyle}
       />
@@ -190,14 +197,14 @@ export const WithThemeHTMLAndLegacyCSS = () => {
         label="rabbit"
         name="pet"
         value="rabbit"
-        area-label="rabbit"
+        ariaLabel="rabbit"
       />
       <Radio
         id="theme-legacy-checked-dog"
         label="dog"
         name="pet"
         value="dog"
-        area-label="dog"
+        ariaLabel="dog"
         checked
       />
       <Radio
@@ -205,7 +212,7 @@ export const WithThemeHTMLAndLegacyCSS = () => {
         label="rabbit"
         name="pet"
         value="rabbit"
-        area-label="rabbit"
+        ariaLabel="rabbit"
         disabled
       />
     </>

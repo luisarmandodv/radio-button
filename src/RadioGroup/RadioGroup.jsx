@@ -27,8 +27,7 @@ export default class RadioGroup extends Component {
       <>
         {options.map(option => (
           <Radio
-            type="radio"
-            key={option.value.toString()}
+            key={option.id.toString()}
             id={option.id.toString()}
             name={option.name}
             value={option.value}
@@ -36,7 +35,7 @@ export default class RadioGroup extends Component {
             label={option.label}
             disabled={option.disabled}
             required={option.required}
-            area-label={option.areaLabel}
+            aria-label={option.ariaLabel}
             checked={option.value === selectedValue}
             isBlock={isBlock}
           />
@@ -60,6 +59,6 @@ RadioGroup.propTypes = {
     label: string,
     checked: false,
     disabled: false,
-    areaLabel: string,
+    ariaLabel: string,
   }),
 };

@@ -2,8 +2,7 @@
 /* eslint-disable import/no-extraneous-dependencies */
 /* eslint-disable import/extensions */
 import React from 'react';
-import { action } from '@storybook/addon-actions';
-import { text, color, select } from '@storybook/addon-knobs';
+import { text, number } from '@storybook/addon-knobs';
 import RadioGroup from 'src/RadioGroup';
 import { cssVarsToLegacy, withKnobs } from '../../.storybook/helper';
 
@@ -27,7 +26,7 @@ const FastestAnimals = [
     label: 'BrownHare',
     checked: false,
     disabled: false,
-    areaLabel: 'BrownHare',
+    ariaLabel: 'BrownHare',
   },
   {
     id: 'fastestAnimal2',
@@ -36,7 +35,7 @@ const FastestAnimals = [
     label: 'Wildebeest',
     checked: false,
     disabled: false,
-    areaLabel: 'Wildebeest',
+    ariaLabel: 'Wildebeest',
   },
   {
     id: 'fastestAnimal3',
@@ -45,7 +44,7 @@ const FastestAnimals = [
     label: 'Cheetah',
     checked: true,
     disabled: false,
-    areaLabel: 'Cheetah',
+    ariaLabel: 'Cheetah',
   },
   {
     id: 'fastestAnimal4',
@@ -54,16 +53,16 @@ const FastestAnimals = [
     label: 'Pronghorn',
     checked: false,
     disabled: false,
-    areaLabel: 'Pronghorn',
+    ariaLabel: 'Pronghorn',
   },
   {
-    id: 'cfastestAnimal',
+    id: 'fastestAnimal',
     name: 'fastest',
     value: 'Lion',
     label: 'Lion',
     checked: false,
     disabled: true,
-    areaLabel: 'Lion',
+    ariaLabel: 'Lion',
   },
 ];
 
@@ -75,7 +74,7 @@ const Petdata = [
     label: 'Dog',
     checked: false,
     disabled: false,
-    areaLabel: 'dog',
+    ariaLabel: 'dog',
   },
   {
     id: 'choice2',
@@ -84,7 +83,7 @@ const Petdata = [
     label: 'Fish',
     checked: false,
     disabled: false,
-    areaLabel: 'fish',
+    ariaLabel: 'fish',
   },
   {
     id: 'choice3',
@@ -93,7 +92,7 @@ const Petdata = [
     label: 'Cat',
     checked: true,
     disabled: false,
-    areaLabel: 'cat',
+    ariaLabel: 'cat',
   },
   {
     id: 'choice4',
@@ -102,7 +101,7 @@ const Petdata = [
     label: 'Rabbit',
     checked: false,
     disabled: false,
-    areaLabel: 'rabbit',
+    ariaLabel: 'rabbit',
   },
   {
     id: 'choice5',
@@ -111,10 +110,46 @@ const Petdata = [
     label: 'Iguana',
     checked: false,
     disabled: true,
-    areaLabel: 'iguana',
+    ariaLabel: 'iguana',
   },
 ];
 
 export const LayoutInline = () => <RadioGroup options={FastestAnimals} />;
 
 export const LayoutBlock = () => <RadioGroup options={Petdata} isBlock />;
+
+export const WithDynamicPropsGroup = () => {
+  const quantity = number('Quantity of items', 5);
+  const id = text('id', 'id');
+  const name = text('name', 'name');
+  const value = text('value', 'value');
+  const label = text('label', 'label');
+  const ariaLabel = text('ariaLabel', 'ariaLabel');
+  let options = [];
+  // for (let i = 0; i < quantity; i += 1) {
+  //   test = id + i;
+  // options = {
+  //   id: `${id}-${i}`,
+  //   name: `${name}-${i}`,
+  //   value: `${value}-${i}`,
+  //   label: `${label}-${i}`,
+  //   checked: false,
+  //   disabled: false,
+  //   ariaLabel: `${ariaLabel}-${i}`,
+  // };
+  // }
+  for (let i = 0; i < quantity; i += 1) {
+    options = {
+      id: `${id}-${i}`,
+      name: `${name}-${i}`,
+      value: `${value}-${i}`,
+      label: `${label}-${i}`,
+      checked: false,
+      disabled: false,
+      ariaLabel: `${ariaLabel}-${i}`,
+    };
+    // console.log(options);
+  }
+  // console.log(test);
+  <RadioGroup options={options} isBlock />;
+};
