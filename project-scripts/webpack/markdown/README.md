@@ -121,7 +121,7 @@ export default {
 }
 </script>
 <style scoped>
-@import "~@rakuten-rex/__COMPONENT_NAME__/css";
+@import "~@rakuten-rex/__COMPONENT_NAME__/Radio/css";
 </style>
 ```
 
