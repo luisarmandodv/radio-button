@@ -2,9 +2,9 @@
 /* eslint-disable import/no-extraneous-dependencies */
 /* eslint-disable import/extensions */
 import React from 'react';
-import { number } from '@storybook/addon-knobs';
+import { number, boolean, color } from '@storybook/addon-knobs';
 import RadioGroup from 'src/RadioGroup';
-import { withKnobs } from '../../.storybook/helper';
+import { withKnobs, cssVarsToLegacy } from '../../.storybook/helper';
 import CommonProps from '../Radio/props';
 
 /**
@@ -28,6 +28,7 @@ const FastestAnimals = [
     checked: false,
     disabled: false,
     required: false,
+    isBlock: false,
     ariaLabel: 'BrownHare',
   },
   {
@@ -38,6 +39,7 @@ const FastestAnimals = [
     checked: false,
     disabled: false,
     required: false,
+    isBlock: false,
     ariaLabel: 'Wildebeest',
   },
   {
@@ -48,6 +50,7 @@ const FastestAnimals = [
     checked: true,
     disabled: false,
     required: false,
+    isBlock: false,
     ariaLabel: 'Cheetah',
   },
   {
@@ -58,6 +61,7 @@ const FastestAnimals = [
     checked: false,
     disabled: false,
     required: false,
+    isBlock: false,
     ariaLabel: 'Pronghorn',
   },
   {
@@ -68,6 +72,7 @@ const FastestAnimals = [
     checked: false,
     disabled: true,
     required: false,
+    isBlock: false,
     ariaLabel: 'Lion',
   },
 ];
@@ -81,6 +86,7 @@ const Petdata = [
     checked: false,
     disabled: false,
     required: false,
+    isBlock: false,
     ariaLabel: 'dog',
   },
   {
@@ -91,6 +97,7 @@ const Petdata = [
     checked: false,
     disabled: false,
     required: false,
+    isBlock: false,
     ariaLabel: 'fish',
   },
   {
@@ -101,6 +108,7 @@ const Petdata = [
     checked: true,
     disabled: false,
     required: false,
+    isBlock: false,
     ariaLabel: 'cat',
   },
   {
@@ -111,6 +119,7 @@ const Petdata = [
     checked: false,
     disabled: false,
     required: false,
+    isBlock: false,
     ariaLabel: 'rabbit',
   },
   {
@@ -121,6 +130,7 @@ const Petdata = [
     checked: false,
     disabled: true,
     required: false,
+    isBlock: false,
     ariaLabel: 'iguana',
   },
 ];
@@ -131,14 +141,18 @@ export const LayoutBlock = () => <RadioGroup options={Petdata} isBlock />;
 
 export const WithDynamicPropsGroup = () => {
   const quantity = number('Quantity of items', 5);
-  const { id } = CommonProps();
-  const { name } = CommonProps();
-  const { value } = CommonProps();
-  const { label } = CommonProps();
-  const { ariaLabel } = CommonProps();
-  const { checked } = CommonProps();
-  const { disabled } = CommonProps();
-  const { required } = CommonProps();
+  const isBlock = boolean('layout (Block/Inline)', false);
+  const {
+    id,
+    name,
+    value,
+    label,
+    ariaLabel,
+    checked,
+    disabled,
+    required,
+  } = CommonProps();
+
   let option;
   const listData = [];
   for (let i = 1; i <= quantity; i += 1) {
@@ -147,6 +161,7 @@ export const WithDynamicPropsGroup = () => {
       name: `${name}-${i}`,
       value: `${value}-${i}`,
       label: `${label}-${i}`,
+      isBlock,
       checked,
       disabled,
       required,
@@ -155,5 +170,47 @@ export const WithDynamicPropsGroup = () => {
     listData.push(option);
   }
   // eslint-disable-next-line react/jsx-indent
-  return <RadioGroup options={listData} isBlock />;
+  return <RadioGroup options={listData} />;
+};
+
+/**
+ * Custom Theme support
+ * */
+
+function Theme() {
+  const themeColor = color('Checkbox theme color', '#bf0000', 'Theme');
+  const borderColor = color('Default Border color', '#9c9c9c', 'Theme');
+  const disabledTextColor = color('Disabled Text Color', '#d1d1d1', 'Theme');
+  const disabledBorderColor = color(
+    'Disabled Border Color',
+    '#d1d1d1',
+    'Theme'
+  );
+
+  const customStyle = {
+    '--rex-radio-theme-color': themeColor,
+    '--rex-radio-border-color': borderColor,
+    '--rex-radio-disabled-text': disabledTextColor,
+    '--rex-radio-disabled-border': disabledBorderColor,
+  };
+
+  return {
+    customStyle,
+    customStyleHtml: cssVarsToLegacy(customStyle, RadioGroup),
+  };
+}
+
+export const WithThemeReactAndCSSVars = () => {
+  const { customStyle } = Theme();
+  return <RadioGroup options={Petdata} style={customStyle} />;
+};
+export const WithThemeHTMLAndLegacyCSS = () => {
+  const { customStyleHtml } = Theme();
+
+  return (
+    <>
+      <style>{customStyleHtml}</style>
+      <RadioGroup options={Petdata} />
+    </>
+  );
 };

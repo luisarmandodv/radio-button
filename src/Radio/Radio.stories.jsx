@@ -58,14 +58,16 @@ export const DisabledView = () => (
 );
 
 export const WithDynamicProps = () => {
-  const { id } = CommonProps();
-  const { label } = CommonProps();
-  const { name } = CommonProps();
-  const { value } = CommonProps();
-  const { ariaLabel } = CommonProps();
-  const { checked } = CommonProps();
-  const { disabled } = CommonProps();
-  const { required } = CommonProps();
+  const {
+    id,
+    name,
+    value,
+    label,
+    ariaLabel,
+    checked,
+    disabled,
+    required,
+  } = CommonProps();
 
   return (
     <Radio
