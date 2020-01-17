@@ -2,8 +2,9 @@
 /* eslint-disable import/no-extraneous-dependencies */
 /* eslint-disable import/extensions */
 import React from 'react';
-import { color, text, boolean } from '@storybook/addon-knobs';
+import { color } from '@storybook/addon-knobs';
 import Radio from 'src/Radio';
+import CommonProps from './props';
 import { cssVarsToLegacy, withKnobs } from '../../.storybook/helper';
 
 /**
@@ -18,7 +19,16 @@ export default {
  * Stories
  * */
 export const DefaultView = () => (
-  <Radio id="pet-dog" label="dog" name="pet" value="dog" ariaLabel="dog" />
+  <Radio
+    id="pet-dog"
+    label="dog"
+    name="pet"
+    value="dog"
+    ariaLabel="dog"
+    checked={false}
+    disabled={false}
+    required={false}
+  />
 );
 
 export const CheckedView = () => (
@@ -29,6 +39,8 @@ export const CheckedView = () => (
     value="cat"
     ariaLabel="cat"
     checked
+    disabled={false}
+    required={false}
   />
 );
 
@@ -40,26 +52,31 @@ export const DisabledView = () => (
     value="dog"
     ariaLabel="dog"
     disabled
+    checked={false}
+    required={false}
   />
 );
 
 export const WithDynamicProps = () => {
-  const knobId = text('id', 'bird');
-  const knobLabel = text('label', 'bird');
-  const knobName = text('name', 'pet');
-  const knobValue = text('value', 'bird');
-  const knobAriaLabel = text('aria-label', 'bird');
+  const { id } = CommonProps();
+  const { label } = CommonProps();
+  const { name } = CommonProps();
+  const { value } = CommonProps();
+  const { ariaLabel } = CommonProps();
+  const { checked } = CommonProps();
+  const { disabled } = CommonProps();
+  const { required } = CommonProps();
 
   return (
     <Radio
-      id={knobId}
-      label={knobLabel}
-      name={knobName}
-      value={knobValue}
-      ariaLabel={knobAriaLabel}
-      checked={boolean('checked', true)}
-      disabled={boolean('disabled', false)}
-      required={boolean('required', false)}
+      id={id}
+      label={label}
+      name={name}
+      value={value}
+      ariaLabel={ariaLabel}
+      checked={checked}
+      disabled={disabled}
+      required={required}
     />
   );
 };
@@ -74,6 +91,8 @@ export const LayoutInline = () => (
       ariaLabel="cat"
       id="choice1-2"
       checked
+      disabled={false}
+      required={false}
     />
     <Radio
       name="pet"
@@ -81,6 +100,9 @@ export const LayoutInline = () => (
       value="rabbit"
       ariaLabel="rabbit"
       id="choice1-3"
+      checked={false}
+      disabled={false}
+      required={false}
     />
     <Radio
       name="pet"
@@ -89,6 +111,8 @@ export const LayoutInline = () => (
       id="choice1-4"
       ariaLabel="pig"
       disabled
+      checked={false}
+      required={false}
     />
   </>
 );
@@ -102,8 +126,19 @@ export const LayoutBlock = () => (
       id="choice1"
       ariaLabel="dog"
       checked
+      disabled={false}
+      required={false}
     />
-    <Radio isBlock name="pet" label="cat" value="cat" id="choice2" />
+    <Radio
+      isBlock
+      name="pet"
+      label="cat"
+      value="cat"
+      id="choice2"
+      checked={false}
+      disabled={false}
+      required={false}
+    />
     <Radio
       isBlock
       name="pet"
@@ -111,8 +146,20 @@ export const LayoutBlock = () => (
       value="rabbit"
       ariaLabel="rabbit"
       id="choice3"
+      checked={false}
+      disabled={false}
+      required={false}
     />
-    <Radio isBlock name="pet" label="pig" value="pig" id="choice4" disabled />
+    <Radio
+      isBlock
+      name="pet"
+      label="pig"
+      value="pig"
+      id="choice4"
+      disabled
+      checked={false}
+      required={false}
+    />
   </>
 );
 
@@ -121,21 +168,13 @@ export const LayoutBlock = () => (
  * */
 
 function Theme() {
-  const themeColor = color('Checkbox theme color', '#bf0000', 'Theme color');
-  const borderColor = color(
-    'Default Border color',
-    '#9c9c9c',
-    'Default Border color'
-  );
-  const disabledTextColor = color(
-    'Disabled Text Color',
-    '#d1d1d1',
-    'Disabled Text Color'
-  );
+  const themeColor = color('Checkbox theme color', '#bf0000', 'Theme');
+  const borderColor = color('Default Border color', '#9c9c9c', 'Theme');
+  const disabledTextColor = color('Disabled Text Color', '#d1d1d1', 'Disabled');
   const disabledBorderColor = color(
     'Disabled Border Color',
     '#d1d1d1',
-    'Disabled Border Color'
+    'Disabled'
   );
 
   const customStyle = {
@@ -162,6 +201,9 @@ export const WithThemeReactAndCSSVars = () => {
         name="pet"
         value="rabbit"
         ariaLabel="rabbit"
+        checked={false}
+        disabled={false}
+        required={false}
         style={customStyle}
       />
       <Radio
@@ -171,6 +213,8 @@ export const WithThemeReactAndCSSVars = () => {
         value="rabbit"
         ariaLabel="rabbit"
         checked
+        disabled={false}
+        required={false}
         style={customStyle}
       />
       <Radio
@@ -180,6 +224,8 @@ export const WithThemeReactAndCSSVars = () => {
         value="rabbit"
         ariaLabel="rabbit"
         disabled
+        checked={false}
+        required={false}
         style={customStyle}
       />
     </>
@@ -198,6 +244,9 @@ export const WithThemeHTMLAndLegacyCSS = () => {
         name="pet"
         value="rabbit"
         ariaLabel="rabbit"
+        checked={false}
+        disabled={false}
+        required={false}
       />
       <Radio
         id="theme-legacy-checked-dog"
@@ -206,6 +255,8 @@ export const WithThemeHTMLAndLegacyCSS = () => {
         value="dog"
         ariaLabel="dog"
         checked
+        disabled={false}
+        required={false}
       />
       <Radio
         id="theme-legacy-disabled"
@@ -214,6 +265,8 @@ export const WithThemeHTMLAndLegacyCSS = () => {
         value="rabbit"
         ariaLabel="rabbit"
         disabled
+        checked={false}
+        required={false}
       />
     </>
   );
