@@ -2,9 +2,10 @@
 /* eslint-disable import/no-extraneous-dependencies */
 /* eslint-disable import/extensions */
 import React from 'react';
-import { text, number } from '@storybook/addon-knobs';
+import { number } from '@storybook/addon-knobs';
 import RadioGroup from 'src/RadioGroup';
 import { withKnobs } from '../../.storybook/helper';
+import CommonProps from '../Radio/props';
 
 /**
  * Main story
@@ -26,6 +27,7 @@ const FastestAnimals = [
     label: 'BrownHare',
     checked: false,
     disabled: false,
+    required: false,
     ariaLabel: 'BrownHare',
   },
   {
@@ -35,6 +37,7 @@ const FastestAnimals = [
     label: 'Wildebeest',
     checked: false,
     disabled: false,
+    required: false,
     ariaLabel: 'Wildebeest',
   },
   {
@@ -44,6 +47,7 @@ const FastestAnimals = [
     label: 'Cheetah',
     checked: true,
     disabled: false,
+    required: false,
     ariaLabel: 'Cheetah',
   },
   {
@@ -53,6 +57,7 @@ const FastestAnimals = [
     label: 'Pronghorn',
     checked: false,
     disabled: false,
+    required: false,
     ariaLabel: 'Pronghorn',
   },
   {
@@ -62,6 +67,7 @@ const FastestAnimals = [
     label: 'Lion',
     checked: false,
     disabled: true,
+    required: false,
     ariaLabel: 'Lion',
   },
 ];
@@ -74,6 +80,7 @@ const Petdata = [
     label: 'Dog',
     checked: false,
     disabled: false,
+    required: false,
     ariaLabel: 'dog',
   },
   {
@@ -83,6 +90,7 @@ const Petdata = [
     label: 'Fish',
     checked: false,
     disabled: false,
+    required: false,
     ariaLabel: 'fish',
   },
   {
@@ -92,6 +100,7 @@ const Petdata = [
     label: 'Cat',
     checked: true,
     disabled: false,
+    required: false,
     ariaLabel: 'cat',
   },
   {
@@ -101,6 +110,7 @@ const Petdata = [
     label: 'Rabbit',
     checked: false,
     disabled: false,
+    required: false,
     ariaLabel: 'rabbit',
   },
   {
@@ -110,6 +120,7 @@ const Petdata = [
     label: 'Iguana',
     checked: false,
     disabled: true,
+    required: false,
     ariaLabel: 'iguana',
   },
 ];
@@ -120,11 +131,14 @@ export const LayoutBlock = () => <RadioGroup options={Petdata} isBlock />;
 
 export const WithDynamicPropsGroup = () => {
   const quantity = number('Quantity of items', 5);
-  const id = text('id', 'id');
-  const name = text('name', 'name');
-  const value = text('value', 'value');
-  const label = text('label', 'label');
-  const ariaLabel = text('ariaLabel', 'ariaLabel');
+  const { id } = CommonProps();
+  const { name } = CommonProps();
+  const { value } = CommonProps();
+  const { label } = CommonProps();
+  const { ariaLabel } = CommonProps();
+  const { checked } = CommonProps();
+  const { disabled } = CommonProps();
+  const { required } = CommonProps();
   let option;
   const listData = [];
   for (let i = 1; i <= quantity; i += 1) {
@@ -133,8 +147,9 @@ export const WithDynamicPropsGroup = () => {
       name: `${name}-${i}`,
       value: `${value}-${i}`,
       label: `${label}-${i}`,
-      checked: false,
-      disabled: false,
+      checked,
+      disabled,
+      required,
       ariaLabel: `${ariaLabel}-${i}`,
     };
     listData.push(option);

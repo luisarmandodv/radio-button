@@ -29,10 +29,10 @@ export default function Radio({
         id={id}
         name={name}
         type="radio"
-        disabled={disabled}
-        required={required}
         aria-label={ariaLabel}
         checked={checked}
+        disabled={disabled}
+        required={required}
         readOnly
         {...props}
       />
