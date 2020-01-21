@@ -62,19 +62,7 @@ const FastestAnimals = [
     checked: false,
     disabled: false,
     required: false,
-    isBlock: false,
     ariaLabel: 'Pronghorn',
-  },
-  {
-    id: 'fastestAnimal',
-    name: 'fastest',
-    value: 'Lion',
-    label: 'Lion',
-    checked: false,
-    disabled: true,
-    required: false,
-    isBlock: false,
-    ariaLabel: 'Lion',
   },
 ];
 
@@ -191,7 +179,6 @@ export const WithDynamicPropsGroup = () => {
     required,
     isBlock,
   } = CommonProps();
-
   let option;
   const listData = [];
   for (let i = 1; i <= quantity; i += 1) {

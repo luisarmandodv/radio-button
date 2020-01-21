@@ -47,6 +47,10 @@ $--rex-radio-margin-left:0;
     position: absolute;
     opacity: 1;
 
+    &:last-of-type {
+      margin-right: 0;
+    }
+
     &:checked {
       +.rex-radio-label {
         &:before {

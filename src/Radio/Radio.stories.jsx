@@ -185,7 +185,7 @@ function Theme() {
   );
 
   const customStyle = {
-    '--rex-radio-theme-color': themeColor,
+    '--rex-radio-theme': themeColor,
     '--rex-radio-border-color': borderColor,
     '--rex-radio-disabled-text': disabledTextColor,
     '--rex-radio-disabled-border': disabledBorderColor,
