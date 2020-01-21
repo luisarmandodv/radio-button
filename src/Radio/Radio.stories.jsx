@@ -28,6 +28,7 @@ export const DefaultView = () => (
     checked={false}
     disabled={false}
     required={false}
+    isBlock={false}
   />
 );
 
@@ -41,6 +42,7 @@ export const CheckedView = () => (
     checked
     disabled={false}
     required={false}
+    isBlock={false}
   />
 );
 
@@ -54,6 +56,7 @@ export const DisabledView = () => (
     disabled
     checked={false}
     required={false}
+    isBlock={false}
   />
 );
 
@@ -67,6 +70,7 @@ export const WithDynamicProps = () => {
     checked,
     disabled,
     required,
+    isBlock,
   } = CommonProps();
 
   return (
@@ -79,6 +83,7 @@ export const WithDynamicProps = () => {
       checked={checked}
       disabled={disabled}
       required={required}
+      isBlock={isBlock}
     />
   );
 };
@@ -172,11 +177,11 @@ export const LayoutBlock = () => (
 function Theme() {
   const themeColor = color('Checkbox theme color', '#bf0000', 'Theme');
   const borderColor = color('Default Border color', '#9c9c9c', 'Theme');
-  const disabledTextColor = color('Disabled Text Color', '#d1d1d1', 'Disabled');
+  const disabledTextColor = color('Disabled Text Color', '#d1d1d1', 'Theme');
   const disabledBorderColor = color(
     'Disabled Border Color',
     '#d1d1d1',
-    'Disabled'
+    'Theme'
   );
 
   const customStyle = {

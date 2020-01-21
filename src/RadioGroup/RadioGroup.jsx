@@ -1,6 +1,6 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import React, { Component } from 'react';
-import { bool, shape, string } from 'prop-types';
+import { shape, string } from 'prop-types';
 import Radio from '../Radio';
 
 export default class RadioGroup extends Component {
@@ -20,38 +20,53 @@ export default class RadioGroup extends Component {
   }
 
   render() {
-    const { options, isBlock } = this.props;
+    // eslint-disable-next-line react/prop-types
+    const { options, style, className } = this.props;
     const { selectedValue } = this.state;
 
     return (
-      <>
-        {options.map(option => (
-          <Radio
-            key={option.key}
-            id={option.id}
-            name={option.name}
-            value={option.value}
-            onChange={!option.disabled ? this.handleChange : null}
-            label={option.label}
-            disabled={option.disabled}
-            required={option.required}
-            aria-label={option.ariaLabel}
-            checked={option.value === selectedValue}
-            isBlock={isBlock}
-          />
-        ))}
-      </>
+      <div className={className} style={style}>
+        {options.map(option => {
+          const {
+            value,
+            id,
+            name,
+            label,
+            disabled,
+            required,
+            ariaLabel,
+            isBlock,
+          } = option;
+          return (
+            <Radio
+              key={id.toString()}
+              id={id}
+              name={name}
+              value={value}
+              onChange={!disabled ? this.handleChange : null}
+              label={label}
+              disabled={disabled}
+              required={required}
+              aria-label={ariaLabel}
+              checked={value === selectedValue}
+              isBlock={isBlock}
+            />
+          );
+        })}
+      </div>
     );
   }
 }
 
 RadioGroup.defaultProps = {
-  isBlock: false,
+  className: 'rex-radio-group',
+  // eslint-disable-next-line react/default-props-match-prop-types
+  style: {},
   options: [],
 };
 
 RadioGroup.propTypes = {
-  isBlock: bool,
+  className: string,
   options: shape({
     id: string,
     name: string,

@@ -2,7 +2,8 @@
 /* eslint-disable import/no-extraneous-dependencies */
 /* eslint-disable import/extensions */
 import React from 'react';
-import { number, boolean, color } from '@storybook/addon-knobs';
+import { number, text, color } from '@storybook/addon-knobs';
+import Radio from 'src/Radio';
 import RadioGroup from 'src/RadioGroup';
 import { withKnobs, cssVarsToLegacy } from '../../.storybook/helper';
 import CommonProps from '../Radio/props';
@@ -135,13 +136,50 @@ const Petdata = [
   },
 ];
 
+const PetdataBlock = [
+  {
+    id: 'choice1',
+    name: 'pet',
+    value: 'dog',
+    label: 'Dog',
+    checked: false,
+    disabled: false,
+    required: false,
+    isBlock: true,
+    ariaLabel: 'dog',
+  },
+  {
+    id: 'choice2',
+    name: 'pet',
+    value: 'fish',
+    label: 'Fish',
+    checked: false,
+    disabled: false,
+    required: false,
+    isBlock: true,
+    ariaLabel: 'fish',
+  },
+  {
+    id: 'choice3',
+    name: 'pet',
+    value: 'cat',
+    label: 'Cat',
+    checked: true,
+    disabled: false,
+    required: false,
+    isBlock: true,
+    ariaLabel: 'cat',
+  },
+];
+
+export const DefaultView = () => <RadioGroup options={FastestAnimals} />;
+
 export const LayoutInline = () => <RadioGroup options={FastestAnimals} />;
 
-export const LayoutBlock = () => <RadioGroup options={Petdata} isBlock />;
+export const LayoutBlock = () => <RadioGroup options={PetdataBlock} />;
 
 export const WithDynamicPropsGroup = () => {
   const quantity = number('Quantity of items', 5);
-  const isBlock = boolean('layout (Block/Inline)', false);
   const {
     id,
     name,
@@ -151,6 +189,7 @@ export const WithDynamicPropsGroup = () => {
     checked,
     disabled,
     required,
+    isBlock,
   } = CommonProps();
 
   let option;
@@ -178,25 +217,35 @@ export const WithDynamicPropsGroup = () => {
  * */
 
 function Theme() {
-  const themeColor = color('Checkbox theme color', '#bf0000', 'Theme');
+  const themeColor = color('Radio theme color', '#bf0000', 'Theme');
   const borderColor = color('Default Border color', '#9c9c9c', 'Theme');
+  const themeLabelColor = color('Label color', '#333333', 'Theme');
   const disabledTextColor = color('Disabled Text Color', '#d1d1d1', 'Theme');
   const disabledBorderColor = color(
     'Disabled Border Color',
     '#d1d1d1',
     'Theme'
   );
+  const marginTop = text('Margin Top', '.5rem', 'Theme Props');
+  const marginRight = text('Margin Right', '3rem', 'Theme Props');
+  const marginBottom = text('Margin Bottom', '.5rem', 'Theme Props');
+  const marginLeft = text('Margin Left', '0rem', 'Theme Props');
 
   const customStyle = {
-    '--rex-radio-theme-color': themeColor,
+    '--rex-radio-theme': themeColor,
+    '--rex-radio-label': themeLabelColor,
     '--rex-radio-border-color': borderColor,
     '--rex-radio-disabled-text': disabledTextColor,
     '--rex-radio-disabled-border': disabledBorderColor,
+    '--rex-radio-margin-top': marginTop,
+    '--rex-radio-margin-right': marginRight,
+    '--rex-radio-margin-bottom': marginBottom,
+    '--rex-radio-margin-left': marginLeft,
   };
 
   return {
     customStyle,
-    customStyleHtml: cssVarsToLegacy(customStyle, RadioGroup),
+    customStyleHtml: cssVarsToLegacy(customStyle, Radio),
   };
 }
 
