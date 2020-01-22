@@ -2,7 +2,7 @@
 /* eslint-disable import/no-extraneous-dependencies */
 /* eslint-disable import/extensions */
 import React from 'react';
-import { color } from '@storybook/addon-knobs';
+import { color, boolean, text } from '@storybook/addon-knobs';
 import Radio from 'src/Radio';
 import CommonProps from './props';
 import { cssVarsToLegacy, withKnobs } from '../../.storybook/helper';
@@ -24,7 +24,6 @@ export const DefaultView = () => (
     label="dog"
     name="pet"
     value="dog"
-    ariaLabel="dog"
     checked={false}
     disabled={false}
     required={false}
@@ -38,7 +37,6 @@ export const CheckedView = () => (
     label="cat"
     name="pet"
     value="cat"
-    ariaLabel="cat"
     checked
     disabled={false}
     required={false}
@@ -52,7 +50,6 @@ export const DisabledView = () => (
     label="dog"
     name="pet"
     value="dog"
-    ariaLabel="dog"
     disabled
     checked={false}
     required={false}
@@ -61,17 +58,8 @@ export const DisabledView = () => (
 );
 
 export const WithDynamicProps = () => {
-  const {
-    id,
-    name,
-    value,
-    label,
-    ariaLabel,
-    checked,
-    disabled,
-    required,
-    isBlock,
-  } = CommonProps();
+  const { id, name, value, label, checked, disabled, required } = CommonProps();
+  const layout = boolean('layout (Block/Inline)', false);
 
   return (
     <Radio
@@ -79,23 +67,21 @@ export const WithDynamicProps = () => {
       label={label}
       name={name}
       value={value}
-      ariaLabel={ariaLabel}
       checked={checked}
       disabled={disabled}
       required={required}
-      isBlock={isBlock}
+      isBlock={layout}
     />
   );
 };
 
 export const LayoutInline = () => (
   <>
-    <Radio name="pet" label="dog" value="dog" id="choice1-1" ariaLabel="dog" />
+    <Radio name="pet" label="dog" value="dog" id="choice1-1" />
     <Radio
       name="pet"
       label="cat"
       value="cat"
-      ariaLabel="cat"
       id="choice1-2"
       checked
       disabled={false}
@@ -105,7 +91,6 @@ export const LayoutInline = () => (
       name="pet"
       label="rabbit"
       value="rabbit"
-      ariaLabel="rabbit"
       id="choice1-3"
       checked={false}
       disabled={false}
@@ -116,7 +101,6 @@ export const LayoutInline = () => (
       label="pig"
       value="pig"
       id="choice1-4"
-      ariaLabel="pig"
       disabled
       checked={false}
       required={false}
@@ -131,7 +115,6 @@ export const LayoutBlock = () => (
       label="dog"
       value="dog"
       id="choice1"
-      ariaLabel="dog"
       checked
       disabled={false}
       required={false}
@@ -151,7 +134,6 @@ export const LayoutBlock = () => (
       name="pet"
       label="rabbit"
       value="rabbit"
-      ariaLabel="rabbit"
       id="choice3"
       checked={false}
       disabled={false}
@@ -183,12 +165,20 @@ function Theme() {
     '#d1d1d1',
     'Theme'
   );
+  const marginTop = text('Margin Top', '.5rem', 'Theme Props');
+  const marginRight = text('Margin Right', '3rem', 'Theme Props');
+  const marginBottom = text('Margin Bottom', '.5rem', 'Theme Props');
+  const marginLeft = text('Margin Left', '0rem', 'Theme Props');
 
   const customStyle = {
     '--rex-radio-theme': themeColor,
     '--rex-radio-border-color': borderColor,
     '--rex-radio-disabled-text': disabledTextColor,
     '--rex-radio-disabled-border': disabledBorderColor,
+    '--rex-radio-margin-top': marginTop,
+    '--rex-radio-margin-right': marginRight,
+    '--rex-radio-margin-bottom': marginBottom,
+    '--rex-radio-margin-left': marginLeft,
   };
 
   return {
@@ -207,7 +197,6 @@ export const WithThemeReactAndCSSVars = () => {
         label="rabbit"
         name="pet"
         value="rabbit"
-        ariaLabel="rabbit"
         checked={false}
         disabled={false}
         required={false}
@@ -218,7 +207,6 @@ export const WithThemeReactAndCSSVars = () => {
         label="rabbit"
         name="pet"
         value="rabbit"
-        ariaLabel="rabbit"
         checked
         disabled={false}
         required={false}
@@ -229,7 +217,6 @@ export const WithThemeReactAndCSSVars = () => {
         label="rabbit"
         name="pet"
         value="rabbit"
-        ariaLabel="rabbit"
         disabled
         checked={false}
         required={false}
@@ -250,7 +237,6 @@ export const WithThemeHTMLAndLegacyCSS = () => {
         label="rabbit"
         name="pet"
         value="rabbit"
-        ariaLabel="rabbit"
         checked={false}
         disabled={false}
         required={false}
@@ -260,7 +246,6 @@ export const WithThemeHTMLAndLegacyCSS = () => {
         label="dog"
         name="pet"
         value="dog"
-        ariaLabel="dog"
         checked
         disabled={false}
         required={false}
@@ -270,7 +255,6 @@ export const WithThemeHTMLAndLegacyCSS = () => {
         label="rabbit"
         name="pet"
         value="rabbit"
-        ariaLabel="rabbit"
         disabled
         checked={false}
         required={false}

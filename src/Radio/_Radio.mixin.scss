@@ -14,20 +14,6 @@ $--rex-radio-margin-left:0;
 @mixin rex-radio {
   @include rex-core();
   @include rex-radio-content();
-  @include rex-radio-theme();
-}
-
-@mixin rex-radio-theme() {
-  // Theme
-  --rex-radio-theme: #0085C7;
-  --rex-radio-label: inherit;
-  --rex-radio-border-color: #9c9c9c;
-  --rex-radio-disabled-text: #d1d1d1;
-  --rex-radio-disabled-border: #ebebeb;
-  --rex-radio-margin-top: .5rem;
-  --rex-radio-margin-right: 3rem;
-  --rex-radio-margin-bottom: .5rem;
-  --rex-radio-margin-left: 0;
 }
 
 @mixin rex-radio-content {

@@ -21,22 +21,13 @@ export default class RadioGroup extends Component {
 
   render() {
     // eslint-disable-next-line react/prop-types
-    const { options, style, className } = this.props;
+    const { options, style, className, isBlock } = this.props;
     const { selectedValue } = this.state;
 
     return (
-      <div className={className} style={style}>
+      <div className={className} style={style} role="radiogroup">
         {options.map(option => {
-          const {
-            value,
-            id,
-            name,
-            label,
-            disabled,
-            required,
-            ariaLabel,
-            isBlock,
-          } = option;
+          const { value, id, name, label, disabled, required } = option;
           return (
             <Radio
               key={id.toString()}
@@ -47,7 +38,6 @@ export default class RadioGroup extends Component {
               label={label}
               disabled={disabled}
               required={required}
-              aria-label={ariaLabel}
               checked={value === selectedValue}
               isBlock={isBlock}
             />
@@ -74,6 +64,5 @@ RadioGroup.propTypes = {
     label: string,
     checked: false,
     disabled: false,
-    ariaLabel: string,
   }),
 };

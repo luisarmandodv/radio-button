@@ -2,7 +2,7 @@
 /* eslint-disable import/no-extraneous-dependencies */
 /* eslint-disable import/extensions */
 import React from 'react';
-import { number, text, color } from '@storybook/addon-knobs';
+import { number, text, color, boolean } from '@storybook/addon-knobs';
 import Radio from 'src/Radio';
 import RadioGroup from 'src/RadioGroup';
 import { withKnobs, cssVarsToLegacy } from '../../.storybook/helper';
@@ -30,7 +30,6 @@ const FastestAnimals = [
     disabled: false,
     required: false,
     isBlock: false,
-    ariaLabel: 'BrownHare',
   },
   {
     id: 'fastestAnimal2',
@@ -41,7 +40,6 @@ const FastestAnimals = [
     disabled: false,
     required: false,
     isBlock: false,
-    ariaLabel: 'Wildebeest',
   },
   {
     id: 'fastestAnimal3',
@@ -52,7 +50,6 @@ const FastestAnimals = [
     disabled: false,
     required: false,
     isBlock: false,
-    ariaLabel: 'Cheetah',
   },
   {
     id: 'fastestAnimal4',
@@ -62,7 +59,6 @@ const FastestAnimals = [
     checked: false,
     disabled: false,
     required: false,
-    ariaLabel: 'Pronghorn',
   },
 ];
 
@@ -76,7 +72,6 @@ const Petdata = [
     disabled: false,
     required: false,
     isBlock: false,
-    ariaLabel: 'dog',
   },
   {
     id: 'choice2',
@@ -87,7 +82,6 @@ const Petdata = [
     disabled: false,
     required: false,
     isBlock: false,
-    ariaLabel: 'fish',
   },
   {
     id: 'choice3',
@@ -98,7 +92,6 @@ const Petdata = [
     disabled: false,
     required: false,
     isBlock: false,
-    ariaLabel: 'cat',
   },
   {
     id: 'choice4',
@@ -109,7 +102,6 @@ const Petdata = [
     disabled: false,
     required: false,
     isBlock: false,
-    ariaLabel: 'rabbit',
   },
   {
     id: 'choice5',
@@ -120,7 +112,6 @@ const Petdata = [
     disabled: true,
     required: false,
     isBlock: false,
-    ariaLabel: 'iguana',
   },
 ];
 
@@ -134,7 +125,6 @@ const PetdataBlock = [
     disabled: false,
     required: false,
     isBlock: true,
-    ariaLabel: 'dog',
   },
   {
     id: 'choice2',
@@ -145,7 +135,6 @@ const PetdataBlock = [
     disabled: false,
     required: false,
     isBlock: true,
-    ariaLabel: 'fish',
   },
   {
     id: 'choice3',
@@ -156,7 +145,6 @@ const PetdataBlock = [
     disabled: false,
     required: false,
     isBlock: true,
-    ariaLabel: 'cat',
   },
 ];
 
@@ -168,17 +156,8 @@ export const LayoutBlock = () => <RadioGroup options={PetdataBlock} />;
 
 export const WithDynamicPropsGroup = () => {
   const quantity = number('Quantity of items', 5);
-  const {
-    id,
-    name,
-    value,
-    label,
-    ariaLabel,
-    checked,
-    disabled,
-    required,
-    isBlock,
-  } = CommonProps();
+  const layout = boolean('layout (Block/Inline)', false);
+  const { id, name, value, label, checked, disabled, required } = CommonProps();
   let option;
   const listData = [];
   for (let i = 1; i <= quantity; i += 1) {
@@ -187,16 +166,14 @@ export const WithDynamicPropsGroup = () => {
       name: `${name}-${i}`,
       value: `${value}-${i}`,
       label: `${label}-${i}`,
-      isBlock,
       checked,
       disabled,
       required,
-      ariaLabel: `${ariaLabel}-${i}`,
     };
     listData.push(option);
   }
   // eslint-disable-next-line react/jsx-indent
-  return <RadioGroup options={listData} />;
+  return <RadioGroup options={listData} isBlock={layout} />;
 };
 
 /**

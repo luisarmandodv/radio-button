@@ -7,10 +7,8 @@ export default function CommonProps() {
     id: text('id', 'cat'),
     name: text('name', 'pet'),
     value: text('value', 'cat'),
-    ariaLabel: text('aria-label', 'cat'),
     checked: boolean('checked', true),
     disabled: boolean('disabled', false),
     required: boolean('required', false),
-    isBlock: boolean('isBlock', false),
   };
 }
