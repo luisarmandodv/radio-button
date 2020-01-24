@@ -29,7 +29,6 @@ const FastestAnimals = [
     checked: false,
     disabled: false,
     required: false,
-    isBlock: false,
   },
   {
     id: 'fastestAnimal2',
@@ -39,7 +38,6 @@ const FastestAnimals = [
     checked: false,
     disabled: false,
     required: false,
-    isBlock: false,
   },
   {
     id: 'fastestAnimal3',
@@ -49,7 +47,6 @@ const FastestAnimals = [
     checked: true,
     disabled: false,
     required: false,
-    isBlock: false,
   },
   {
     id: 'fastestAnimal4',
@@ -58,7 +55,6 @@ const FastestAnimals = [
     label: 'Pronghorn',
     checked: false,
     disabled: false,
-    required: false,
   },
 ];
 
@@ -71,7 +67,6 @@ const Petdata = [
     checked: false,
     disabled: false,
     required: false,
-    isBlock: false,
   },
   {
     id: 'choice2',
@@ -81,7 +76,6 @@ const Petdata = [
     checked: false,
     disabled: false,
     required: false,
-    isBlock: false,
   },
   {
     id: 'choice3',
@@ -91,7 +85,6 @@ const Petdata = [
     checked: true,
     disabled: false,
     required: false,
-    isBlock: false,
   },
   {
     id: 'choice4',
@@ -101,7 +94,6 @@ const Petdata = [
     checked: false,
     disabled: false,
     required: false,
-    isBlock: false,
   },
   {
     id: 'choice5',
@@ -111,7 +103,6 @@ const Petdata = [
     checked: false,
     disabled: true,
     required: false,
-    isBlock: false,
   },
 ];
 
@@ -124,7 +115,6 @@ const PetdataBlock = [
     checked: false,
     disabled: false,
     required: false,
-    isBlock: true,
   },
   {
     id: 'choice2',
@@ -134,7 +124,6 @@ const PetdataBlock = [
     checked: false,
     disabled: false,
     required: false,
-    isBlock: true,
   },
   {
     id: 'choice3',
@@ -144,7 +133,6 @@ const PetdataBlock = [
     checked: true,
     disabled: false,
     required: false,
-    isBlock: true,
   },
 ];
 
