@@ -1,102 +1,91 @@
 /*!
  * 
- * @license @rakuten-rex/radio-button v0.0.1 2020-01-06
+ * @license @rakuten-rex/radio-button v0.0.1 2020-01-24
  * Radio/Radio.development.css
  * 
  * Copyright (c) 2018-present, Rakuten, Inc.
  * 
  * This source code is licensed under the MIT license found in the LICENSE file in the root directory of this source tree.
  */
-.rex-radio	{
-	--rex-radio-border-color: #9c9c9c;
-	--rex-radio-disabled-border: #ebebeb;
-	--rex-radio-disabled-text: #d1d1d1;
-	--rex-radio-theme-color: #0085c7;
-	-moz-osx-font-smoothing: grayscale;
-	-webkit-font-smoothing: antialiased;
-	-webkit-tap-highlight-color: rgba(0,0,0,0);
-	-webkit-text-size-adjust: 100%;
-	background-color: inherit;
-	color: #333;
-	display: inline-flex;
-	font-family: -apple-system,BlinkMacSystemFont,"Segoe UI","Roboto","Oxygen","Ubuntu","Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
-	font-size: 1rem;
-	line-height: 1.5;
-	margin: .5rem;
-	text-align: left;
-	-moz-box-sizing: border-box;
-	-ms-box-sizing: border-box;
-	-o-box-sizing: border-box;
-	-webkit-box-sizing: border-box;
-	box-sizing: border-box
+.rex-radio {
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  -webkit-text-size-adjust: 100%;
+  background-color: inherit;
+  color: #333;
+  display: inline-flex;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji",
+    "Segoe UI Emoji", "Segoe UI Symbol";
+  font-size: 1rem;
+  line-height: 1.5;
+  margin: var(--rex-radio-margin-top, 0.5rem)
+    var(--rex-radio-margin-right, 3rem) var(--rex-radio-margin-bottom, 0.5rem)
+    var(--rex-radio-margin-left, 0);
+  overflow: visible;
+  padding: 0;
+  text-align: left;
 }
-
-.rex-radio:after	{
-	-moz-box-sizing: border-box;
-	-ms-box-sizing: border-box;
-	-o-box-sizing: border-box;
-	-webkit-box-sizing: border-box;
-	box-sizing: border-box
+.rex-radio,
+.rex-radio:after,
+.rex-radio:before {
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  -o-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
 }
-
-.rex-radio:before	{
-	-moz-box-sizing: border-box;
-	-ms-box-sizing: border-box;
-	-o-box-sizing: border-box;
-	-webkit-box-sizing: border-box;
-	box-sizing: border-box
+.rex-radio:last-of-type {
+  margin-right: 0;
 }
-
-.rex-radio input[type=radio]	{
-	opacity: 1;
-	position: absolute
+.rex-radio input[type="radio"] {
+  opacity: 1;
+  position: absolute;
 }
-
-.rex-radio input[type=radio]:checked+.rex-radio-label:before	{
-	background-color: var(--rex-radio-theme-color);
-	border-color: var(--rex-radio-theme-color);
-	box-shadow: inset 0 0 0 4px #fff
+.rex-radio input[type="radio"]:last-of-type {
+  margin-right: 0;
 }
-
-.rex-radio input[type=radio]:disabled+.rex-radio-label	{
-	color: var(--rex-radio-disabled-text)
+.rex-radio input[type="radio"]:checked + .rex-radio-label:before {
+  background-color: var(--rex-radio-theme, #0085c7);
+  border-color: var(--rex-radio-theme, #0085c7);
+  box-shadow: inset 0 0 0 4px #fff;
 }
-
-.rex-radio input[type=radio]:disabled+.rex-radio-label:before	{
-	background: #fff;
-	border-color: var(--rex-radio-disabled-border)
+.rex-radio input[type="radio"]:disabled + .rex-radio-label {
+  color: var(--rex-radio-disabled-text, #d1d1d1);
 }
-
-.rex-radio.rex-form-block	{
-	display: flex!important
+.rex-radio input[type="radio"]:disabled + .rex-radio-label:before {
+  background: #fff;
+  border-color: var(--rex-radio-disabled-border, #ebebeb);
 }
-
-.rex-radio .rex-radio-label	{
-	line-height: 1.5
+.rex-radio.rex-form-block {
+  display: flex !important;
 }
-
-.rex-radio .rex-radio-label:before	{
-	background: #fff;
-	border: 2px solid var(--rex-radio-border-color);
-	border-radius: 100%;
-	box-sizing: border-box;
-	content: "";
-	cursor: pointer;
-	display: inline-block;
-	height: 1.5rem;
-	margin-right: .5rem;
-	position: relative;
-	text-align: center;
-	top: 0;
-	transition: all .25s ease;
-	vertical-align: top;
-	width: 1.5rem
+.rex-radio .rex-radio-label {
+  color: var(--rex-radio-label, inherit);
+  line-height: 1.5;
 }
-
-.rex-radio .rex-radio-label:hover:before	{
-	border-color: var(--rex-radio-theme-color)
+.rex-radio .rex-radio-label:before {
+  background: #fff;
+  border: 2px solid var(--rex-radio-border-color, #9c9c9c);
+  border-radius: 100%;
+  box-sizing: border-box;
+  color: var(--rex-radio-label, inherit);
+  content: "";
+  cursor: pointer;
+  display: inline-block;
+  height: 1.5rem;
+  margin-right: 0.5rem;
+  position: relative;
+  text-align: center;
+  top: 0;
+  transition: all 0.25s ease;
+  vertical-align: top;
+  width: 1.5rem;
 }
-
-.rex-radio+.rex-radio-label:empty:before	{
-	margin-right: 0
+.rex-radio .rex-radio-label:hover:before {
+  border-color: var(--rex-radio-theme, #0085c7);
+}
+.rex-radio + .rex-radio-label:empty:before {
+  margin-right: 0;
 }

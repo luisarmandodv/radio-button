@@ -16,7 +16,6 @@ const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const DiscardOverriddenCssPropsPlugin = require('./project-scripts/webpack/discard-overridden-css-props');
 const BundleSassMixinPlugin = require('./project-scripts/webpack/bundle-sass-mixin');
-const CssVarsTransformPlugin = require('./project-scripts/webpack/css-vars-transform');
 // Package Information and filenames
 const { name, version, description, dependencies } = require('./package.json');
 
@@ -124,8 +123,6 @@ const config = {
     },
   },
   plugins: [
-    // Transform CSS variables syntax into a static representation
-    new CssVarsTransformPlugin(),
     // Bundle all Sass mixin files into one mixin
     new BundleSassMixinPlugin({ packageName, name, version }),
     // Copyright
@@ -251,6 +248,7 @@ This source code is licensed under the MIT license found in the LICENSE file in 
                 .replace(/(\n)/gm, '\n    ')
             )
             .replace(/__COMPONENT_NAME__/g, name.replace('@rakuten-rex/', ''))
+            .replace(/__COMPONENT_NAME_INDEX__/g, npmFiles.index)
             .replace(/__VERSION__/g, version);
         },
       },
@@ -295,6 +293,7 @@ This source code is licensed under the MIT license found in the LICENSE file in 
                 .replace(/(\n)/gm, '\n    ')
             )
             .replace(/__COMPONENT_NAME__/g, name.replace('@rakuten-rex/', ''))
+            .replace(/__COMPONENT_NAME_INDEX__/g, npmFiles.index)
             .replace(/__VERSION__/g, version);
         },
       },

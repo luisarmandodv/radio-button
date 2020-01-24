@@ -36,6 +36,14 @@ https://rakuten-rex.github.io/__COMPONENT_NAME__/
 - [x] Stories source code
 - [x] Knobs with multiple options
 
+## ZeroHeight Documentation
+
+For a complete Documentation including all ReX Design System Components, Live HTML/React examples and Demos please visit:
+
+[<img src="__RAW_GITHUB__project-scripts/webpack/markdown/logos/zh_logo.svg?sanitize=true" height="16" />](https://rakuten-rex.github.io/)   
+
+https://rakuten-rex.github.io/   
+
 
 # How to integrate ReX in your project
 ## A) JavaScript modules
@@ -65,7 +73,7 @@ Example:
 `my-component.jsx`
 
 ```jsx
-import '@rakuten-rex/__COMPONENT_NAME__/Radio/css';
+import '@rakuten-rex/__COMPONENT_NAME__/__COMPONENT_NAME_INDEX__/css';
 
 function MyCustomComponent() {
   return (
@@ -81,7 +89,7 @@ Example:
 `my-component.jsx`
 
 ```jsx
-import '@rakuten-rex/__COMPONENT_NAME__/Radio/css/static';
+import '@rakuten-rex/__COMPONENT_NAME__/__COMPONENT_NAME_INDEX__/css/static';
 
 function MyCustomComponent() {
   return (
@@ -117,11 +125,11 @@ Example:
 </template>
 <script>
 export default {
-  name: 'Radio',
+  name: 'MyComponent',
 }
 </script>
 <style scoped>
-@import "~@rakuten-rex/__COMPONENT_NAME__/Radio/css";
+@import "~@rakuten-rex/__COMPONENT_NAME__/__COMPONENT_NAME_INDEX__/css";
 </style>
 ```
 
@@ -133,21 +141,21 @@ Copy-paste the stylesheet `<link>` into your `<head>` tag to load our CSS styles
 ### Using CSS Variables (Modern Websites and WebApps)
 **Production mode URL** (recommended for Static HTML projects):  
 ```
-https://unpkg.com/@rakuten-rex/__COMPONENT_NAME__@__VERSION__/Radio/Radio.production.min.css
+https://unpkg.com/@rakuten-rex/__COMPONENT_NAME__@__VERSION__/__COMPONENT_NAME_INDEX__/__COMPONENT_NAME_INDEX__.production.min.css
 ```
 
 
 Development mode URL (for local testing):  
 
 ```
-https://unpkg.com/@rakuten-rex/__COMPONENT_NAME__@__VERSION__/Radio/Radio.development.css
+https://unpkg.com/@rakuten-rex/__COMPONENT_NAME__@__VERSION__/__COMPONENT_NAME_INDEX__/__COMPONENT_NAME_INDEX__.development.css
 ```
 
 
 ### Using Static CSS (Legacy Websites)
 
 ```
-https://unpkg.com/@rakuten-rex/__COMPONENT_NAME__@__VERSION__/Radio/Radio.static.css
+https://unpkg.com/@rakuten-rex/__COMPONENT_NAME__@__VERSION__/__COMPONENT_NAME_INDEX__/__COMPONENT_NAME_INDEX__.static.css
 ```
 
 ### <img src="__RAW_GITHUB__project-scripts/webpack/markdown/logos/html-5.svg?sanitize=true" height="16" /> Single component integration
@@ -164,7 +172,7 @@ Example:
     <meta charset="utf-8">
     <title>My Page</title>
     <!-- ReX __COMPONENT_NAME__ -->
-    <link href="https://unpkg.com/@rakuten-rex/__COMPONENT_NAME__@__VERSION__/Radio/Radio.production.min.css" rel="stylesheet">
+    <link href="https://unpkg.com/@rakuten-rex/__COMPONENT_NAME__@__VERSION__/__COMPONENT_NAME_INDEX__/__COMPONENT_NAME_INDEX__.production.min.css" rel="stylesheet">
   </head>
   <body>
     __EXAMPLE_HTML__

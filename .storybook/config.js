@@ -19,4 +19,8 @@ addParameters({
 });
 
 // automatically import all files ending in *.stories.js
-configure(require.context('../src', true, /\.stories\.jsx$/), module);
+configure([
+  require.context('../src/RadioGroup', true, /\.stories\.jsx$/),
+  require.context('../src', true, /\.stories\.jsx$/, )
+], module);
+

@@ -157,7 +157,9 @@ export const LayoutBlock = () => <RadioGroup options={PetdataBlock} />;
 export const WithDynamicPropsGroup = () => {
   const quantity = number('Quantity of items', 5);
   const layout = boolean('layout (Block/Inline)', false);
-  const { id, name, value, label, checked, disabled, required } = CommonProps();
+  const { id, name, value, label, checked, disabled, required } = CommonProps(
+    false
+  );
   let option;
   const listData = [];
   for (let i = 1; i <= quantity; i += 1) {

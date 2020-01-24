@@ -36,6 +36,14 @@ https://rakuten-rex.github.io/radio-button/
 - [x] Stories source code
 - [x] Knobs with multiple options
 
+## ZeroHeight Documentation
+
+For a complete Documentation including all ReX Design System Components, Live HTML/React examples and Demos please visit:
+
+[<img src="https://raw.githubusercontent.com/rakuten-rex/radio-button/master/project-scripts/webpack/markdown/logos/zh_logo.svg?sanitize=true" height="16" />](https://rakuten-rex.github.io/)   
+
+https://rakuten-rex.github.io/   
+
 
 # How to integrate ReX in your project
 ## A) JavaScript modules
@@ -167,11 +175,11 @@ Example:
 </template>
 <script>
 export default {
-  name: 'Radio',
+  name: 'MyComponent',
 }
 </script>
 <style scoped>
-@import "~@rakuten-rex/radio-button/css";
+@import "~@rakuten-rex/radio-button/Radio/css";
 </style>
 ```
 
