@@ -1,0 +1,5 @@
+@import './Radio.mixin';
+
+.rex-radio {
+  @include rex-radio();
+}

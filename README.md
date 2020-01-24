@@ -1,189 +1,300 @@
-# ReX React UI Components Library
-## ReX React UI Component: radio-button
+# ReX React UI Component: radio-button
 
-This project is part of ReX Design Language and it can be used to create React UI Components.   
-For more information visit:   
+This project is part of ReX Design System and it can be used to create UI Components compatible with:
 
-Github  
-https://github.com/rakuten-rex
-
-NPM  
-https://www.npmjs.com/org/rakuten-rex
-
-How it was built:  
-
-1. webpack 4 (static module bundler)
-1. HTML5
-1. CSS3 & Sass (Normalize.css + Fork of Bootstrap project + ReX custom styles)
-1. JavaScript ES6 Modules & Components based on React
+React, HTML/CSS and Vue.js  
 
 # How to install
 
+<img src="project-scripts/webpack/markdown/logos/npm.svg?sanitize=true" height="16" />
+
 ```
-npm install @rakuten-rex/radio-button@0.0.1 --save
+npm install @rakuten-rex/radio-button@1.0.2 --save
+```
+
+<img src="project-scripts/webpack/markdown/logos/yarn.svg?sanitize=true" height="16" />
+
+```
+yarn add @rakuten-rex/radio-button@1.0.2
 ```
 
 # Getting started
 
-## 1) Storybook Live examples
+## Storybook Live examples
 
-For a complete guide of properties for React and HTML classes please visit the Storybook site:  
+For a complete guide of properties for React and HTML classes please visit our Storybook page:  
 
-https://rakuten-rex.github.io/radio-button/
+[<img src="project-scripts/webpack/markdown/logos/storybook.svg?sanitize=true" height="16" />](https://rakuten-rex.github.io/radio-button/)   
 
-## 2) Choose the distribution builds
+https://rakuten-rex.github.io/radio-button/   
 
-### ReX Component + ReX Core (with ReX Fonts)
 
-For projects with full ReX implementation.
+**Storybook features**
+- [x] Stories by component types
+- [x] HTML raw output
+- [x] JSX output
+- [x] Stories source code
+- [x] Knobs with multiple options
 
-```js
-import RexComponent from '@rakuten-rex/radio-button';
-```
+## ZeroHeight Documentation
 
-### ReX Component + ReX Core (without ReX Fonts)
+For a complete Documentation including all ReX Design System Components, Live HTML/React examples and Demos please visit:
 
-For integration projects.   
+[<img src="project-scripts/webpack/markdown/logos/zh_logo.svg?sanitize=true" height="16" />](https://rakuten-rex.github.io/)   
 
-```js
-import RexComponent from '@rakuten-rex/radio-button/without-fonts.js';
-```
+https://rakuten-rex.github.io/   
 
-### ReX Component Only (without ReX Core)
-
-For integration projects using Static HTML or if you use a build tools without duplicated CSS classes removal.  
-
-Note: Requires global import of ReX Core.   
-
-```js
-import RexComponent from '@rakuten-rex/radio-button/without-core.js';
-```
 
 # How to integrate ReX in your project
 ## A) JavaScript modules
 
-### React component (JavaScript + CSS Styles)
+### <img src="project-scripts/webpack/markdown/logos/react.svg?sanitize=true" height="16" /> React component (JavaScript + CSS Styles)
 
 For plug and play components integration.   
 
 Example: 
 
-```js
-import RexComponent from '@rakuten-rex/radio-button';
-const Petdata = [
-  {
-    id: 'choice1',
-    name: 'pet',
-    value: 'dog',
-    label: 'Dog',
-    checked: false,
-    disabled: false,
-    areaLabel: 'dog',
-  },
-  {
-    id: 'choice2',
-    name: 'pet',
-    value: 'fish',
-    label: 'Fish',
-    checked: false,
-    disabled: false,
-    areaLabel: 'fish',
-  },
-  {
-    id: 'choice3',
-    name: 'pet',
-    value: 'cat',
-    label: 'Cat',
-    checked: true,
-    disabled: false,
-    areaLabel: 'cat',
-  },
-  {
-    id: 'choice4',
-    name: 'pet',
-    value: 'rabbit',
-    label: 'Rabbit',
-    checked: false,
-    disabled: false,
-    areaLabel: 'rabbit',
-  },
-  {
-    id: 'choice5',
-    name: 'pet',
-    value: 'iguana',
-    label: 'Iguana',
-    checked: false,
-    disabled: true,
-    areaLabel: 'iguana',
-  },
-];
-function MyComponent() {
-  return  <RadioGroup options={Petdata} />;
+`my-component.jsx`
+
+```jsx
+import Radio from '@rakuten-rex/radio-button';
+
+function MyCustomComponent() {
+  return (
+    <Radio name='pet' label='dog' value='dog' id='choice1' area-label='dog' />
+    <Radio name='pet' label='cat' value='cat' area-label='cat' id='choice2' checked={true} />
+    <Radio name='pet' label='rabbit' value='rabbit' area-label='rabbit' id='choice3' />
+    <Radio name='pet' label='pig' value='pig' id='choice4' area-label='pig' disabled={true} />
+  );
 }
 ```
 
-### CSS Styles only
+
+[Click here](https://rakuten-rex.github.io/radio-button/) to see all working examples in Storybook.
+
+
+### <img src="project-scripts/webpack/markdown/logos/css-3.svg?sanitize=true" height="16" /> CSS Styles only
 
 For your own JavaScript integration (React, Vue, Angular, etc.) or Static HTML.
 
+#### Using CSS Variables (Modern Websites and WebApps)
+
 Example: 
 
-```js
-import '@rakuten-rex/radio-button/css';
+`my-component.jsx`
 
-function MyComponent() {
+```jsx
+import '@rakuten-rex/radio-button/Radio/css';
+
+function MyCustomComponent() {
   return (
     <div class="rex-radio">
-      <input type="radio" value="dog" id="choice1" name="pet" area-label="dog" readonly="" />
-        <label class="rex-radio-label" for="choice1">dog</label>
-      </div>;
-  )
+        <input type="radio" value="dog" id="choice1" name="pet" area-label="dog" readonly="" /><label class="rex-radio-label" for="choice1">dog</label>
+      </div>
+      <div class="rex-radio">
+        <input type="radio" value="cat" id="choice2" name="pet" area-label="cat" checked="" readonly="" /><label class="rex-radio-label" for="choice2">cat</label>
+      </div>
+      <div class="rex-radio">
+        <input type="radio" value="rabbit" id="choice3" name="pet" area-label="rabbit" readonly="" /><label class="rex-radio-label" for="choice3">rabbit</label>
+      </div>
+      <div class="rex-radio">
+        <input type="radio" value="pig" id="choice4" name="pet" disabled="" area-label="pig" readonly="" /><label class="rex-radio-label" for="choice4">pig</label>
+      </div>
+  );
 }
 ```
 
-## B) Static HTML
-
-Copy-paste the stylesheet `<link>` into your `<head>` before all other stylesheets to load our CSS.
-
-You can choose between `development` (dev comments and unminified) or `production` (without dev comments and minified) mode.   
-
-We recommend to use `production` mode if your build process doesn't support to switch between both.
-
-Development mode URL:  
-`https://r.r10s.jp/com/rex/radio-button/0.0.1/radio-button.development.css`
-
-Production mode URL:  
-`https://r.r10s.jp/com/rex/radio-button/0.0.1/radio-button.production.min.css`
-
-### Single component integration
-Add it from our CDN into your HTML template or HTML static page.
-
-```markdown
-<!-- ReX radio-button -->
-<link href="https://r.r10s.jp/com/rex/radio-button/0.0.1/radio-button.production.min.css" rel="stylesheet">
-```
-
-### Multiple component integration
-
-Note: use `radio-button-without-core.min.css` version to avoid duplicated code from ReX Core.
-
-```markdown
-<!-- ReX Core -->
-<link href="https://r.r10s.jp/com/rex/core/2.3.1/full-version.production.min.css" rel="stylesheet">
-
-<!-- ReX radio-button -->
-<link href="https://r.r10s.jp/com/rex/radio-button/0.0.1/radio-button-without-core.production.min.css" rel="stylesheet">
-```
+#### Using Static CSS (Legacy Websites)
 
 Example: 
 
-```markdown
-<div class="rex-radio-button">
-  <h1 class="rex-core-h1 rex-h1">Welcome to React</h1>
-</div>
+`my-component.jsx`
+
+```jsx
+import '@rakuten-rex/radio-button/Radio/css/static';
+
+function MyCustomComponent() {
+  return (
+    <div class="rex-radio">
+        <input type="radio" value="dog" id="choice1" name="pet" area-label="dog" readonly="" /><label class="rex-radio-label" for="choice1">dog</label>
+      </div>
+      <div class="rex-radio">
+        <input type="radio" value="cat" id="choice2" name="pet" area-label="cat" checked="" readonly="" /><label class="rex-radio-label" for="choice2">cat</label>
+      </div>
+      <div class="rex-radio">
+        <input type="radio" value="rabbit" id="choice3" name="pet" area-label="rabbit" readonly="" /><label class="rex-radio-label" for="choice3">rabbit</label>
+      </div>
+      <div class="rex-radio">
+        <input type="radio" value="pig" id="choice4" name="pet" disabled="" area-label="pig" readonly="" /><label class="rex-radio-label" for="choice4">pig</label>
+      </div>
+  );
+}
 ```
 
+[Click here](https://rakuten-rex.github.io/radio-button/) to see all working examples in Storybook.
+
+
+### <img src="project-scripts/webpack/markdown/logos/sass.svg?sanitize=true" height="16" /> Sass mixins
+
+For your own customization of styles (React, Vue, Angular, etc.) or Static HTML.
+
+Example: 
+
+`my-styles.scss`
+
+```scss
+@import '@rakuten-rex/radio-button/Radio/sass/styles.mixin';
+
+.rex-radio {
+  @include rex-radio();
+}
+```
+
+### <img src="project-scripts/webpack/markdown/logos/vue.svg?sanitize=true" height="16" /> Vue.js
+
+A basic implementation based on HTML structure and import CSS styles into your component.
+
+Example: 
+
+`my-component.vue`
+
+```vue
+<template>
+    <div class="rex-radio">
+        <input type="radio" value="dog" id="choice1" name="pet" area-label="dog" readonly="" /><label class="rex-radio-label" for="choice1">dog</label>
+      </div>
+      <div class="rex-radio">
+        <input type="radio" value="cat" id="choice2" name="pet" area-label="cat" checked="" readonly="" /><label class="rex-radio-label" for="choice2">cat</label>
+      </div>
+      <div class="rex-radio">
+        <input type="radio" value="rabbit" id="choice3" name="pet" area-label="rabbit" readonly="" /><label class="rex-radio-label" for="choice3">rabbit</label>
+      </div>
+      <div class="rex-radio">
+        <input type="radio" value="pig" id="choice4" name="pet" disabled="" area-label="pig" readonly="" /><label class="rex-radio-label" for="choice4">pig</label>
+      </div>
+</template>
+<script>
+export default {
+  name: 'MyComponent',
+}
+</script>
+<style scoped>
+@import "~@rakuten-rex/radio-button/Radio/css";
+</style>
+```
+
+
+## B) Static HTML
+
+Copy-paste the stylesheet `<link>` into your `<head>` tag to load our CSS styles.
+
+### Using CSS Variables (Modern Websites and WebApps)
+**Production mode URL** (recommended for Static HTML projects):  
+```
+https://unpkg.com/@rakuten-rex/radio-button@1.0.2/Radio/Radio.production.min.css
+```
+
+
+Development mode URL (for local testing):  
+
+```
+https://unpkg.com/@rakuten-rex/radio-button@1.0.2/Radio/Radio.development.css
+```
+
+
+### Using Static CSS (Legacy Websites)
+
+```
+https://unpkg.com/@rakuten-rex/radio-button@1.0.2/Radio/Radio.static.css
+```
+
+### <img src="project-scripts/webpack/markdown/logos/html-5.svg?sanitize=true" height="16" /> Single component integration
+Add it from unpkg.com CDN (NPM) into your HTML template or HTML static page.
+
+Example: 
+
+`my-page.html`
+
+```html
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>My Page</title>
+    <!-- ReX radio-button -->
+    <link href="https://unpkg.com/@rakuten-rex/radio-button@1.0.2/Radio/Radio.production.min.css" rel="stylesheet">
+  </head>
+  <body>
+    <div class="rex-radio">
+        <input type="radio" value="dog" id="choice1" name="pet" area-label="dog" readonly="" /><label class="rex-radio-label" for="choice1">dog</label>
+      </div>
+      <div class="rex-radio">
+        <input type="radio" value="cat" id="choice2" name="pet" area-label="cat" checked="" readonly="" /><label class="rex-radio-label" for="choice2">cat</label>
+      </div>
+      <div class="rex-radio">
+        <input type="radio" value="rabbit" id="choice3" name="pet" area-label="rabbit" readonly="" /><label class="rex-radio-label" for="choice3">rabbit</label>
+      </div>
+      <div class="rex-radio">
+        <input type="radio" value="pig" id="choice4" name="pet" disabled="" area-label="pig" readonly="" /><label class="rex-radio-label" for="choice4">pig</label>
+      </div>
+  </body>
+</html>
+```
+
+## Documentation, source code and distribution
+
+|| Site  | URL |
+|-------------| ------------- | ------------- |
+|<img src="project-scripts/webpack/markdown/logos/github-icon.svg?sanitize=true" height="16" />| Github (Source Code) | https://github.com/rakuten-rex |
+|<img src="project-scripts/webpack/markdown/logos/npm.svg?sanitize=true" height="16" />| NPM (Package distribution)  | https://www.npmjs.com/org/rakuten-rex  |
+|<img src="project-scripts/webpack/markdown/logos/zh_logo.svg?sanitize=true" height="16" />| ZeroHeight (Documentation)  | https://zeroheight.com/390c074f3 |
+
+## Project Stack
+
+| Front-end |
+|-------------|
+| <img src="project-scripts/webpack/markdown/logos/html-5.svg?sanitize=true" height="16" /> HTML5 <img src="project-scripts/webpack/markdown/logos/css-3.svg?sanitize=true" height="16" /> CSS3 & Sass  <img src="project-scripts/webpack/markdown/logos/javascript.svg?sanitize=true" height="16" /> JavaScript ES6 <img src="project-scripts/webpack/markdown/logos/react.svg?sanitize=true" height="16" /> React |
+
+| Tools |
+|-------------|
+| <img src="project-scripts/webpack/markdown/logos/webpack.svg?sanitize=true" height="16" /> webpack <img src="project-scripts/webpack/markdown/logos/storybook-icon.svg?sanitize=true" height="16" /> Storybook <img src="project-scripts/webpack/markdown/logos/babel.svg?sanitize=true" height="16" /> Babel <img src="project-scripts/webpack/markdown/logos/eslint.svg?sanitize=true" height="16" /> ESLint <img src="project-scripts/webpack/markdown/logos/prettier.svg?sanitize=true" height="16" /> Prettier |
+
+## Features
+
+| Styles features |  JavaScript features |
+|-------------|-------------|
+| Theme support via CSS variables |  React components splitted by type |
+| Static CSS styles available for HTML/VueJS/AngularJS | Universal Module Definition support |
+| Sass mixins for custom builds |
+| Reset CSS styles already bundled by HTML tags |
+| Removed duplicated CSS props |
+| CSS classes prefix `rex-` |
+
+## Browser Support
+
+| PC | Mobile 
+|-------------|-------------|
+| <img src="project-scripts/webpack/markdown/browsers/chrome.svg?sanitize=true" height="14" /> Chrome 49+ | <img src="project-scripts/webpack/markdown/browsers/apple.svg?sanitize=true" height="14" /> iOS 9+ (Safari 9.3+, Chrome 78+) |
+| <img src="project-scripts/webpack/markdown/browsers/safari.svg?sanitize=true" height="14" /> Safari 9.1+ | <img src="project-scripts/webpack/markdown/browsers/android-icon.svg?sanitize=true" height="14" /> Android 6+ (Chrome 78+, Android Browser 76+) |
+| <img src="project-scripts/webpack/markdown/browsers/firefox.svg?sanitize=true" height="14" /> Firefox 31+ | |
+| <img src="project-scripts/webpack/markdown/browsers/microsoft-edge.svg?sanitize=true" height="14" /> MS Edge 15+ | |
+| <img src="project-scripts/webpack/markdown/browsers/internetexplorer.svg?sanitize=true" height="14" /> IE 11+ | |
+
+
+
 # Development environment
+## How to initialize the project for a new repository
+
+```
+npm run setup
+```
+
+## How to add a new ReX Component to the project
+
+```
+npm run generate:rex-component
+```
+
 ## How to start the project
 
 The development environment is based on Storybook, for more info visit https://storybook.js.org/ .   
@@ -194,7 +305,7 @@ npm start
 
 ## How to build
 
-The build task will generate a NPM package ready to be published and also a static version of Storybook, one folder for NPM `./node_modules/@rakuten-rex/radio-button` and other one for Github pages `./docs`.   
+The build task will generate a NPM package ready to be published and also a static version of Storybook, one folder for NPM `./npm/@rakuten-rex/radio-button` and other one for Github pages `./docs`.   
 
 ```
 npm run build
