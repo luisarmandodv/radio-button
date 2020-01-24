@@ -1,6 +1,6 @@
 {
   "name": "@rakuten-rex/radio-button",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "A radio button allows a user to choose only one of a predefined set of mutually exclusive options",
   "main": "src/index.jsx",
   "scripts": {
@@ -94,5 +94,6 @@
     "webpack": "4.41.2",
     "webpack-cli": "3.3.10",
     "webpack-merge": "4.2.2"
-  }
+  },
+  "rex-starter-kit": "3.4.8"
 }
