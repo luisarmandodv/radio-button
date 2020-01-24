@@ -1,3 +1,3 @@
 'use strict';
 
-module.exports = require('./Radio/index.js');
+module.exports = require('./RadioGroup/index.js');
