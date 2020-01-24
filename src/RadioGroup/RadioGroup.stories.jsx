@@ -152,7 +152,7 @@ export const DefaultView = () => <RadioGroup options={FastestAnimals} />;
 
 export const LayoutInline = () => <RadioGroup options={FastestAnimals} />;
 
-export const LayoutBlock = () => <RadioGroup options={PetdataBlock} />;
+export const LayoutBlock = () => <RadioGroup options={PetdataBlock} isBlock />;
 
 export const WithDynamicPropsGroup = () => {
   const quantity = number('Quantity of items', 5);

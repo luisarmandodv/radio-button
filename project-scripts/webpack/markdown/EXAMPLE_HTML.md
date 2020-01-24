@@ -1,12 +1,18 @@
+<div class="rex-radio-group" role="radiogroup">
   <div class="rex-radio">
-    <input type="radio" value="dog" id="choice1" name="pet" area-label="dog" readonly="" /><label class="rex-radio-label" for="choice1">dog</label>
+    <input type="radio" value="BrownHare" id="fastestAnimal1" name="fastest" readonly="" />
+    <label class="rex-radio-label" for="fastestAnimal1">BrownHare</label>
   </div>
   <div class="rex-radio">
-    <input type="radio" value="cat" id="choice2" name="pet" area-label="cat" checked="" readonly="" /><label class="rex-radio-label" for="choice2">cat</label>
+    <input type="radio" value="Wildebeest" id="fastestAnimal2" name="fastest" readonly="" />
+    <label class="rex-radio-label" for="fastestAnimal2">Wildebeest</label>
   </div>
   <div class="rex-radio">
-    <input type="radio" value="rabbit" id="choice3" name="pet" area-label="rabbit" readonly="" /><label class="rex-radio-label" for="choice3">rabbit</label>
+    <input type="radio" value="Cheetah" id="fastestAnimal3" name="fastest" readonly="" />
+    <label class="rex-radio-label" for="fastestAnimal3">Cheetah</label>
   </div>
   <div class="rex-radio">
-    <input type="radio" value="pig" id="choice4" name="pet" disabled="" area-label="pig" readonly="" /><label class="rex-radio-label" for="choice4">pig</label>
+    <input type="radio" value="Pronghorn" id="fastestAnimal4" name="fastest" readonly="" />
+    <label class="rex-radio-label" for="fastestAnimal4">Pronghorn</label>
   </div>
+</div>

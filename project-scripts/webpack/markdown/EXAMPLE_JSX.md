@@ -1,12 +1,9 @@
 ```jsx
-import Radio from '@rakuten-rex/__COMPONENT_NAME__';
+import RadioGroup from '@rakuten-rex/__COMPONENT_NAME__/RadioGroup';
 
 function MyCustomComponent() {
   return (
-    <Radio name='pet' label='dog' value='dog' id='choice1' area-label='dog' />
-    <Radio name='pet' label='cat' value='cat' area-label='cat' id='choice2' checked={true} />
-    <Radio name='pet' label='rabbit' value='rabbit' area-label='rabbit' id='choice3' />
-    <Radio name='pet' label='pig' value='pig' id='choice4' area-label='pig' disabled={true} />
+    <RadioGroup options={[{ "id" : "fastestAnimal1" , "name" : "fastest" , "value" : "BrownHare" , "label" : "BrownHare" , "checked" : false, "disabled" : false, "required" : false, "isBlock" : false }, { "id" : "fastestAnimal2" , "name" : "fastest" , "value" : "Wildebeest" , "label" : "Wildebeest" , "checked" : false, "disabled" : false, "required" : false, "isBlock" : false }, { "id" : "fastestAnimal3" , "name" : "fastest" , "value" : "Cheetah" , "label" : "Cheetah" , "checked" : true, "disabled" : false, "required" : false, "isBlock" : false }, { "id" : "fastestAnimal4" , "name" : "fastest" , "value" : "Pronghorn" , "label" : "Pronghorn" , "checked" : false, "disabled" : false, "required" : false }]} />
   );
 }
 ```
