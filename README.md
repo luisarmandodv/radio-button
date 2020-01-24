@@ -9,13 +9,13 @@ React, HTML/CSS and Vue.js
 <img src="project-scripts/webpack/markdown/logos/npm.svg?sanitize=true" height="16" />
 
 ```
-npm install @rakuten-rex/radio-button@1.0.3 --save
+npm install @rakuten-rex/radio-button@1.1.0 --save
 ```
 
 <img src="project-scripts/webpack/markdown/logos/yarn.svg?sanitize=true" height="16" />
 
 ```
-yarn add @rakuten-rex/radio-button@1.0.3
+yarn add @rakuten-rex/radio-button@1.1.0
 ```
 
 # Getting started
@@ -57,14 +57,11 @@ Example:
 `my-component.jsx`
 
 ```jsx
-import Radio from '@rakuten-rex/radio-button';
+import RadioGroup from '@rakuten-rex/radio-button/RadioGroup';
 
 function MyCustomComponent() {
   return (
-    <Radio name='pet' label='dog' value='dog' id='choice1' area-label='dog' />
-    <Radio name='pet' label='cat' value='cat' area-label='cat' id='choice2' checked={true} />
-    <Radio name='pet' label='rabbit' value='rabbit' area-label='rabbit' id='choice3' />
-    <Radio name='pet' label='pig' value='pig' id='choice4' area-label='pig' disabled={true} />
+    <RadioGroup options={[{ "id" : "fastestAnimal1" , "name" : "fastest" , "value" : "BrownHare" , "label" : "BrownHare" , "checked" : false, "disabled" : false, "required" : false, "isBlock" : false }, { "id" : "fastestAnimal2" , "name" : "fastest" , "value" : "Wildebeest" , "label" : "Wildebeest" , "checked" : false, "disabled" : false, "required" : false, "isBlock" : false }, { "id" : "fastestAnimal3" , "name" : "fastest" , "value" : "Cheetah" , "label" : "Cheetah" , "checked" : true, "disabled" : false, "required" : false, "isBlock" : false }, { "id" : "fastestAnimal4" , "name" : "fastest" , "value" : "Pronghorn" , "label" : "Pronghorn" , "checked" : false, "disabled" : false, "required" : false }]} />
   );
 }
 ```
@@ -84,22 +81,28 @@ Example:
 `my-component.jsx`
 
 ```jsx
-import '@rakuten-rex/radio-button/Radio/css';
+import '@rakuten-rex/radio-button/RadioGroup/css';
 
 function MyCustomComponent() {
   return (
-    <div class="rex-radio">
-        <input type="radio" value="dog" id="choice1" name="pet" area-label="dog" readonly="" /><label class="rex-radio-label" for="choice1">dog</label>
+    <div class="rex-radio-group" role="radiogroup">
+      <div class="rex-radio">
+        <input type="radio" value="BrownHare" id="fastestAnimal1" name="fastest" readonly="" />
+        <label class="rex-radio-label" for="fastestAnimal1">BrownHare</label>
       </div>
       <div class="rex-radio">
-        <input type="radio" value="cat" id="choice2" name="pet" area-label="cat" checked="" readonly="" /><label class="rex-radio-label" for="choice2">cat</label>
+        <input type="radio" value="Wildebeest" id="fastestAnimal2" name="fastest" readonly="" />
+        <label class="rex-radio-label" for="fastestAnimal2">Wildebeest</label>
       </div>
       <div class="rex-radio">
-        <input type="radio" value="rabbit" id="choice3" name="pet" area-label="rabbit" readonly="" /><label class="rex-radio-label" for="choice3">rabbit</label>
+        <input type="radio" value="Cheetah" id="fastestAnimal3" name="fastest" readonly="" />
+        <label class="rex-radio-label" for="fastestAnimal3">Cheetah</label>
       </div>
       <div class="rex-radio">
-        <input type="radio" value="pig" id="choice4" name="pet" disabled="" area-label="pig" readonly="" /><label class="rex-radio-label" for="choice4">pig</label>
+        <input type="radio" value="Pronghorn" id="fastestAnimal4" name="fastest" readonly="" />
+        <label class="rex-radio-label" for="fastestAnimal4">Pronghorn</label>
       </div>
+    </div>
   );
 }
 ```
@@ -111,22 +114,28 @@ Example:
 `my-component.jsx`
 
 ```jsx
-import '@rakuten-rex/radio-button/Radio/css/static';
+import '@rakuten-rex/radio-button/RadioGroup/css/static';
 
 function MyCustomComponent() {
   return (
-    <div class="rex-radio">
-        <input type="radio" value="dog" id="choice1" name="pet" area-label="dog" readonly="" /><label class="rex-radio-label" for="choice1">dog</label>
+    <div class="rex-radio-group" role="radiogroup">
+      <div class="rex-radio">
+        <input type="radio" value="BrownHare" id="fastestAnimal1" name="fastest" readonly="" />
+        <label class="rex-radio-label" for="fastestAnimal1">BrownHare</label>
       </div>
       <div class="rex-radio">
-        <input type="radio" value="cat" id="choice2" name="pet" area-label="cat" checked="" readonly="" /><label class="rex-radio-label" for="choice2">cat</label>
+        <input type="radio" value="Wildebeest" id="fastestAnimal2" name="fastest" readonly="" />
+        <label class="rex-radio-label" for="fastestAnimal2">Wildebeest</label>
       </div>
       <div class="rex-radio">
-        <input type="radio" value="rabbit" id="choice3" name="pet" area-label="rabbit" readonly="" /><label class="rex-radio-label" for="choice3">rabbit</label>
+        <input type="radio" value="Cheetah" id="fastestAnimal3" name="fastest" readonly="" />
+        <label class="rex-radio-label" for="fastestAnimal3">Cheetah</label>
       </div>
       <div class="rex-radio">
-        <input type="radio" value="pig" id="choice4" name="pet" disabled="" area-label="pig" readonly="" /><label class="rex-radio-label" for="choice4">pig</label>
+        <input type="radio" value="Pronghorn" id="fastestAnimal4" name="fastest" readonly="" />
+        <label class="rex-radio-label" for="fastestAnimal4">Pronghorn</label>
       </div>
+    </div>
   );
 }
 ```
@@ -160,18 +169,24 @@ Example:
 
 ```vue
 <template>
-    <div class="rex-radio">
-        <input type="radio" value="dog" id="choice1" name="pet" area-label="dog" readonly="" /><label class="rex-radio-label" for="choice1">dog</label>
+    <div class="rex-radio-group" role="radiogroup">
+      <div class="rex-radio">
+        <input type="radio" value="BrownHare" id="fastestAnimal1" name="fastest" readonly="" />
+        <label class="rex-radio-label" for="fastestAnimal1">BrownHare</label>
       </div>
       <div class="rex-radio">
-        <input type="radio" value="cat" id="choice2" name="pet" area-label="cat" checked="" readonly="" /><label class="rex-radio-label" for="choice2">cat</label>
+        <input type="radio" value="Wildebeest" id="fastestAnimal2" name="fastest" readonly="" />
+        <label class="rex-radio-label" for="fastestAnimal2">Wildebeest</label>
       </div>
       <div class="rex-radio">
-        <input type="radio" value="rabbit" id="choice3" name="pet" area-label="rabbit" readonly="" /><label class="rex-radio-label" for="choice3">rabbit</label>
+        <input type="radio" value="Cheetah" id="fastestAnimal3" name="fastest" readonly="" />
+        <label class="rex-radio-label" for="fastestAnimal3">Cheetah</label>
       </div>
       <div class="rex-radio">
-        <input type="radio" value="pig" id="choice4" name="pet" disabled="" area-label="pig" readonly="" /><label class="rex-radio-label" for="choice4">pig</label>
+        <input type="radio" value="Pronghorn" id="fastestAnimal4" name="fastest" readonly="" />
+        <label class="rex-radio-label" for="fastestAnimal4">Pronghorn</label>
       </div>
+    </div>
 </template>
 <script>
 export default {
@@ -179,7 +194,7 @@ export default {
 }
 </script>
 <style scoped>
-@import "~@rakuten-rex/radio-button/Radio/css";
+@import "~@rakuten-rex/radio-button/RadioGroup/css";
 </style>
 ```
 
@@ -191,21 +206,21 @@ Copy-paste the stylesheet `<link>` into your `<head>` tag to load our CSS styles
 ### Using CSS Variables (Modern Websites and WebApps)
 **Production mode URL** (recommended for Static HTML projects):  
 ```
-https://unpkg.com/@rakuten-rex/radio-button@1.0.3/Radio/Radio.production.min.css
+https://unpkg.com/@rakuten-rex/radio-button@1.1.0/RadioGroup/RadioGroup.production.min.css
 ```
 
 
 Development mode URL (for local testing):  
 
 ```
-https://unpkg.com/@rakuten-rex/radio-button@1.0.3/Radio/Radio.development.css
+https://unpkg.com/@rakuten-rex/radio-button@1.1.0/RadioGroup/RadioGroup.development.css
 ```
 
 
 ### Using Static CSS (Legacy Websites)
 
 ```
-https://unpkg.com/@rakuten-rex/radio-button@1.0.3/Radio/Radio.static.css
+https://unpkg.com/@rakuten-rex/radio-button@1.1.0/RadioGroup/RadioGroup.static.css
 ```
 
 ### <img src="project-scripts/webpack/markdown/logos/html-5.svg?sanitize=true" height="16" /> Single component integration
@@ -222,21 +237,27 @@ Example:
     <meta charset="utf-8">
     <title>My Page</title>
     <!-- ReX radio-button -->
-    <link href="https://unpkg.com/@rakuten-rex/radio-button@1.0.3/Radio/Radio.production.min.css" rel="stylesheet">
+    <link href="https://unpkg.com/@rakuten-rex/radio-button@1.1.0/RadioGroup/RadioGroup.production.min.css" rel="stylesheet">
   </head>
   <body>
-    <div class="rex-radio">
-        <input type="radio" value="dog" id="choice1" name="pet" area-label="dog" readonly="" /><label class="rex-radio-label" for="choice1">dog</label>
+    <div class="rex-radio-group" role="radiogroup">
+      <div class="rex-radio">
+        <input type="radio" value="BrownHare" id="fastestAnimal1" name="fastest" readonly="" />
+        <label class="rex-radio-label" for="fastestAnimal1">BrownHare</label>
       </div>
       <div class="rex-radio">
-        <input type="radio" value="cat" id="choice2" name="pet" area-label="cat" checked="" readonly="" /><label class="rex-radio-label" for="choice2">cat</label>
+        <input type="radio" value="Wildebeest" id="fastestAnimal2" name="fastest" readonly="" />
+        <label class="rex-radio-label" for="fastestAnimal2">Wildebeest</label>
       </div>
       <div class="rex-radio">
-        <input type="radio" value="rabbit" id="choice3" name="pet" area-label="rabbit" readonly="" /><label class="rex-radio-label" for="choice3">rabbit</label>
+        <input type="radio" value="Cheetah" id="fastestAnimal3" name="fastest" readonly="" />
+        <label class="rex-radio-label" for="fastestAnimal3">Cheetah</label>
       </div>
       <div class="rex-radio">
-        <input type="radio" value="pig" id="choice4" name="pet" disabled="" area-label="pig" readonly="" /><label class="rex-radio-label" for="choice4">pig</label>
+        <input type="radio" value="Pronghorn" id="fastestAnimal4" name="fastest" readonly="" />
+        <label class="rex-radio-label" for="fastestAnimal4">Pronghorn</label>
       </div>
+    </div>
   </body>
 </html>
 ```
