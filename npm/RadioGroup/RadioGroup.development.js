@@ -1,6 +1,6 @@
 /*!
  * 
- * @license @rakuten-rex/radio-button v1.0.3 2020-01-24
+ * @license @rakuten-rex/radio-button v1.1.0 2020-01-24
  * RadioGroup/RadioGroup.development.js
  * 
  * Copyright (c) 2018-present, Rakuten, Inc.
