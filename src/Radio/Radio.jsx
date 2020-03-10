@@ -1,6 +1,6 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import React from 'react';
-import { bool, string } from 'prop-types';
+import { bool, string, func } from 'prop-types';
 import './Radio.scss';
 
 export default function Radio({
@@ -13,6 +13,7 @@ export default function Radio({
   disabled,
   checked,
   required,
+  onChange,
   // eslint-disable-next-line react/prop-types
   style,
   ...props
@@ -31,7 +32,7 @@ export default function Radio({
         checked={checked}
         disabled={disabled}
         required={required}
-        readOnly
+        onChange={onChange}
         {...props}
       />
       <label className={labelClass} htmlFor={id}>
@@ -51,6 +52,7 @@ Radio.defaultProps = {
   name: '',
   label: '',
   value: '',
+  onChange: () => null,
 };
 
 Radio.propTypes = {
@@ -63,4 +65,5 @@ Radio.propTypes = {
   name: string,
   label: string,
   value: string,
+  onChange: func,
 };
