@@ -1,7 +1,7 @@
 @import './core.mixin';
 
 // Theme SASS vars for fallback value in CSS vars
-$--rex-radio-theme: #0085C7;
+$--rex-radio-theme: #1364FF;
 $--rex-radio-label: inherit;
 $--rex-radio-border-color: #9c9c9c;
 $--rex-radio-disabled-text: #d1d1d1;
@@ -84,12 +84,6 @@ $--rex-radio-margin-left:0;
       cursor: pointer;
       text-align: center;
       transition: all 250ms ease;
-    }
-
-    &:hover {
-      &:before {
-        border-color: var(--rex-radio-theme, $--rex-radio-theme);
-      }
     }
   }
 

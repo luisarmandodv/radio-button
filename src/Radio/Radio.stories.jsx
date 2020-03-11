@@ -2,9 +2,10 @@
 /* eslint-disable import/no-extraneous-dependencies */
 /* eslint-disable import/extensions */
 import React from 'react';
-import { color, boolean, text } from '@storybook/addon-knobs';
+import { boolean } from '@storybook/addon-knobs';
 import Radio from 'src/Radio';
 import CommonProps from './props';
+import ThemeProps from './themeProps';
 import { cssVarsToLegacy, withKnobs } from '../../.storybook/helper';
 
 /**
@@ -18,7 +19,7 @@ export default {
 /**
  * Stories
  * */
-export const DefaultView = () => (
+export const Default = () => (
   <Radio
     id="pet-dog"
     label="dog"
@@ -31,7 +32,7 @@ export const DefaultView = () => (
   />
 );
 
-export const CheckedView = () => (
+export const CheckedState = () => (
   <Radio
     id="pet-cat"
     label="cat"
@@ -44,7 +45,7 @@ export const CheckedView = () => (
   />
 );
 
-export const DisabledView = () => (
+export const DisabledState = () => (
   <Radio
     id="choice-dog"
     label="dog"
@@ -56,24 +57,6 @@ export const DisabledView = () => (
     isBlock={false}
   />
 );
-
-export const WithDynamicProps = () => {
-  const { id, name, value, label, checked, disabled, required } = CommonProps();
-  const layout = boolean('layout (Block/Inline)', false);
-
-  return (
-    <Radio
-      id={id}
-      label={label}
-      name={name}
-      value={value}
-      checked={checked}
-      disabled={disabled}
-      required={required}
-      isBlock={layout}
-    />
-  );
-};
 
 export const LayoutInline = () => (
   <>
@@ -152,42 +135,59 @@ export const LayoutBlock = () => (
   </>
 );
 
+export const WithDynamicProps = () => {
+  const { id, name, value, label, checked, disabled, required } = CommonProps();
+  const layout = boolean('layout (Block/Inline)', false);
+
+  return (
+    <Radio
+      id={id}
+      label={label}
+      name={name}
+      value={value}
+      checked={checked}
+      disabled={disabled}
+      required={required}
+      isBlock={layout}
+    />
+  );
+};
+
 /**
  * Custom Theme support
  * */
 
 function Theme() {
-  const themeColor = color('Checkbox theme color', '#bf0000', 'Theme');
-  const borderColor = color('Default Border color', '#9c9c9c', 'Theme');
-  const disabledTextColor = color('Disabled Text Color', '#d1d1d1', 'Theme');
-  const disabledBorderColor = color(
-    'Disabled Border Color',
-    '#d1d1d1',
-    'Theme'
-  );
-  const marginTop = text('Margin Top', '.5rem', 'Theme Props');
-  const marginRight = text('Margin Right', '3rem', 'Theme Props');
-  const marginBottom = text('Margin Bottom', '.5rem', 'Theme Props');
-  const marginLeft = text('Margin Left', '0rem', 'Theme Props');
+  const {
+    themeDefaultCheckedBackground,
+    themeDefaultBorder,
+    themeLabelText,
+    themeDisabledLabelText,
+    themeDisabledBorder,
+    marginTop,
+    marginRight,
+    marginBottom,
+    marginLeft,
+  } = ThemeProps();
 
   const customStyle = {
-    '--rex-radio-theme': themeColor,
-    '--rex-radio-border-color': borderColor,
-    '--rex-radio-disabled-text': disabledTextColor,
-    '--rex-radio-disabled-border': disabledBorderColor,
+    '--rex-radio-theme': themeDefaultCheckedBackground,
+    '--rex-radio-label': themeLabelText,
+    '--rex-radio-border-color': themeDefaultBorder,
+    '--rex-radio-disabled-text': themeDisabledLabelText,
+    '--rex-radio-disabled-border': themeDisabledBorder,
     '--rex-radio-margin-top': marginTop,
     '--rex-radio-margin-right': marginRight,
     '--rex-radio-margin-bottom': marginBottom,
     '--rex-radio-margin-left': marginLeft,
   };
-
   return {
     customStyle,
     customStyleHtml: cssVarsToLegacy(customStyle, Radio),
   };
 }
 
-export const WithThemeReactAndCSSVars = () => {
+export const HTMLTheme = () => {
   const { customStyle } = Theme();
 
   return (
@@ -226,7 +226,7 @@ export const WithThemeReactAndCSSVars = () => {
   );
 };
 
-export const WithThemeHTMLAndLegacyCSS = () => {
+export const HTMLThemeAndAllStates = () => {
   const { customStyleHtml } = Theme();
 
   return (

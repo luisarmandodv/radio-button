@@ -2,11 +2,12 @@
 /* eslint-disable import/no-extraneous-dependencies */
 /* eslint-disable import/extensions */
 import React from 'react';
-import { number, text, color, boolean } from '@storybook/addon-knobs';
+import { number, boolean } from '@storybook/addon-knobs';
 import Radio from 'src/Radio';
 import RadioGroup from 'src/RadioGroup';
 import { withKnobs, cssVarsToLegacy } from '../../.storybook/helper';
 import CommonProps from '../Radio/props';
+import ThemeProps from '../Radio/themeProps';
 
 /**
  * Main story
@@ -20,7 +21,7 @@ export default {
  * Stories
  * */
 
-const FastestAnimals = [
+const fastestAnimals = [
   {
     id: 'fastestAnimal1',
     name: 'fastest',
@@ -58,7 +59,7 @@ const FastestAnimals = [
   },
 ];
 
-const Petdata = [
+const petData = [
   {
     id: 'choice1',
     name: 'pet',
@@ -106,7 +107,55 @@ const Petdata = [
   },
 ];
 
-const PetdataBlock = [
+const disabledData = [
+  {
+    id: 'choice1',
+    name: 'pet',
+    value: 'dog',
+    label: 'Dog',
+    checked: false,
+    disabled: true,
+    required: false,
+  },
+  {
+    id: 'choice2',
+    name: 'pet',
+    value: 'fish',
+    label: 'Fish',
+    checked: false,
+    disabled: true,
+    required: false,
+  },
+  {
+    id: 'choice3',
+    name: 'pet',
+    value: 'cat',
+    label: 'Cat',
+    checked: true,
+    disabled: true,
+    required: false,
+  },
+  {
+    id: 'choice4',
+    name: 'pet',
+    value: 'rabbit',
+    label: 'Rabbit',
+    checked: false,
+    disabled: true,
+    required: false,
+  },
+  {
+    id: 'choice5',
+    name: 'pet',
+    value: 'iguana',
+    label: 'Iguana',
+    checked: false,
+    disabled: true,
+    required: false,
+  },
+];
+
+const petDataBlock = [
   {
     id: 'choice1',
     name: 'pet',
@@ -136,13 +185,25 @@ const PetdataBlock = [
   },
 ];
 
-export const DefaultView = () => <RadioGroup options={FastestAnimals} />;
+export const Default = () => <RadioGroup options={fastestAnimals} />;
 
-export const LayoutInline = () => <RadioGroup options={FastestAnimals} />;
+export const CheckedState = () => <RadioGroup options={fastestAnimals} />;
 
-export const LayoutBlock = () => <RadioGroup options={PetdataBlock} isBlock />;
+export const DisabledState = () => <RadioGroup options={disabledData} />;
 
-export const WithDynamicPropsGroup = () => {
+export const LayoutInline = () => <RadioGroup options={fastestAnimals} />;
+
+export const LayoutInlineChecked = () => (
+  <RadioGroup options={fastestAnimals} />
+);
+
+export const LayoutBlock = () => <RadioGroup options={petDataBlock} isBlock />;
+
+export const LayoutBlockChecked = () => (
+  <RadioGroup options={petDataBlock} isBlock />
+);
+
+export const WithDynamicProps = () => {
   const quantity = number('Quantity of items', 5);
   const layout = boolean('layout (Block/Inline)', false);
   const { id, name, value, label, disabled, required } = CommonProps(false);
@@ -168,26 +229,24 @@ export const WithDynamicPropsGroup = () => {
  * */
 
 function Theme() {
-  const themeColor = color('Radio theme color', '#bf0000', 'Theme');
-  const borderColor = color('Default Border color', '#9c9c9c', 'Theme');
-  const themeLabelColor = color('Label color', '#333333', 'Theme');
-  const disabledTextColor = color('Disabled Text Color', '#d1d1d1', 'Theme');
-  const disabledBorderColor = color(
-    'Disabled Border Color',
-    '#d1d1d1',
-    'Theme'
-  );
-  const marginTop = text('Margin Top', '.5rem', 'Theme Props');
-  const marginRight = text('Margin Right', '3rem', 'Theme Props');
-  const marginBottom = text('Margin Bottom', '.5rem', 'Theme Props');
-  const marginLeft = text('Margin Left', '0rem', 'Theme Props');
+  const {
+    themeDefaultCheckedBackground,
+    themeDefaultBorder,
+    themeLabelText,
+    themeDisabledLabelText,
+    themeDisabledBorder,
+    marginTop,
+    marginRight,
+    marginBottom,
+    marginLeft,
+  } = ThemeProps();
 
   const customStyle = {
-    '--rex-radio-theme': themeColor,
-    '--rex-radio-label': themeLabelColor,
-    '--rex-radio-border-color': borderColor,
-    '--rex-radio-disabled-text': disabledTextColor,
-    '--rex-radio-disabled-border': disabledBorderColor,
+    '--rex-radio-theme': themeDefaultCheckedBackground,
+    '--rex-radio-label': themeLabelText,
+    '--rex-radio-border-color': themeDefaultBorder,
+    '--rex-radio-disabled-text': themeDisabledLabelText,
+    '--rex-radio-disabled-border': themeDisabledBorder,
     '--rex-radio-margin-top': marginTop,
     '--rex-radio-margin-right': marginRight,
     '--rex-radio-margin-bottom': marginBottom,
@@ -200,17 +259,34 @@ function Theme() {
   };
 }
 
-export const WithThemeReactAndCSSVars = () => {
+export const ReactTheme = () => {
   const { customStyle } = Theme();
-  return <RadioGroup options={Petdata} style={customStyle} />;
+  return <RadioGroup options={petData} style={customStyle} />;
 };
-export const WithThemeHTMLAndLegacyCSS = () => {
+
+export const ReactThemeAndAllStates = () => {
+  const { customStyle } = Theme();
+  return <RadioGroup options={petData} style={customStyle} />;
+};
+
+export const HTMLTheme = () => {
   const { customStyleHtml } = Theme();
 
   return (
     <>
       <style>{customStyleHtml}</style>
-      <RadioGroup options={Petdata} />
+      <RadioGroup options={petData} />
+    </>
+  );
+};
+
+export const HTMLThemeAndAllStates = () => {
+  const { customStyleHtml } = Theme();
+
+  return (
+    <>
+      <style>{customStyleHtml}</style>
+      <RadioGroup options={petData} />
     </>
   );
 };
