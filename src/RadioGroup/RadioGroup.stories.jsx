@@ -2,7 +2,7 @@
 /* eslint-disable import/no-extraneous-dependencies */
 /* eslint-disable import/extensions */
 import React from 'react';
-import { number, boolean } from '@storybook/addon-knobs';
+import { number, boolean, select } from '@storybook/addon-knobs';
 import Radio from 'src/Radio';
 import RadioGroup from 'src/RadioGroup';
 import { withKnobs, cssVarsToLegacy } from '../../.storybook/helper';
@@ -22,6 +22,44 @@ export default {
  * */
 
 const fastestAnimals = [
+  {
+    id: 'fastestAnimal1',
+    name: 'fastest',
+    value: 'BrownHare',
+    label: 'BrownHare',
+    checked: false,
+    disabled: false,
+    required: false,
+  },
+  {
+    id: 'fastestAnimal2',
+    name: 'fastest',
+    value: 'Wildebeest',
+    label: 'Wildebeest',
+    checked: false,
+    disabled: false,
+    required: false,
+  },
+  {
+    id: 'fastestAnimal3',
+    name: 'fastest',
+    value: 'Cheetah',
+    label: 'Cheetah',
+    checked: false,
+    disabled: false,
+    required: false,
+  },
+  {
+    id: 'fastestAnimal4',
+    name: 'fastest',
+    value: 'Pronghorn',
+    label: 'Pronghorn',
+    checked: false,
+    disabled: false,
+  },
+];
+
+const fastestAnimalsChecked = [
   {
     id: 'fastestAnimal1',
     name: 'fastest',
@@ -155,52 +193,26 @@ const disabledData = [
   },
 ];
 
-const petDataBlock = [
-  {
-    id: 'choice1',
-    name: 'pet',
-    value: 'dog',
-    label: 'Dog',
-    checked: false,
-    disabled: false,
-    required: false,
-  },
-  {
-    id: 'choice2',
-    name: 'pet',
-    value: 'fish',
-    label: 'Fish',
-    checked: false,
-    disabled: false,
-    required: false,
-  },
-  {
-    id: 'choice3',
-    name: 'pet',
-    value: 'cat',
-    label: 'Cat',
-    checked: true,
-    disabled: false,
-    required: false,
-  },
-];
-
 export const Default = () => <RadioGroup options={fastestAnimals} />;
 
-export const CheckedState = () => <RadioGroup options={fastestAnimals} />;
+export const CheckedState = () => (
+  <RadioGroup options={fastestAnimalsChecked} />
+);
 
 export const DisabledState = () => <RadioGroup options={disabledData} />;
 
 export const LayoutInline = () => <RadioGroup options={fastestAnimals} />;
 
 export const LayoutInlineChecked = () => (
-  <RadioGroup options={fastestAnimals} />
+  <RadioGroup options={fastestAnimalsChecked} />
 );
 
-export const LayoutBlock = () => <RadioGroup options={petDataBlock} isBlock />;
+export const LayoutBlock = () => (
+  <RadioGroup options={fastestAnimals} isBlock />
+);
 
 export const LayoutBlockChecked = () => (
-  <RadioGroup options={petDataBlock} isBlock />
+  <RadioGroup options={fastestAnimalsChecked} isBlock />
 );
 
 export const WithDynamicProps = () => {
@@ -261,12 +273,12 @@ function Theme() {
 
 export const ReactTheme = () => {
   const { customStyle } = Theme();
-  return <RadioGroup options={petData} style={customStyle} />;
+  return <RadioGroup options={fastestAnimals} style={customStyle} />;
 };
 
 export const ReactThemeAndAllStates = () => {
   const { customStyle } = Theme();
-  return <RadioGroup options={petData} style={customStyle} />;
+  return <RadioGroup options={fastestAnimalsChecked} style={customStyle} />;
 };
 
 export const HTMLTheme = () => {
@@ -275,7 +287,7 @@ export const HTMLTheme = () => {
   return (
     <>
       <style>{customStyleHtml}</style>
-      <RadioGroup options={petData} />
+      <RadioGroup options={fastestAnimals} />
     </>
   );
 };
@@ -286,7 +298,7 @@ export const HTMLThemeAndAllStates = () => {
   return (
     <>
       <style>{customStyleHtml}</style>
-      <RadioGroup options={petData} />
+      <RadioGroup options={fastestAnimalsChecked} />
     </>
   );
 };
