@@ -228,7 +228,7 @@ export const ReactTheme = () => {
   return <RadioGroup options={fastestAnimals} style={customStyle} />;
 };
 
-export const ReactThemeAndAllStates = () => {
+export const ReactThemeAllStates = () => {
   const { customStyle } = Theme();
   return <RadioGroup options={fastestAnimalsChecked} style={customStyle} />;
 };
