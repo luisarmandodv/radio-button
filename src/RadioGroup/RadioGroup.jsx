@@ -17,54 +17,23 @@ export default class RadioGroup extends Component {
     this.handleChange = this.handleChange.bind(this);
   }
 
-  componentDidUpdate(prevProps) {
-    const { options } = this.props;
-    let canUpdate = false;
-    // Check for options length (how many items)
-    if (options.length !== prevProps.options.length) {
-      // eslint-disable-next-line react/no-did-update-set-state
-      canUpdate = true;
-    }
-    // Check for any change in options object values (data)
-    // eslint-disable-next-line no-restricted-syntax
-    for (const key in options) {
-      if (options[key] !== prevProps.options[key]) {
-        canUpdate = true;
-        break;
-      }
-    }
-
-    if (canUpdate) {
-      this.updateCheckedState(options);
-    }
-  }
-
   // Set initial default values for checkedList
   // eslint-disable-next-line class-methods-use-this
   setCheckedList(options) {
     const checkedList = [];
-
     options.forEach(({ id, checked }) => {
       checkedList[id] = checked;
     });
-
     return checkedList;
-  }
-
-  updateCheckedState(options) {
-    const checkedList = this.setCheckedList(options);
-    this.setState({
-      options,
-      checkedList,
-    });
   }
 
   handleChange(e) {
     const { id, checked } = e.target;
-    const { checkedList } = this.state;
-
+    let { checkedList } = this.state;
+    if (checked) {
+      checkedList = [];
+    }
     checkedList[id] = checked;
-
     this.setState({
       checkedList,
     });

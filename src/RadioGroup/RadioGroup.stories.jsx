@@ -2,7 +2,7 @@
 /* eslint-disable import/no-extraneous-dependencies */
 /* eslint-disable import/extensions */
 import React from 'react';
-import { number, boolean, select } from '@storybook/addon-knobs';
+import { number, boolean } from '@storybook/addon-knobs';
 import Radio from 'src/Radio';
 import RadioGroup from 'src/RadioGroup';
 import { withKnobs, cssVarsToLegacy } from '../../.storybook/helper';
@@ -65,7 +65,7 @@ const fastestAnimalsChecked = [
     name: 'fastest',
     value: 'BrownHare',
     label: 'BrownHare',
-    checked: false,
+    checked: true,
     disabled: false,
     required: false,
   },
@@ -83,7 +83,7 @@ const fastestAnimalsChecked = [
     name: 'fastest',
     value: 'Cheetah',
     label: 'Cheetah',
-    checked: true,
+    checked: false,
     disabled: false,
     required: false,
   },
@@ -94,54 +94,6 @@ const fastestAnimalsChecked = [
     label: 'Pronghorn',
     checked: false,
     disabled: false,
-  },
-];
-
-const petData = [
-  {
-    id: 'choice1',
-    name: 'pet',
-    value: 'dog',
-    label: 'Dog',
-    checked: false,
-    disabled: false,
-    required: false,
-  },
-  {
-    id: 'choice2',
-    name: 'pet',
-    value: 'fish',
-    label: 'Fish',
-    checked: false,
-    disabled: false,
-    required: false,
-  },
-  {
-    id: 'choice3',
-    name: 'pet',
-    value: 'cat',
-    label: 'Cat',
-    checked: true,
-    disabled: false,
-    required: false,
-  },
-  {
-    id: 'choice4',
-    name: 'pet',
-    value: 'rabbit',
-    label: 'Rabbit',
-    checked: false,
-    disabled: false,
-    required: false,
-  },
-  {
-    id: 'choice5',
-    name: 'pet',
-    value: 'iguana',
-    label: 'Iguana',
-    checked: false,
-    disabled: true,
-    required: false,
   },
 ];
 
