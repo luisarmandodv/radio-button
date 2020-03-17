@@ -2,7 +2,7 @@
 /* eslint-disable import/no-extraneous-dependencies */
 /* eslint-disable import/extensions */
 import React from 'react';
-import { boolean } from '@storybook/addon-knobs';
+import { boolean, number } from '@storybook/addon-knobs';
 import Radio from 'src/Radio';
 import RadioGroup from 'src/RadioGroup';
 import { withKnobs, cssVarsToLegacy } from '../../.storybook/helper';
@@ -172,7 +172,6 @@ export const LayoutBlockChecked = () => (
 
 export const WithDynamicProps = () => {
   const {
-    quantity,
     id,
     name,
     value,
@@ -182,6 +181,7 @@ export const WithDynamicProps = () => {
     checked,
     layout,
   } = CommonProps(false);
+  const quantity = number('Quantity of items', 5);
   let option;
   const listData = [];
   for (let i = 1; i <= quantity; i += 1) {
