@@ -7,6 +7,7 @@ import Radio from 'src/Radio';
 import RadioGroup from 'src/RadioGroup';
 import { withKnobs, cssVarsToLegacy } from '../../.storybook/helper';
 import CommonProps from '../Radio/props';
+import CheckedProps from '../Radio/checkedProps';
 import ThemeProps from '../Radio/themeProps';
 
 /**
@@ -151,7 +152,9 @@ export const CheckedState = () => (
   <RadioGroup options={fastestAnimalsChecked} />
 );
 
-export const DisabledState = () => <RadioGroup options={disabledData} />;
+export const DisabledState = () => (
+  <RadioGroup options={disabledData} disabled />
+);
 
 export const LayoutInline = () => <RadioGroup options={fastestAnimals} />;
 
@@ -170,7 +173,9 @@ export const LayoutBlockChecked = () => (
 export const WithDynamicProps = () => {
   const quantity = number('Quantity of items', 5);
   const layout = boolean('layout (Block/Inline)', false);
-  const { id, name, value, label, disabled, required } = CommonProps(false);
+  const { id, name, value, label, disabled, required, checked } = CommonProps(
+    false
+  );
   let option;
   const listData = [];
   for (let i = 1; i <= quantity; i += 1) {
@@ -179,6 +184,7 @@ export const WithDynamicProps = () => {
       name: `${name}-${i}`,
       value: `${value}-${i}`,
       label: `${label}-${i}`,
+      checked,
       required,
     };
     listData.push(option);
@@ -237,13 +243,8 @@ export const ReactTheme = () => {
 export const ReactThemeAllStates = () => {
   const { customStyle } = Theme();
   const disabled = boolean('Disabled', false, 'Theme Disabled');
-  return (
-    <RadioGroup
-      options={fastestAnimalsChecked}
-      style={customStyle}
-      disabled={disabled}
-    />
-  );
+  const { data } = CheckedProps();
+  return <RadioGroup options={data} style={customStyle} disabled={disabled} />;
 };
 
 export const HTMLTheme = () => {
@@ -261,16 +262,12 @@ export const HTMLTheme = () => {
 export const HTMLThemeAndAllStates = () => {
   const { customStyleHtml } = Theme();
   const disabled = boolean('Disabled', false, 'Theme Disabled');
-  const checked = boolean('Checked', false, 'Theme Checked');
+  const { data } = CheckedProps();
 
   return (
     <>
       <style>{customStyleHtml}</style>
-      <RadioGroup
-        options={fastestAnimalsChecked}
-        disabled={disabled}
-        checked={checked}
-      />
+      <RadioGroup options={data} disabled={disabled} />
     </>
   );
 };
