@@ -4,8 +4,8 @@
 import React from 'react';
 import { boolean } from '@storybook/addon-knobs';
 import Radio from 'src/Radio';
-import CommonProps from './props';
-import ThemeProps from './themeProps';
+import CommonProps from './props/commonProps';
+import ThemeProps from './props/themeProps';
 import { cssVarsToLegacy, withKnobs } from '../../.storybook/helper';
 
 /**

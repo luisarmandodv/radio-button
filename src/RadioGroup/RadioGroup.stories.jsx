@@ -2,13 +2,13 @@
 /* eslint-disable import/no-extraneous-dependencies */
 /* eslint-disable import/extensions */
 import React from 'react';
-import { number, boolean } from '@storybook/addon-knobs';
+import { boolean } from '@storybook/addon-knobs';
 import Radio from 'src/Radio';
 import RadioGroup from 'src/RadioGroup';
 import { withKnobs, cssVarsToLegacy } from '../../.storybook/helper';
-import CommonProps from '../Radio/props';
-import CheckedProps from '../Radio/checkedProps';
-import ThemeProps from '../Radio/themeProps';
+import CommonProps from '../Radio/props/commonProps';
+import CheckedProps from '../Radio/props/checkedProps';
+import ThemeProps from '../Radio/props/themeProps';
 
 /**
  * Main story
@@ -171,11 +171,17 @@ export const LayoutBlockChecked = () => (
 );
 
 export const WithDynamicProps = () => {
-  const quantity = number('Quantity of items', 5);
-  const layout = boolean('layout (Block/Inline)', false);
-  const { id, name, value, label, disabled, required, checked } = CommonProps(
-    false
-  );
+  const {
+    quantity,
+    id,
+    name,
+    value,
+    label,
+    disabled,
+    required,
+    checked,
+    layout,
+  } = CommonProps(false);
   let option;
   const listData = [];
   for (let i = 1; i <= quantity; i += 1) {

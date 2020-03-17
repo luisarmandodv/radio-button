@@ -1,5 +1,5 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
-import { boolean, text } from '@storybook/addon-knobs';
+import { boolean, text, number } from '@storybook/addon-knobs';
 
 export default function CommonProps(showChecked = true) {
   return {
@@ -10,5 +10,7 @@ export default function CommonProps(showChecked = true) {
     checked: showChecked ? boolean('checked', true) : null,
     disabled: boolean('disabled', false),
     required: boolean('required', false),
+    layout: boolean('layout (Block/Inline)', false),
+    quantity: number('Quantity of items', 5),
   };
 }
