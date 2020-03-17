@@ -1,6 +1,6 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import React, { Component } from 'react';
-import { shape, string } from 'prop-types';
+import { shape, string, bool } from 'prop-types';
 import Radio from '../Radio';
 
 export default class RadioGroup extends Component {
@@ -40,14 +40,14 @@ export default class RadioGroup extends Component {
   }
 
   render() {
-    // eslint-disable-next-line react/prop-types
-    const { style, className, isBlock } = this.props;
+    const { style, className, isBlock, disabled } = this.props;
     const { options, checkedList } = this.state;
 
     return (
       <div className={className} style={style} role="radiogroup">
         {options.map(option => {
-          const { value, id, name, label, disabled, required } = option;
+          const { value, id, name, label, required } = option;
+
           const checked = checkedList[id];
           return (
             <Radio
@@ -74,10 +74,13 @@ RadioGroup.defaultProps = {
   // eslint-disable-next-line react/default-props-match-prop-types
   style: {},
   options: [],
+  isBlock: false,
+  disabled: false,
 };
 
 RadioGroup.propTypes = {
   className: string,
+  style: string,
   options: shape({
     id: string,
     name: string,
@@ -86,4 +89,6 @@ RadioGroup.propTypes = {
     checked: false,
     disabled: false,
   }),
+  isBlock: bool,
+  disabled: bool,
 };

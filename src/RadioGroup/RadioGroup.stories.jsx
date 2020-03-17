@@ -179,13 +179,12 @@ export const WithDynamicProps = () => {
       name: `${name}-${i}`,
       value: `${value}-${i}`,
       label: `${label}-${i}`,
-      disabled,
       required,
     };
     listData.push(option);
   }
   // eslint-disable-next-line react/jsx-indent
-  return <RadioGroup options={listData} isBlock={layout} />;
+  return <RadioGroup options={listData} isBlock={layout} disabled={disabled} />;
 };
 
 /**
@@ -225,32 +224,53 @@ function Theme() {
 
 export const ReactTheme = () => {
   const { customStyle } = Theme();
-  return <RadioGroup options={fastestAnimals} style={customStyle} />;
+  const disabled = boolean('Disabled', false, 'Theme Disabled');
+  return (
+    <RadioGroup
+      options={fastestAnimalsChecked}
+      style={customStyle}
+      disabled={disabled}
+    />
+  );
 };
 
 export const ReactThemeAllStates = () => {
   const { customStyle } = Theme();
-  return <RadioGroup options={fastestAnimalsChecked} style={customStyle} />;
+  const disabled = boolean('Disabled', false, 'Theme Disabled');
+  return (
+    <RadioGroup
+      options={fastestAnimalsChecked}
+      style={customStyle}
+      disabled={disabled}
+    />
+  );
 };
 
 export const HTMLTheme = () => {
   const { customStyleHtml } = Theme();
+  const disabled = boolean('Disabled', false, 'Theme Disabled');
 
   return (
     <>
       <style>{customStyleHtml}</style>
-      <RadioGroup options={fastestAnimals} />
+      <RadioGroup options={fastestAnimals} disabled={disabled} />
     </>
   );
 };
 
 export const HTMLThemeAndAllStates = () => {
   const { customStyleHtml } = Theme();
+  const disabled = boolean('Disabled', false, 'Theme Disabled');
+  const checked = boolean('Checked', false, 'Theme Checked');
 
   return (
     <>
       <style>{customStyleHtml}</style>
-      <RadioGroup options={fastestAnimalsChecked} />
+      <RadioGroup
+        options={fastestAnimalsChecked}
+        disabled={disabled}
+        checked={checked}
+      />
     </>
   );
 };
