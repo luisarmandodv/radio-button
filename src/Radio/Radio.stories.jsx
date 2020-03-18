@@ -180,7 +180,7 @@ function Theme() {
   };
 }
 
-export const ReactThemAllStates = () => {
+export const ReactTheme = () => {
   const { customStyle } = Theme();
   const disabled = boolean('Disabled', false, 'Theme Disabled');
   const checked = boolean('Checked', false, 'Theme Checked');
@@ -199,7 +199,7 @@ export const ReactThemAllStates = () => {
   );
 };
 
-export const HTMLThemeAndAllStates = () => {
+export const HTMLTheme = () => {
   const { customStyleHtml } = Theme();
   const disabled = boolean('Disabled', false, 'Theme Disabled');
   const checked = boolean('Checked', false, 'Theme Checked');
