@@ -199,6 +199,45 @@ export const ReactTheme = () => {
   );
 };
 
+export const ReactThemeAllState = () => {
+  const { customStyle } = Theme();
+
+  return (
+    <>
+      <Radio
+        id="choice1-1"
+        name="pet"
+        label="Default"
+        value="default"
+        checked={false}
+        disabled={false}
+        required={false}
+        style={customStyle}
+      />
+      <Radio
+        id="choice1-2"
+        name="pet"
+        label="Checked"
+        value="checked"
+        checked
+        disabled={false}
+        required={false}
+        style={customStyle}
+      />
+      <Radio
+        id="choice1-3"
+        name="pet"
+        label="Disabled"
+        value="disabled"
+        checked={false}
+        disabled
+        required={false}
+        style={customStyle}
+      />
+    </>
+  );
+};
+
 export const HTMLTheme = () => {
   const { customStyleHtml } = Theme();
   const disabled = boolean('Disabled', false, 'Theme Disabled');
@@ -214,6 +253,43 @@ export const HTMLTheme = () => {
         value="rabbit"
         checked={checked}
         disabled={disabled}
+        required={false}
+      />
+    </>
+  );
+};
+
+export const HTMLThemeAllState = () => {
+  const { customStyleHtml } = Theme();
+
+  return (
+    <>
+      <style>{customStyleHtml}</style>
+      <Radio
+        id="choice2-1"
+        name="pet"
+        label="Default"
+        value="default"
+        checked={false}
+        disabled={false}
+        required={false}
+      />
+      <Radio
+        id="choice2-2"
+        name="pet"
+        label="Checked"
+        value="checked"
+        checked
+        disabled={false}
+        required={false}
+      />
+      <Radio
+        id="choice2-3"
+        name="pet"
+        label="Disabled"
+        value="disabled"
+        checked={false}
+        disabled
         required={false}
       />
     </>
