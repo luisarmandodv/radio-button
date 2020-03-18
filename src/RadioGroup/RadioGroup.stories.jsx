@@ -3,8 +3,8 @@
 /* eslint-disable import/extensions */
 import React from 'react';
 import { boolean, number } from '@storybook/addon-knobs';
-import Radio from '../Radio';
-import RadioGroup from './RadioGroup';
+import Radio from 'src/Radio';
+import RadioGroup from 'src/RadioGroup';
 import CommonProps from '../Radio/props/commonProps';
 import CheckedProps from '../Radio/props/checkedProps';
 import ThemeProps from '../Radio/props/themeProps';
