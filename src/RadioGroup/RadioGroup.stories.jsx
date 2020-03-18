@@ -3,12 +3,12 @@
 /* eslint-disable import/extensions */
 import React from 'react';
 import { boolean, number } from '@storybook/addon-knobs';
-import Radio from 'src/Radio';
-import RadioGroup from 'src/RadioGroup';
-import { withKnobs, cssVarsToLegacy } from '../../.storybook/helper';
+import Radio from '../Radio';
+import RadioGroup from './RadioGroup';
 import CommonProps from '../Radio/props/commonProps';
 import CheckedProps from '../Radio/props/checkedProps';
 import ThemeProps from '../Radio/props/themeProps';
+import { withKnobs, cssVarsToLegacy } from '../../.storybook/helper';
 
 /**
  * Main story
@@ -192,6 +192,7 @@ export const WithDynamicProps = () => {
       label: `${label}-${i}`,
       checked,
       required,
+      disabled,
     };
     listData.push(option);
   }
@@ -205,9 +206,11 @@ export const WithDynamicProps = () => {
 
 function Theme() {
   const {
-    themeDefaultCheckedBackground,
+    themeCheckedBackground,
     themeDefaultBorder,
-    themeLabelText,
+    themeDefaultLabelText,
+    themeCheckedBorder,
+    themeCheckedLabelText,
     themeDisabledLabelText,
     themeDisabledBorder,
     marginTop,
@@ -217,10 +220,12 @@ function Theme() {
   } = ThemeProps();
 
   const customStyle = {
-    '--rex-radio-theme': themeDefaultCheckedBackground,
-    '--rex-radio-label': themeLabelText,
-    '--rex-radio-border-color': themeDefaultBorder,
-    '--rex-radio-disabled-text': themeDisabledLabelText,
+    '--rex-radio-theme': themeCheckedBackground,
+    '--rex-radio-label': themeDefaultLabelText,
+    '--rex-radio-border': themeDefaultBorder,
+    '--rex-radio-checked-label': themeCheckedLabelText,
+    '--rex-radio-checked-border': themeCheckedBorder,
+    '--rex-radio-disabled-label': themeDisabledLabelText,
     '--rex-radio-disabled-border': themeDisabledBorder,
     '--rex-radio-margin-top': marginTop,
     '--rex-radio-margin-right': marginRight,
@@ -234,35 +239,11 @@ function Theme() {
   };
 }
 
-export const ReactTheme = () => {
-  const { customStyle } = Theme();
-  const disabled = boolean('Disabled', false, 'Theme Disabled');
-  return (
-    <RadioGroup
-      options={fastestAnimalsChecked}
-      style={customStyle}
-      disabled={disabled}
-    />
-  );
-};
-
 export const ReactThemeAllStates = () => {
   const { customStyle } = Theme();
   const disabled = boolean('Disabled', false, 'Theme Disabled');
   const { data } = CheckedProps();
   return <RadioGroup options={data} style={customStyle} disabled={disabled} />;
-};
-
-export const HTMLTheme = () => {
-  const { customStyleHtml } = Theme();
-  const disabled = boolean('Disabled', false, 'Theme Disabled');
-
-  return (
-    <>
-      <style>{customStyleHtml}</style>
-      <RadioGroup options={fastestAnimals} disabled={disabled} />
-    </>
-  );
 };
 
 export const HTMLThemeAndAllStates = () => {

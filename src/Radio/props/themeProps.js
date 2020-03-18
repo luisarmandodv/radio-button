@@ -5,17 +5,27 @@ export default function ThemeProps() {
   return {
     themeDefaultBorder: color(
       'Default Border Color',
-      '#9c9c9c',
+      '#606060',
       'Theme Default'
     ),
-    themeLabelText: color(
+    themeDefaultLabelText: color(
       'Default Label Text Color',
       '#333333',
       'Theme Default'
     ),
-    themeDefaultCheckedBackground: color(
-      'Default Checked Background Color',
+    themeCheckedBackground: color(
+      'Checked Background Color',
       '#bf0000',
+      'Theme Checked'
+    ),
+    themeCheckedBorder: color(
+      'Checked Border Color',
+      '#bf0000',
+      'Theme Checked'
+    ),
+    themeCheckedLabelText: color(
+      'Checked Label Text Color',
+      '#333333',
       'Theme Checked'
     ),
     themeDisabledBorder: color(
