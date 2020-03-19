@@ -199,7 +199,7 @@ export const ReactTheme = () => {
   );
 };
 
-export const ReactThemeAllState = () => {
+export const ReactThemeAllStates = () => {
   const { customStyle } = Theme();
 
   return (
@@ -259,7 +259,7 @@ export const HTMLTheme = () => {
   );
 };
 
-export const HTMLThemeAllState = () => {
+export const HTMLThemeAllStates = () => {
   const { customStyleHtml } = Theme();
 
   return (
