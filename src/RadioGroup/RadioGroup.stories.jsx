@@ -2,11 +2,10 @@
 /* eslint-disable import/no-extraneous-dependencies */
 /* eslint-disable import/extensions */
 import React from 'react';
-import { boolean, number } from '@storybook/addon-knobs';
+import { number } from '@storybook/addon-knobs';
 import Radio from 'src/Radio';
 import RadioGroup from 'src/RadioGroup';
 import CommonProps from '../Radio/props/commonProps';
-import CheckedProps from '../Radio/props/checkedProps';
 import ThemeProps from '../Radio/props/themeProps';
 import { withKnobs, cssVarsToLegacy } from '../../.storybook/helper';
 
@@ -146,6 +145,36 @@ const disabledData = [
   },
 ];
 
+const themeData = [
+  {
+    id: 'choice1',
+    name: 'state',
+    value: 'default',
+    label: 'Default',
+    checked: false,
+    disabled: false,
+    required: false,
+  },
+  {
+    id: 'choice2',
+    name: 'state',
+    value: 'checked',
+    label: 'Checked',
+    checked: true,
+    disabled: false,
+    required: false,
+  },
+  {
+    id: 'choice3',
+    name: 'state',
+    value: 'disabled',
+    label: 'Disabled',
+    checked: false,
+    disabled: true,
+    required: false,
+  },
+];
+
 export const Default = () => <RadioGroup options={fastestAnimals} />;
 
 export const CheckedState = () => (
@@ -241,20 +270,15 @@ function Theme() {
 
 export const ReactThemeAllStates = () => {
   const { customStyle } = Theme();
-  const disabled = boolean('Disabled', false, 'Theme Disabled');
-  const { data } = CheckedProps();
-  return <RadioGroup options={data} style={customStyle} disabled={disabled} />;
+  return <RadioGroup options={themeData} style={customStyle} />;
 };
 
-export const HTMLThemeAndAllStates = () => {
+export const HTMLThemeAllStates = () => {
   const { customStyleHtml } = Theme();
-  const disabled = boolean('Disabled', false, 'Theme Disabled');
-  const { data } = CheckedProps();
-
   return (
     <>
       <style>{customStyleHtml}</style>
-      <RadioGroup options={data} disabled={disabled} />
+      <RadioGroup options={themeData} />
     </>
   );
 };

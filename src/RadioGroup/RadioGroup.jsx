@@ -72,13 +72,13 @@ export default class RadioGroup extends Component {
   }
 
   render() {
-    const { style, className, isBlock, disabled } = this.props;
+    const { style, className, isBlock } = this.props;
     const { options, checkedList } = this.state;
 
     return (
       <div className={className} style={style} role="radiogroup">
         {options.map(option => {
-          const { value, id, name, label, required } = option;
+          const { value, id, name, label, required, disabled } = option;
 
           const checked = checkedList[id];
           return (

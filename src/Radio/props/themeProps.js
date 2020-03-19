@@ -10,7 +10,7 @@ export default function ThemeProps() {
     ),
     themeDefaultLabelText: color(
       'Default Label Text Color',
-      '#333333',
+      '#606060',
       'Theme Default'
     ),
     themeCheckedBackground: color(
@@ -35,7 +35,7 @@ export default function ThemeProps() {
     ),
     themeDisabledLabelText: color(
       'Disabled Text Color',
-      '#dddddd',
+      '#898989',
       'Theme Disabled'
     ),
     marginTop: text('Margin Top', '.5rem', 'Theme Margin'),
