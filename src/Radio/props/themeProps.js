@@ -5,37 +5,37 @@ export default function ThemeProps() {
   return {
     themeDefaultBorder: color(
       'Default Border Color',
-      '#606060',
+      '#830056',
       'Theme Default'
     ),
     themeDefaultLabelText: color(
       'Default Label Text Color',
-      '#606060',
+      '#A2006A',
       'Theme Default'
     ),
     themeCheckedBackground: color(
       'Checked Background Color',
-      '#bf0000',
+      '#CB0085',
       'Theme Checked'
     ),
     themeCheckedBorder: color(
       'Checked Border Color',
-      '#bf0000',
+      '#CB0085',
       'Theme Checked'
     ),
     themeCheckedLabelText: color(
       'Checked Label Text Color',
-      '#333333',
+      '#5A003C',
       'Theme Checked'
     ),
     themeDisabledBorder: color(
       'Disabled Border Color',
-      '#DFDFDF',
+      '#686868',
       'Theme Disabled'
     ),
     themeDisabledLabelText: color(
       'Disabled Text Color',
-      '#898989',
+      '#828282',
       'Theme Disabled'
     ),
     marginTop: text('Margin Top', '.5rem', 'Theme Margin'),
