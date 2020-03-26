@@ -200,6 +200,7 @@ export const LayoutBlockChecked = () => (
 );
 
 export const WithDynamicProps = () => {
+  const quantity = number('Quantity of items', 5);
   const {
     id,
     name,
@@ -210,7 +211,7 @@ export const WithDynamicProps = () => {
     checked,
     layout,
   } = CommonProps(false);
-  const quantity = number('Quantity of items', 5);
+
   let option;
   const listData = [];
   for (let i = 1; i <= quantity; i += 1) {
