@@ -125,8 +125,16 @@ export const LayoutBlock = () => (
 );
 
 export const WithDynamicProps = () => {
-  const { id, name, value, label, checked, disabled, required } = CommonProps();
-  const layout = boolean('layout (Block/Inline)', false);
+  const {
+    id,
+    name,
+    value,
+    label,
+    checked,
+    disabled,
+    required,
+    layout,
+  } = CommonProps();
 
   return (
     <Radio
