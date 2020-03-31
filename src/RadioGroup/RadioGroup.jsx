@@ -107,7 +107,6 @@ RadioGroup.defaultProps = {
   style: {},
   options: [],
   isBlock: false,
-  disabled: false,
 };
 
 RadioGroup.propTypes = {
@@ -122,5 +121,4 @@ RadioGroup.propTypes = {
     disabled: false,
   }),
   isBlock: bool,
-  disabled: bool,
 };
