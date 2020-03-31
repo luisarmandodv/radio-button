@@ -1,33 +1,86 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import React, { Component } from 'react';
-import { shape, string } from 'prop-types';
+import { shape, string, bool } from 'prop-types';
 import Radio from '../Radio';
 
 export default class RadioGroup extends Component {
   constructor(props) {
     super(props);
+    const { options } = this.props;
+    const checkedList = this.setCheckedList(options);
+
     this.state = {
-      selectedValue: '',
+      options,
+      checkedList,
     };
 
     this.handleChange = this.handleChange.bind(this);
   }
 
-  handleChange(e) {
+  componentDidUpdate(prevProps) {
+    const { options } = this.props;
+    let canUpdate = false;
+
+    // Check for options length (how many items)
+    if (options.length !== prevProps.options.length) {
+      // eslint-disable-next-line react/no-did-update-set-state
+      canUpdate = true;
+    }
+
+    // Check for any change in options object values (data)
+    // eslint-disable-next-line no-restricted-syntax
+    for (const key in options) {
+      if (options[key] !== prevProps.options[key]) {
+        canUpdate = true;
+        break;
+      }
+    }
+
+    if (canUpdate) {
+      this.updateCheckedState(options);
+    }
+  }
+
+  // Set initial default values for checkedList
+  // eslint-disable-next-line class-methods-use-this
+  setCheckedList(options) {
+    const checkedList = [];
+    options.forEach(({ id, checked }) => {
+      checkedList[id] = checked;
+    });
+    return checkedList;
+  }
+
+  updateCheckedState(options) {
+    const checkedList = this.setCheckedList(options);
     this.setState({
-      selectedValue: e.target.value,
+      options,
+      checkedList,
+    });
+  }
+
+  handleChange(e) {
+    const { id, checked } = e.target;
+    let { checkedList } = this.state;
+    if (checked) {
+      checkedList = [];
+    }
+    checkedList[id] = checked;
+    this.setState({
+      checkedList,
     });
   }
 
   render() {
-    // eslint-disable-next-line react/prop-types
-    const { options, style, className, isBlock } = this.props;
-    const { selectedValue } = this.state;
+    const { style, className, isBlock } = this.props;
+    const { options, checkedList } = this.state;
 
     return (
       <div className={className} style={style} role="radiogroup">
         {options.map(option => {
-          const { value, id, name, label, disabled, required } = option;
+          const { value, id, name, label, required, disabled } = option;
+
+          const checked = checkedList[id];
           return (
             <Radio
               key={id.toString()}
@@ -38,7 +91,7 @@ export default class RadioGroup extends Component {
               label={label}
               disabled={disabled}
               required={required}
-              checked={value === selectedValue}
+              checked={checked}
               isBlock={isBlock}
             />
           );
@@ -53,10 +106,12 @@ RadioGroup.defaultProps = {
   // eslint-disable-next-line react/default-props-match-prop-types
   style: {},
   options: [],
+  isBlock: false,
 };
 
 RadioGroup.propTypes = {
   className: string,
+  style: string,
   options: shape({
     id: string,
     name: string,
@@ -65,4 +120,5 @@ RadioGroup.propTypes = {
     checked: false,
     disabled: false,
   }),
+  isBlock: bool,
 };

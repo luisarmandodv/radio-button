@@ -1,6 +1,6 @@
 /*!
  * 
- * @license @rakuten-rex/radio-button v1.1.1 2020-01-24
+ * @license @rakuten-rex/radio-button v1.3.0 2020-03-31
  * RadioGroup/RadioGroup.development.js
  * 
  * Copyright (c) 2018-present, Rakuten, Inc.
@@ -191,16 +191,17 @@ function Radio(_ref) {
       disabled = _ref.disabled,
       checked = _ref.checked,
       required = _ref.required,
+      onChange = _ref.onChange,
       style = _ref.style,
-      props = _babel_runtime_helpers_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_1___default()(_ref, ["className", "id", "name", "isBlock", "value", "label", "disabled", "checked", "required", "style"]);
+      props = _babel_runtime_helpers_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_1___default()(_ref, ["className", "id", "name", "isBlock", "value", "label", "disabled", "checked", "required", "onChange", "style"]);
 
   var labelClass = 'rex-radio-label';
   var layoutClass = isBlock ? 'rex-form-block' : null;
   var classes = ['rex-radio', layoutClass, className].join(' ').trim();
-  return react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("div", {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("div", {
     className: classes,
     style: style
-  }, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("input", _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0___default()({
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("input", _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0___default()({
     value: value,
     id: id,
     name: name,
@@ -208,8 +209,8 @@ function Radio(_ref) {
     checked: checked,
     disabled: disabled,
     required: required,
-    readOnly: true
-  }, props)), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("label", {
+    onChange: onChange
+  }, props)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("label", {
     className: labelClass,
     htmlFor: id
   }, label));
@@ -224,7 +225,10 @@ Radio.defaultProps = {
   id: '',
   name: '',
   label: '',
-  value: ''
+  value: '',
+  onChange: function onChange() {
+    return null;
+  }
 };
 
 /***/ }),
@@ -272,6 +276,19 @@ module.exports = _assertThisInitialized;
 /* 7 */
 /***/ (function(module, exports) {
 
+function _getPrototypeOf(o) {
+  module.exports = _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) {
+    return o.__proto__ || Object.getPrototypeOf(o);
+  };
+  return _getPrototypeOf(o);
+}
+
+module.exports = _getPrototypeOf;
+
+/***/ }),
+/* 8 */
+/***/ (function(module, exports) {
+
 function _classCallCheck(instance, Constructor) {
   if (!(instance instanceof Constructor)) {
     throw new TypeError("Cannot call a class as a function");
@@ -281,7 +298,7 @@ function _classCallCheck(instance, Constructor) {
 module.exports = _classCallCheck;
 
 /***/ }),
-/* 8 */
+/* 9 */
 /***/ (function(module, exports) {
 
 function _defineProperties(target, props) {
@@ -303,7 +320,7 @@ function _createClass(Constructor, protoProps, staticProps) {
 module.exports = _createClass;
 
 /***/ }),
-/* 9 */
+/* 10 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var _typeof = __webpack_require__(12);
@@ -319,19 +336,6 @@ function _possibleConstructorReturn(self, call) {
 }
 
 module.exports = _possibleConstructorReturn;
-
-/***/ }),
-/* 10 */
-/***/ (function(module, exports) {
-
-function _getPrototypeOf(o) {
-  module.exports = _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) {
-    return o.__proto__ || Object.getPrototypeOf(o);
-  };
-  return _getPrototypeOf(o);
-}
-
-module.exports = _getPrototypeOf;
 
 /***/ }),
 /* 11 */
@@ -361,6 +365,8 @@ module.exports = _inherits;
 /***/ (function(module, exports) {
 
 function _typeof(obj) {
+  "@babel/helpers - typeof";
+
   if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") {
     module.exports = _typeof = function _typeof(obj) {
       return typeof obj;
@@ -399,24 +405,24 @@ module.exports = _setPrototypeOf;
 __webpack_require__.r(__webpack_exports__);
 
 // EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/classCallCheck.js
-var classCallCheck = __webpack_require__(7);
+var classCallCheck = __webpack_require__(8);
 var classCallCheck_default = /*#__PURE__*/__webpack_require__.n(classCallCheck);
 
 // EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/createClass.js
-var createClass = __webpack_require__(8);
+var createClass = __webpack_require__(9);
 var createClass_default = /*#__PURE__*/__webpack_require__.n(createClass);
-
-// EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/possibleConstructorReturn.js
-var possibleConstructorReturn = __webpack_require__(9);
-var possibleConstructorReturn_default = /*#__PURE__*/__webpack_require__.n(possibleConstructorReturn);
-
-// EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/getPrototypeOf.js
-var getPrototypeOf = __webpack_require__(10);
-var getPrototypeOf_default = /*#__PURE__*/__webpack_require__.n(getPrototypeOf);
 
 // EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/assertThisInitialized.js
 var assertThisInitialized = __webpack_require__(6);
 var assertThisInitialized_default = /*#__PURE__*/__webpack_require__.n(assertThisInitialized);
+
+// EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/possibleConstructorReturn.js
+var possibleConstructorReturn = __webpack_require__(10);
+var possibleConstructorReturn_default = /*#__PURE__*/__webpack_require__.n(possibleConstructorReturn);
+
+// EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/getPrototypeOf.js
+var getPrototypeOf = __webpack_require__(7);
+var getPrototypeOf_default = /*#__PURE__*/__webpack_require__.n(getPrototypeOf);
 
 // EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/inherits.js
 var inherits = __webpack_require__(11);
@@ -440,33 +446,98 @@ var Radio = __webpack_require__(3);
 
 
 
+function _createSuper(Derived) { return function () { var Super = getPrototypeOf_default()(Derived), result; if (_isNativeReflectConstruct()) { var NewTarget = getPrototypeOf_default()(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return possibleConstructorReturn_default()(this, result); }; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
+
 /* eslint-disable react/jsx-props-no-spreading */
 
 
 
-var RadioGroup_RadioGroup =
-/*#__PURE__*/
-function (_Component) {
+var RadioGroup_RadioGroup = /*#__PURE__*/function (_Component) {
   inherits_default()(RadioGroup, _Component);
+
+  var _super = _createSuper(RadioGroup);
 
   function RadioGroup(props) {
     var _this;
 
     classCallCheck_default()(this, RadioGroup);
 
-    _this = possibleConstructorReturn_default()(this, getPrototypeOf_default()(RadioGroup).call(this, props));
+    _this = _super.call(this, props);
+    var options = _this.props.options;
+
+    var checkedList = _this.setCheckedList(options);
+
     _this.state = {
-      selectedValue: ''
+      options: options,
+      checkedList: checkedList
     };
     _this.handleChange = _this.handleChange.bind(assertThisInitialized_default()(_this));
     return _this;
   }
 
   createClass_default()(RadioGroup, [{
+    key: "componentDidUpdate",
+    value: function componentDidUpdate(prevProps) {
+      var options = this.props.options;
+      var canUpdate = false; // Check for options length (how many items)
+
+      if (options.length !== prevProps.options.length) {
+        // eslint-disable-next-line react/no-did-update-set-state
+        canUpdate = true;
+      } // Check for any change in options object values (data)
+      // eslint-disable-next-line no-restricted-syntax
+
+
+      for (var key in options) {
+        if (options[key] !== prevProps.options[key]) {
+          canUpdate = true;
+          break;
+        }
+      }
+
+      if (canUpdate) {
+        this.updateCheckedState(options);
+      }
+    } // Set initial default values for checkedList
+    // eslint-disable-next-line class-methods-use-this
+
+  }, {
+    key: "setCheckedList",
+    value: function setCheckedList(options) {
+      var checkedList = [];
+      options.forEach(function (_ref) {
+        var id = _ref.id,
+            checked = _ref.checked;
+        checkedList[id] = checked;
+      });
+      return checkedList;
+    }
+  }, {
+    key: "updateCheckedState",
+    value: function updateCheckedState(options) {
+      var checkedList = this.setCheckedList(options);
+      this.setState({
+        options: options,
+        checkedList: checkedList
+      });
+    }
+  }, {
     key: "handleChange",
     value: function handleChange(e) {
+      var _e$target = e.target,
+          id = _e$target.id,
+          checked = _e$target.checked;
+      var checkedList = this.state.checkedList;
+
+      if (checked) {
+        checkedList = [];
+      }
+
+      checkedList[id] = checked;
       this.setState({
-        selectedValue: e.target.value
+        checkedList: checkedList
       });
     }
   }, {
@@ -474,14 +545,14 @@ function (_Component) {
     value: function render() {
       var _this2 = this;
 
-      // eslint-disable-next-line react/prop-types
       var _this$props = this.props,
-          options = _this$props.options,
           style = _this$props.style,
           className = _this$props.className,
           isBlock = _this$props.isBlock;
-      var selectedValue = this.state.selectedValue;
-      return external_root_React_commonjs2_react_commonjs_react_amd_react_umd_react_default.a.createElement("div", {
+      var _this$state = this.state,
+          options = _this$state.options,
+          checkedList = _this$state.checkedList;
+      return /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_umd_react_default.a.createElement("div", {
         className: className,
         style: style,
         role: "radiogroup"
@@ -490,9 +561,10 @@ function (_Component) {
             id = option.id,
             name = option.name,
             label = option.label,
-            disabled = option.disabled,
-            required = option.required;
-        return external_root_React_commonjs2_react_commonjs_react_amd_react_umd_react_default.a.createElement(Radio["default"], {
+            required = option.required,
+            disabled = option.disabled;
+        var checked = checkedList[id];
+        return /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_umd_react_default.a.createElement(Radio["default"], {
           key: id.toString(),
           id: id,
           name: name,
@@ -501,7 +573,7 @@ function (_Component) {
           label: label,
           disabled: disabled,
           required: required,
-          checked: value === selectedValue,
+          checked: checked,
           isBlock: isBlock
         });
       }));
@@ -517,7 +589,8 @@ RadioGroup_RadioGroup.defaultProps = {
   className: 'rex-radio-group',
   // eslint-disable-next-line react/default-props-match-prop-types
   style: {},
-  options: []
+  options: [],
+  isBlock: false
 };
 
 /***/ })
