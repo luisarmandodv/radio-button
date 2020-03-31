@@ -1,6 +1,6 @@
 /*!
  * 
- * @license @rakuten-rex/radio-button v1.1.1 2020-01-24
+ * @license @rakuten-rex/radio-button v1.2.0 2020-03-31
  * Radio/Radio.development.js
  * 
  * Copyright (c) 2018-present, Rakuten, Inc.
@@ -191,16 +191,17 @@ function Radio(_ref) {
       disabled = _ref.disabled,
       checked = _ref.checked,
       required = _ref.required,
+      onChange = _ref.onChange,
       style = _ref.style,
-      props = _babel_runtime_helpers_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_1___default()(_ref, ["className", "id", "name", "isBlock", "value", "label", "disabled", "checked", "required", "style"]);
+      props = _babel_runtime_helpers_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_1___default()(_ref, ["className", "id", "name", "isBlock", "value", "label", "disabled", "checked", "required", "onChange", "style"]);
 
   var labelClass = 'rex-radio-label';
   var layoutClass = isBlock ? 'rex-form-block' : null;
   var classes = ['rex-radio', layoutClass, className].join(' ').trim();
-  return react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("div", {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("div", {
     className: classes,
     style: style
-  }, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("input", _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0___default()({
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("input", _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0___default()({
     value: value,
     id: id,
     name: name,
@@ -208,8 +209,8 @@ function Radio(_ref) {
     checked: checked,
     disabled: disabled,
     required: required,
-    readOnly: true
-  }, props)), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("label", {
+    onChange: onChange
+  }, props)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("label", {
     className: labelClass,
     htmlFor: id
   }, label));
@@ -224,7 +225,10 @@ Radio.defaultProps = {
   id: '',
   name: '',
   label: '',
-  value: ''
+  value: '',
+  onChange: function onChange() {
+    return null;
+  }
 };
 
 /***/ }),
