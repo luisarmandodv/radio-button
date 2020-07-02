@@ -1,6 +1,6 @@
 /*!
  * 
- * @license @rakuten-rex/radio-button v1.3.0 2020-03-31
+ * @license @rakuten-rex/radio-button v1.4.0 2020-07-02
  * Radio/Radio.development.js
  * 
  * Copyright (c) 2018-present, Rakuten, Inc.
