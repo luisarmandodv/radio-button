@@ -9,13 +9,13 @@ React, HTML/CSS and Vue.js
 <img src="project-scripts/webpack/markdown/logos/npm.svg?sanitize=true" height="16" />
 
 ```
-npm install @rakuten-rex/radio-button@1.3.0 --save
+npm install @rakuten-rex/radio-button@1.4.0 --save
 ```
 
 <img src="project-scripts/webpack/markdown/logos/yarn.svg?sanitize=true" height="16" />
 
 ```
-yarn add @rakuten-rex/radio-button@1.3.0
+yarn add @rakuten-rex/radio-button@1.4.0
 ```
 
 # Getting started
@@ -170,21 +170,21 @@ Copy-paste the stylesheet `<link>` into your `<head>` tag to load our CSS styles
 ### Using CSS Variables (Modern Websites and WebApps)
 **Production mode URL** (recommended for Static HTML projects):  
 ```
-https://unpkg.com/@rakuten-rex/radio-button@1.3.0/RadioGroup/RadioGroup.production.min.css
+https://unpkg.com/@rakuten-rex/radio-button@1.4.0/RadioGroup/RadioGroup.production.min.css
 ```
 
 
 Development mode URL (for local testing):  
 
 ```
-https://unpkg.com/@rakuten-rex/radio-button@1.3.0/RadioGroup/RadioGroup.development.css
+https://unpkg.com/@rakuten-rex/radio-button@1.4.0/RadioGroup/RadioGroup.development.css
 ```
 
 
 ### Using Static CSS (Legacy Websites)
 
 ```
-https://unpkg.com/@rakuten-rex/radio-button@1.3.0/RadioGroup/RadioGroup.static.css
+https://unpkg.com/@rakuten-rex/radio-button@1.4.0/RadioGroup/RadioGroup.static.css
 ```
 
 ### <img src="project-scripts/webpack/markdown/logos/html-5.svg?sanitize=true" height="16" /> Single component integration
@@ -201,7 +201,7 @@ Example:
     <meta charset="utf-8">
     <title>My Page</title>
     <!-- ReX radio-button -->
-    <link href="https://unpkg.com/@rakuten-rex/radio-button@1.3.0/RadioGroup/RadioGroup.production.min.css" rel="stylesheet">
+    <link href="https://unpkg.com/@rakuten-rex/radio-button@1.4.0/RadioGroup/RadioGroup.production.min.css" rel="stylesheet">
   </head>
   <body>
     <div class="rex-radio-group" role="radiogroup">
